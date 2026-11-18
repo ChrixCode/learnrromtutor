@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>How It Works — 2tors.ng</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="Learn how 2tors.ng works — find, book and track verified tutors in Nigeria.">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/learnroom-tokens.css">
+     <link rel="stylesheet" href="css/style.css">
+     <style>
+       .step-flow{display:flex;flex-wrap:wrap;gap:0;position:relative;}
+       .step-flow::before{content:'';position:absolute;top:40px;left:10%;right:10%;height:3px;background:linear-gradient(90deg,var(--tt-teal),var(--tt-orange),var(--tt-magenta));border-radius:2px;z-index:0;}
+       .step-item{flex:1;min-width:200px;text-align:center;padding:0 16px;position:relative;z-index:1;}
+       .step-num{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-family:var(--tt-font-head);font-weight:900;margin:0 auto 20px;box-shadow:var(--tt-shadow);}
+       .sn1{background:var(--tt-teal);color:#fff;}
+       .sn2{background:var(--tt-orange);color:#fff;}
+       .sn3{background:var(--tt-yellow-dark);color:var(--tt-text);}
+       .sn4{background:var(--tt-magenta);color:#fff;}
+       .step-item h3{font-size:18px;font-weight:900;color:var(--tt-text);margin-bottom:10px;}
+       .step-item p{font-size:14px;color:var(--tt-muted);}
+       .split-row{display:flex;align-items:center;gap:48px;padding:48px 0;border-bottom:1px solid var(--tt-border-soft);}
+       .split-row:last-child{border-bottom:none;}
+       .split-icon{width:80px;height:80px;border-radius:var(--tt-radius-xl);display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0;}
+       .split-content{flex:1;}
+       .split-content h2{font-size:24px;font-weight:900;color:var(--tt-text);margin-bottom:12px;}
+       .split-content ul{padding-left:0;list-style:none;}
+       .split-content ul li{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:14px;color:var(--tt-text-2);font-weight:600;}
+       .split-content ul li i{color:var(--tt-teal);font-size:17px;margin-top:1px;flex-shrink:0;}
+       .split-img{width:260px;min-width:200px;height:220px;border-radius:var(--tt-radius-xl);object-fit:cover;box-shadow:var(--tt-shadow);}
+       .split-img-placeholder{width:260px;min-width:200px;height:220px;border-radius:var(--tt-radius-xl);display:flex;align-items:center;justify-content:center;font-size:64px;flex-shrink:0;}
+       @media(max-width:767px){.step-flow::before{display:none;}.split-row{flex-direction:column;}.split-img-placeholder{width:100%;min-width:0;}}
+     </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+     <div class="container">
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+               <a href="index.html" class="navbar-brand">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+          </div>
+          <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-nav-first">
+                    <li><a href="browse-tutors.html">Find a Tutor</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                              <li><a href="how-it-works.html"><i class="fa fa-play-circle"></i> How It Works</a></li>
+                              <li><a href="about.html"><i class="fa fa-info-circle"></i> About 2tors.ng</a></li>
+                              <li><a href="faq.html"><i class="fa fa-question-circle"></i> FAQ</a></li>
+                              <li><a href="blog.html"><i class="fa fa-rss"></i> Blog</a></li>
+                              <li><a href="contact.html"><i class="fa fa-envelope"></i> Contact</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><a href="contact.html"><i class="fa fa-calendar"></i> Request a Demo</a></li>
+                         </ul>
+                    </li>
+               </ul></li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                    <li><a href="dashboards/login.html" style="display:inline-block;padding:9px 22px;border:2px solid var(--tt-border);border-radius:var(--tt-radius-pill);font-weight:700;font-size:14px;color:var(--tt-text-2)!important;line-height:1.4;margin-top:15px;transition:var(--tt-transition);"><i class="fa fa-sign-in"></i> Sign In</a></li>
+                    <li><a href="dashboards/register.html" style="display:inline-block;padding:10px 24px;background:var(--tt-teal);color:#fff!important;border-radius:var(--tt-radius-pill);font-weight:800;font-size:14px;line-height:1.4;margin-top:15px;border:2px solid var(--tt-teal);transition:var(--tt-transition);box-shadow:0 3px 12px rgba(0,191,165,.25);"><i class="fa fa-user-plus"></i> Get Started Free</a></li>
+               </ul>
+          </div>
+     </div>
+</section>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+     <div class="container"><div class="col-md-8"><h1>How 2tors.ng Works</h1><p>Everything you need to find, book and track a verified private tutor in Nigeria — in four simple steps</p></div></div>
+</section>
+<section class="breadcrumb-section"><div class="container"><ol class="breadcrumb"><li><a href="index.html">Home</a></li><li class="active">How It Works</li></ol></div></section>
+
+<!-- 4-STEP FLOW -->
+<section style="background:var(--tt-bg-soft);padding:72px 0;">
+     <div class="container">
+          <div class="section-title text-center"><h2>Four Steps to Your First Session</h2></div>
+          <div class="step-flow">
+               <div class="step-item"><div class="step-num sn1"><i class="fa fa-search"></i></div><h3>Find a Tutor</h3><p>Search verified tutors by subject, education level, delivery mode (home visit or online) and location across Nigeria.</p></div>
+               <div class="step-item"><div class="step-num sn2"><i class="fa fa-calendar-plus-o"></i></div><h3>Request a Booking</h3><p>Select your child, choose the subject, your preferred date and time slot, then send a booking request to the tutor.</p></div>
+               <div class="step-item"><div class="step-num sn3"><i class="fa fa-graduation-cap"></i></div><h3>Attend the Session</h3><p>The tutor arrives at your home or sends you a video link. Your child attends the confirmed session.</p></div>
+               <div class="step-item"><div class="step-num sn4"><i class="fa fa-bar-chart"></i></div><h3>Track Progress</h3><p>After every session, the tutor submits a structured progress report. You view it instantly in your parent dashboard.</p></div>
+          </div>
+     </div>
+</section>
+
+<!-- FOR PARENTS -->
+<section style="background:var(--tt-white);">
+     <div class="container">
+          <div class="section-title text-center"><h2>For Parents &amp; Guardians</h2><small>Everything you need to manage your children's tutoring in one place</small></div>
+          <div class="split-row">
+               <div class="split-img-placeholder" style="background:var(--tt-teal-soft);"><i class="fa fa-home" style="color:var(--tt-teal);"></i></div>
+               <div class="split-content">
+                    <h2>Create a Family Account</h2>
+                    <ul>
+                         <li><i class="fa fa-check-circle"></i> Register in under 2 minutes — no payment required at signup</li>
+                         <li><i class="fa fa-check-circle"></i> Add all your children as separate profiles, each with their own level, subjects and goals</li>
+                         <li><i class="fa fa-check-circle"></i> Invite additional guardians (father, aunt, grandparent) with their own permission settings</li>
+                         <li><i class="fa fa-check-circle"></i> Each guardian can be allowed or restricted from booking, viewing reports or managing camera settings</li>
+                         <li><i class="fa fa-check-circle"></i> You stay in control at all times — revoke any guardian's access instantly</li>
+                    </ul>
+               </div>
+          </div>
+          <div class="split-row">
+               <div class="split-content">
+                    <h2>Find &amp; Book a Verified Tutor</h2>
+                    <ul>
+                         <li><i class="fa fa-check-circle"></i> Search by subject, education level, state/city, delivery mode and availability</li>
+                         <li><i class="fa fa-check-circle"></i> Read detailed profiles, qualifications, reviews and ratings from other parents</li>
+                         <li><i class="fa fa-check-circle"></i> Request a booking for a specific child with your preferred date and time</li>
+                         <li><i class="fa fa-check-circle"></i> The tutor confirms, declines or proposes an alternative time</li>
+                         <li><i class="fa fa-check-circle"></i> Once confirmed, the session appears in your calendar automatically</li>
+                    </ul>
+               </div>
+               <div class="split-img-placeholder" style="background:var(--tt-orange-soft);"><i class="fa fa-calendar" style="color:var(--tt-orange);"></i></div>
+          </div>
+          <div class="split-row">
+               <div class="split-img-placeholder" style="background:var(--tt-magenta-soft);"><i class="fa fa-file-text" style="color:var(--tt-magenta);"></i></div>
+               <div class="split-content">
+                    <h2>Monitor Progress &amp; Reports</h2>
+                    <ul>
+                         <li><i class="fa fa-check-circle"></i> After every session, the tutor submits a structured progress report</li>
+                         <li><i class="fa fa-check-circle"></i> Reports include: session attendance, strengths, areas to improve, homework and next steps</li>
+                         <li><i class="fa fa-check-circle"></i> You receive a notification as soon as a report is submitted</li>
+                         <li><i class="fa fa-check-circle"></i> View full history of all reports, assignments and sessions per child</li>
+                         <li><i class="fa fa-check-circle"></i> Compare progress across subjects and over time</li>
+                    </ul>
+               </div>
+          </div>
+     </div>
+</section>
+
+<!-- FOR TUTORS -->
+<section style="background:var(--tt-bg-soft);">
+     <div class="container">
+          <div class="section-title text-center"><h2>For Tutors &amp; Educators</h2><small>Get verified, build your profile and start earning from bookings</small></div>
+          <div class="split-row">
+               <div class="split-img-placeholder" style="background:var(--tt-orange-soft);"><i class="fa fa-id-card" style="color:var(--tt-orange);"></i></div>
+               <div class="split-content">
+                    <h2>Register &amp; Get Verified</h2>
+                    <ul>
+                         <li><i class="fa fa-check-circle" style="color:var(--tt-orange);"></i> Create your tutor account with your personal and professional details</li>
+                         <li><i class="fa fa-check-circle" style="color:var(--tt-orange);"></i> Add your subjects, education levels served, delivery modes and service areas</li>
+                         <li><i class="fa fa-check-circle" style="color:var(--tt-orange);"></i> Upload your government-issued ID and qualification certificates</li>
+                         <li><i class="fa fa-check-circle" style="color:var(--tt-orange);"></i> Our team manually reviews your documents — usually within 48 hours</li>
+                         <li><i class="fa fa-check-circle" style="color:var(--tt-orange);"></i> Once approved, your profile goes live and families can start requesting bookings</li>
+                    </ul>
+               </div>
+          </div>
+          <div class="split-row">
+               <div class="split-content">
+                    <h2>Accept Bookings &amp; Teach</h2>
+                    <ul>
+                         <li><i class="fa fa-check-circle" style="color:var(--tt-orange);"></i> Receive booking requests in your dashboard — accept, decline or propose an alternative time</li>
+                         <li><i class="fa fa-check-circle" style="color:var(--tt-orange);"></i> Your weekly availability calendar keeps everything organised</li>
+                         <li><i class="fa fa-check-circle" style="color:var(--tt-orange);"></i> For online sessions, a video link is provided through the platform</li>
+                         <li><i class="fa fa-check-circle" style="color:var(--tt-orange);"></i> Record attendance at the start of each session</li>
+                         <li><i class="fa fa-check-circle" style="color:var(--tt-orange);"></i> Submit structured progress reports immediately after teaching</li>
+                    </ul>
+               </div>
+               <div class="split-img-placeholder" style="background:var(--tt-yellow-soft);"><i class="fa fa-money" style="color:var(--tt-yellow-dark);"></i></div>
+          </div>
+     </div>
+</section>
+
+<!-- FOR SCHOOLS -->
+<section style="background:var(--tt-bg-dark);padding:72px 0;">
+     <div class="container">
+          <div class="row" style="text-align:center;margin-bottom:40px;">
+               <div class="col-md-12"><h2 style="color:#fff;font-size:32px;font-weight:900;">For Schools &amp; Institutions</h2><p style="color:rgba(255,255,255,.7);font-size:16px;">Register your institution and manage tutoring across your whole school in a secure, isolated workspace</p></div>
+          </div>
+          <div class="row" style="justify-content:center;">
+               <div class="col-md-4" style="text-align:center;padding:24px;">
+                    <div style="width:72px;height:72px;border-radius:var(--tt-radius-lg);background:rgba(0,191,165,.15);color:var(--tt-teal);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 16px;"><i class="fa fa-university"></i></div>
+                    <h3 style="color:#fff;font-size:17px;font-weight:800;">Register &amp; Verify</h3>
+                    <p style="color:rgba(255,255,255,.65);">Submit your institution's registration documents and await verification by the 2tors.ng team.</p>
+               </div>
+               <div class="col-md-4" style="text-align:center;padding:24px;">
+                    <div style="width:72px;height:72px;border-radius:var(--tt-radius-lg);background:rgba(255,107,53,.15);color:var(--tt-orange);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 16px;"><i class="fa fa-users"></i></div>
+                    <h3 style="color:#fff;font-size:17px;font-weight:800;">Manage Classes</h3>
+                    <p style="color:rgba(255,255,255,.65);">Create classes, enrol learners, link parent guardians and assign class teachers — all in your school workspace.</p>
+               </div>
+               <div class="col-md-4" style="text-align:center;padding:24px;">
+                    <div style="width:72px;height:72px;border-radius:var(--tt-radius-lg);background:rgba(233,30,140,.15);color:var(--tt-magenta);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 16px;"><i class="fa fa-bar-chart"></i></div>
+                    <h3 style="color:#fff;font-size:17px;font-weight:800;">Track Progress</h3>
+                    <p style="color:rgba(255,255,255,.65);">View attendance, assignments and progress reports across your entire school. Schools cannot access each other's data.</p>
+               </div>
+          </div>
+          <div style="text-align:center;margin-top:32px;"><a href="contact.html" class="tt-btn tt-btn-secondary tt-btn-lg">Request a School Demo</a></div>
+     </div>
+</section>
+
+<!-- CTA -->
+<section class="tt-cta-banner">
+     <div class="container" style="position:relative;z-index:2;">
+          <h2>Ready to Get Started?</h2>
+          <p>Join thousands of Nigerian families who have already found their perfect tutor on 2tors.ng</p>
+          <div class="hero-actions" style="justify-content:center;">
+               <a href="browse-tutors.html" class="tt-btn tt-btn-yellow tt-btn-lg">Browse Tutors</a>
+               <a href="dashboards/register.html" class="tt-btn tt-btn-outline-white tt-btn-lg">Create Free Account</a>
+          </div>
+     </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-4 col-sm-6">
+                    <a href="index.html" style="font-family:var(--tt-font-head);font-size:26px;font-weight:900;color:var(--tt-teal);text-decoration:none;display:inline-block;margin-bottom:12px;">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+                    <p>Nigeria's trusted private tutoring platform. Connecting families with verified tutors for home-based and online sessions.</p>
+                    <ul class="social-icon">
+                         <li><a href="https://facebook.com/2tors.ng" target="_blank" class="fa fa-facebook-square"></a></li>
+                         <li><a href="https://twitter.com/2tors.ng" target="_blank" class="fa fa-twitter"></a></li>
+                         <li><a href="https://instagram.com/2tors.ng" target="_blank" class="fa fa-instagram"></a></li>
+                         <li><a href="https://linkedin.com/company/2tors.ng" target="_blank" class="fa fa-linkedin"></a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Platform</h2>
+                    <ul>
+                         <li><a href="browse-tutors.html">Find a Tutor</a></li>
+                         <li><a href="dashboards/signup-tutor.html">Become a Tutor</a></li>
+                         <li><a href="how-it-works.html">How It Works</a></li>
+                         <li><a href="pricing-plans.html">Pricing</a></li>
+                         <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Company</h2>
+                    <ul>
+                         <li><a href="about.html">About Us</a></li>
+                         <li><a href="blog.html">Blog</a></li>
+                         <li><a href="contact.html">Contact</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Legal</h2>
+                    <ul>
+                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                         <li><a href="terms-of-service.html">Terms of Service</a></li>
+                         <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                         <li><a href="refund-policy.html">Refund Policy</a></li>
+                         <li><a href="code-of-conduct.html">Code of Conduct</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-12">
+                    <h2>Stay Updated</h2>
+                    <p style="font-size:13px;">Get tutor tips and platform news in your inbox.</p>
+                    <div class="newsletter-form">
+                         <form action="index.html" method="get">
+                              <input type="email" class="form-control" placeholder="Your email" name="email" required>
+                              <input type="submit" value="Subscribe" style="margin-top:0;">
+                         </form>
+                    </div>
+               </div>
+          </div>
+          <div class="footer-bottom">
+               <p>&copy; 2026 2tors.ng — Learnroom Technology. All rights reserved.</p>
+               <p>Made with <span style="color:var(--tt-orange);">&#9829;</span> in Nigeria</p>
+          </div>
+     </div>
+</footer>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/learnroom.js"></script>
+<script src="js/custom.js"></script>
+<script>$(window).scroll(function(){if($(this).scrollTop()>60)$('.custom-navbar').addClass('scrolled');else $('.custom-navbar').removeClass('scrolled');});</script>
+</body>
+</html>

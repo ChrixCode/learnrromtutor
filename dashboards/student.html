@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta charset="UTF-8">
+  <title>Student Dashboard — 2tors.ng</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,shrink-to-fit=no"/>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/learnroom-tokens.css">
+  <link rel="stylesheet" href="assets/css/ready.css">
+  <link rel="stylesheet" href="assets/css/demo.css">
+  <link rel="stylesheet" href="assets/css/dashboard-responsive.css">
+  <style>
+    .student-welcome{background:linear-gradient(135deg,var(--tt-yellow-dark) 0%,var(--tt-orange) 100%);border-radius:var(--tt-radius-xl);padding:28px 32px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;}
+    .student-welcome::after{content:'';position:absolute;right:-30px;top:-30px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.08);}
+    .student-welcome::before{content:'';position:absolute;left:-20px;bottom:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.05);}
+    .student-welcome h3{color:#fff;font-size:22px;font-weight:900;margin:0 0 6px;position:relative;z-index:1;}
+    .student-welcome p{color:rgba(255,255,255,.85);margin:0;font-size:14px;position:relative;z-index:1;}
+    .student-welcome .badges{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;position:relative;z-index:1;}
+    .student-welcome .s-badge{background:rgba(255,255,255,.18);border-radius:var(--tt-radius-pill);padding:4px 14px;font-size:12px;font-weight:800;color:#fff;}
+    .lesson-card{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--tt-white);border-radius:var(--tt-radius-lg);border:1px solid var(--tt-border-soft);box-shadow:var(--tt-shadow-xs);margin-bottom:10px;transition:var(--tt-transition);}
+    .lesson-card:hover{border-color:var(--tt-yellow-dark);box-shadow:var(--tt-shadow-yellow);transform:translateY(-2px);}
+    .lesson-time{text-align:center;min-width:64px;padding:10px;background:var(--tt-yellow-soft);border-radius:var(--tt-radius);}
+    .lesson-day{font-size:10px;font-weight:800;text-transform:uppercase;color:var(--tt-yellow-dark);}
+    .lesson-hour{font-size:15px;font-weight:900;color:var(--tt-text);line-height:1.2;}
+    .lesson-info{flex:1;}
+    .lesson-subject{font-weight:800;font-size:14px;color:var(--tt-text);}
+    .lesson-tutor{font-size:12px;color:var(--tt-muted);margin-top:2px;}
+    .lesson-mode{font-size:11px;font-weight:700;padding:3px 10px;border-radius:var(--tt-radius-pill);}
+    .mode-home{background:var(--tt-teal-soft);color:var(--tt-teal-dark);}
+    .mode-online{background:var(--tt-magenta-soft);color:var(--tt-magenta-dark);}
+    .asn-row{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--tt-white);border-radius:var(--tt-radius-lg);border-left:4px solid var(--tt-yellow-dark);box-shadow:var(--tt-shadow-xs);margin-bottom:8px;}
+    .asn-row.overdue{border-left-color:var(--tt-danger);}
+    .asn-row.done{border-left-color:var(--tt-success);}
+    .asn-title{font-weight:800;font-size:13px;color:var(--tt-text);}
+    .asn-meta{font-size:11px;color:var(--tt-muted);}
+    .prog-row{margin-bottom:18px;}
+    .prog-row .sub-label{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+    .prog-row .sub-name{font-size:13px;font-weight:800;color:var(--tt-text);}
+    .prog-row .sub-pct{font-size:13px;font-weight:900;color:var(--tt-yellow-dark);}
+    .tutor-mini{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--tt-white);border-radius:var(--tt-radius-lg);border:1px solid var(--tt-border-soft);box-shadow:var(--tt-shadow-xs);margin-bottom:8px;}
+    .tutor-mini img{width:44px;height:44px;border-radius:50%;object-fit:cover;}
+    .tutor-mini .tm-name{font-weight:800;font-size:13px;color:var(--tt-text);}
+    .tutor-mini .tm-sub{font-size:11px;color:var(--tt-muted);}
+    .notif-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--tt-border-soft);}
+    .notif-item:last-child{border-bottom:none;}
+    .n-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+  </style>
+</head>
+<body data-lr-shell="student">
+<div class="wrapper">
+
+<!-- TOP BAR -->
+<div class="main-header">
+  <div class="logo-header">
+    <a href="../index.html" class="logo" style="font-weight:900;color:var(--tt-teal);font-family:var(--tt-font-head);">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+    <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"><span class="navbar-toggler-icon"></span></button>
+    <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+  </div>
+  <nav class="navbar navbar-header navbar-expand-lg">
+    <div class="container-fluid">
+      <form class="navbar-left navbar-form nav-search mr-md-3">
+        <div class="input-group">
+          <input type="text" placeholder="Search subjects, lessons…" class="form-control">
+          <div class="input-group-append"><span class="input-group-text"><i class="la la-search search-icon"></i></span></div>
+        </div>
+      </form>
+      <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+        <li class="nav-item dropdown hidden-caret">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-bell"></i><span class="notification">2</span></a>
+          <ul class="dropdown-menu notif-box">
+            <li><div class="dropdown-title">2 new notifications</div></li>
+            <li><div class="notif-center">
+              <a href="#section-sessions"><div class="notif-icon notif-primary"><i class="la la-calendar"></i></div><div class="notif-content"><span class="block">Maths session confirmed — Monday 4 PM</span><span class="time">1 hour ago</span></div></a>
+              <a href="#section-assignments"><div class="notif-icon notif-danger"><i class="la la-tasks"></i></div><div class="notif-content"><span class="block">Assignment due tomorrow: Trigonometry</span><span class="time">3 hours ago</span></div></a>
+            </div></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
+            <img src="assets/img/profile.jpg" alt="student" width="36" class="img-circle">
+            <span>Chidi Adeyemi</span>
+          </a>
+          <ul class="dropdown-menu dropdown-user">
+            <li><div class="user-box"><div class="u-img"><img src="assets/img/profile.jpg" alt="student"></div><div class="u-text"><h4>Chidi Adeyemi</h4><p class="text-muted">JSS 2 · Age 12</p></div></div></li>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="login.html"><i class="la la-sign-out"></i> Sign Out</a>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="scrollbar-inner sidebar-wrapper">
+    <div class="user">
+      <div class="photo"><img src="assets/img/profile.jpg"></div>
+      <div class="info">
+        <a data-toggle="collapse" href="#collapseUser">
+          <span>Chidi Adeyemi<span class="user-level">Student</span><span class="caret"></span></span>
+        </a>
+        <div class="collapse in" id="collapseUser">
+          <ul class="nav">
+            <li><a href="login.html"><span class="link-collapse">Sign Out</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <ul class="nav" data-lr-nav="student"></ul>
+  </div>
+</div>
+
+<!-- MAIN PANEL -->
+<div class="main-panel">
+<div class="content">
+<div class="container-fluid">
+
+<!-- ===== DASHBOARD ===== -->
+<div id="section-dashboard" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-yellow-soft);color:var(--tt-yellow-dark);"><i class="la la-home"></i></span> My Dashboard</h4>
+
+  <!-- Welcome card -->
+  <div class="student-welcome">
+    <h3>Good afternoon, Chidi! 👋</h3>
+    <p>You have 2 lessons this week and 1 assignment due tomorrow.</p>
+    <div class="badges">
+      <span class="s-badge"><i class="la la-graduation-cap"></i> JSS 2</span>
+      <span class="s-badge"><i class="la la-map-marker"></i> Lagos</span>
+      <span class="s-badge"><i class="la la-star"></i> 3 Active Subjects</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-6">
+      <div class="card card-stats card-primary"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-calendar"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Upcoming Lessons</p><h4 class="card-title">2</h4></div></div></div></div><div class="card-footer"><hr><div class="stats">This week</div></div></div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="card card-stats card-warning"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-tasks"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Assignments Due</p><h4 class="card-title">1</h4></div></div></div></div><div class="card-footer"><hr><div class="stats"><i class="la la-exclamation-circle" style="color:var(--tt-danger);"></i> 1 due tomorrow</div></div></div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="card card-stats card-success"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-check-circle"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Sessions Completed</p><h4 class="card-title">14</h4></div></div></div></div><div class="card-footer"><hr><div class="stats">This month</div></div></div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="card card-stats card-danger"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-graduation-cap"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Active Tutors</p><h4 class="card-title">2</h4></div></div></div></div><div class="card-footer"><hr><div class="stats">Maths &amp; English</div></div></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7">
+      <div class="card"><div class="card-header"><h4 class="card-title">Upcoming Lessons</h4><a href="#section-sessions" class="btn btn-xs btn-primary btn-rounded" onclick="showSection('section-sessions')">View all</a></div>
+        <div class="card-body">
+          <div class="lesson-card">
+            <div class="lesson-time"><div class="lesson-day">Mon</div><div class="lesson-hour">4:00 PM</div></div>
+            <div class="lesson-info">
+              <div class="lesson-subject">Mathematics</div>
+              <div class="lesson-tutor">Dr. Adebayo Okafor · 90 mins</div>
+            </div>
+            <span class="lesson-mode mode-home"><i class="la la-home"></i> Home</span>
+          </div>
+          <div class="lesson-card">
+            <div class="lesson-time"><div class="lesson-day">Wed</div><div class="lesson-hour">5:30 PM</div></div>
+            <div class="lesson-info">
+              <div class="lesson-subject">English Language</div>
+              <div class="lesson-tutor">Mrs. Chidinma Eze · 60 mins</div>
+            </div>
+            <span class="lesson-mode mode-online"><i class="la la-video-camera"></i> Online</span>
+            <button class="btn btn-sm btn-primary btn-rounded" style="margin-left:8px;"><i class="la la-video-camera"></i> Join</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="card"><div class="card-header"><h4 class="card-title">Due Assignments</h4><a href="#section-assignments" class="btn btn-xs btn-warning btn-rounded" onclick="showSection('section-assignments')">View all</a></div>
+        <div class="card-body">
+          <div class="asn-row overdue">
+            <div style="flex:1;">
+              <div class="asn-title">Trigonometry Practice — Pages 142–148</div>
+              <div class="asn-meta">Mathematics · Dr. Okafor · <strong style="color:var(--tt-danger);">Due tomorrow</strong></div>
+            </div>
+            <button class="btn btn-sm btn-danger btn-rounded" onclick="showSection('section-assignments')">Submit</button>
+          </div>
+          <div class="asn-row done">
+            <div style="flex:1;">
+              <div class="asn-title">Reading Comprehension — Chapter 7</div>
+              <div class="asn-meta">English · Mrs. Eze · Submitted 20 Nov</div>
+            </div>
+            <span class="status-badge status-completed">Done</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== UPCOMING SESSIONS ===== -->
+<div id="section-sessions" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-yellow-soft);color:var(--tt-yellow-dark);"><i class="la la-calendar"></i></span> Upcoming Lessons</h4>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card"><div class="card-header"><h4 class="card-title">Scheduled Lessons</h4></div>
+        <div class="card-body">
+          <div class="lesson-card">
+            <div class="lesson-time"><div class="lesson-day">Mon 28</div><div class="lesson-hour">4:00 PM</div></div>
+            <div class="lesson-info"><div class="lesson-subject">Mathematics — Quadratic Equations</div><div class="lesson-tutor">Dr. Adebayo Okafor · Home Visit · 90 mins</div></div>
+            <span class="status-badge status-scheduled">Confirmed</span>
+          </div>
+          <div class="lesson-card">
+            <div class="lesson-time"><div class="lesson-day">Wed 30</div><div class="lesson-hour">5:30 PM</div></div>
+            <div class="lesson-info"><div class="lesson-subject">English Language — Essay Writing</div><div class="lesson-tutor">Mrs. Chidinma Eze · Online · 60 mins</div></div>
+            <span class="status-badge status-scheduled">Confirmed</span>
+            <button class="btn btn-sm btn-primary btn-rounded" style="margin-left:8px;"><i class="la la-video-camera"></i> Join</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:0;"><div class="card-header"><h4 class="card-title">Past Lessons This Month</h4></div>
+        <div class="card-body" style="padding:0;">
+          <table class="table">
+            <thead><tr><th>Date</th><th>Subject</th><th>Tutor</th><th>Mode</th><th>Report</th></tr></thead>
+            <tbody>
+              <tr><td>25 Nov</td><td>Mathematics</td><td>Dr. Okafor</td><td><span class="tt-badge tt-badge-teal">Home</span></td><td><button class="btn btn-xs btn-primary btn-rounded" onclick="showSection('section-reports')">View</button></td></tr>
+              <tr><td>22 Nov</td><td>Mathematics</td><td>Dr. Okafor</td><td><span class="tt-badge tt-badge-teal">Home</span></td><td><button class="btn btn-xs btn-primary btn-rounded" onclick="showSection('section-reports')">View</button></td></tr>
+              <tr><td>20 Nov</td><td>English</td><td>Mrs. Eze</td><td><span class="tt-badge tt-badge-magenta">Online</span></td><td><button class="btn btn-xs btn-primary btn-rounded" onclick="showSection('section-reports')">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card"><div class="card-header"><h4 class="card-title">This Month</h4></div>
+        <div class="card-body">
+          <div class="quick-stat"><h3 style="color:var(--tt-yellow-dark);">14</h3><p>Total lessons</p></div>
+          <div class="quick-stat"><h3 style="color:var(--tt-teal);">2</h3><p>This week</p></div>
+          <div class="quick-stat"><h3 style="color:var(--tt-success);">100%</h3><p>Attendance rate</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ASSIGNMENTS ===== -->
+<div id="section-assignments" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-orange-soft);color:var(--tt-orange);"><i class="la la-tasks"></i></span> Assignments</h4>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card"><div class="card-header"><h4 class="card-title">Active Assignments</h4></div>
+        <div class="card-body">
+          <div class="asn-row overdue">
+            <div style="flex:1;">
+              <div class="asn-title">Trigonometry Practice — Pages 142–148</div>
+              <div class="asn-meta">Mathematics · Dr. Adebayo Okafor · <strong style="color:var(--tt-danger);">Due 29 Nov 2026 — TOMORROW</strong></div>
+            </div>
+            <button class="btn btn-sm btn-danger btn-rounded" data-toggle="modal" data-target="#submitModal">Submit Now</button>
+          </div>
+          <div class="asn-row">
+            <div style="flex:1;">
+              <div class="asn-title">Daily Paragraph Writing — Week 3</div>
+              <div class="asn-meta">English Language · Mrs. Chidinma Eze · Due 30 Nov 2026</div>
+            </div>
+            <span class="status-badge status-pending">Pending</span>
+            <button class="btn btn-sm btn-primary btn-rounded" style="margin-left:8px;" data-toggle="modal" data-target="#submitModal">Submit</button>
+          </div>
+          <div class="asn-row done">
+            <div style="flex:1;">
+              <div class="asn-title">Reading Comprehension — Chapter 7</div>
+              <div class="asn-meta">English Language · Mrs. Chidinma Eze · Submitted 20 Nov</div>
+            </div>
+            <span class="status-badge status-completed">Marked ✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card"><div class="card-header"><h4 class="card-title">Summary</h4></div>
+        <div class="card-body">
+          <div class="quick-stat"><h3 style="color:var(--tt-danger);">1</h3><p>Due tomorrow</p></div>
+          <div class="quick-stat"><h3 style="color:var(--tt-yellow-dark);">1</h3><p>Pending</p></div>
+          <div class="quick-stat"><h3 style="color:var(--tt-success);">5</h3><p>Completed this month</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROGRESS ===== -->
+<div id="section-reports" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-yellow-soft);color:var(--tt-yellow-dark);"><i class="la la-bar-chart"></i></span> My Progress</h4>
+  <div class="row">
+    <div class="col-md-7">
+      <!-- Latest reports -->
+      <div class="card"><div class="card-header"><h4 class="card-title">Latest Progress Reports</h4></div>
+        <div class="card-body">
+          <div style="background:var(--tt-white);border-radius:var(--tt-radius-lg);border:1px solid var(--tt-border-soft);overflow:hidden;margin-bottom:16px;">
+            <div style="background:linear-gradient(135deg,var(--tt-teal),var(--tt-teal-dark));padding:14px 18px;display:flex;align-items:center;justify-content:space-between;"><h5 style="color:#fff;font-weight:800;margin:0;font-size:14px;">Mathematics — 25 Nov 2026</h5><span style="font-size:11px;color:rgba(255,255,255,.8);">Dr. Okafor</span></div>
+            <div style="padding:16px 18px;">
+              <div style="margin-bottom:12px;"><p style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-muted);margin-bottom:5px;">Strengths</p><p style="font-size:13px;color:var(--tt-text-2);margin:0;">Excellent progress on quadratic equations. Solved 8/10 independently.</p></div>
+              <div style="margin-bottom:12px;"><p style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-muted);margin-bottom:5px;">Areas to Improve</p><p style="font-size:13px;color:var(--tt-text-2);margin:0;">Word problems and trigonometry ratios need more practice.</p></div>
+              <div><p style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-muted);margin-bottom:5px;">Next Steps</p><p style="font-size:13px;color:var(--tt-text-2);margin:0;">Complete pages 142–148 before next session. Focus on sin/cos/tan.</p></div>
+              <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--tt-border-soft);display:flex;justify-content:space-between;align-items:center;"><span style="font-size:12px;font-weight:700;color:var(--tt-muted);">Attendance: <strong style="color:var(--tt-success);">Present</strong></span><span style="font-size:12px;font-weight:700;color:var(--tt-muted);">Overall: <strong style="color:var(--tt-teal);">Good Progress</strong></span></div>
+            </div>
+          </div>
+          <div style="background:var(--tt-white);border-radius:var(--tt-radius-lg);border:1px solid var(--tt-border-soft);overflow:hidden;">
+            <div style="background:linear-gradient(135deg,var(--tt-orange),var(--tt-yellow-dark));padding:14px 18px;display:flex;align-items:center;justify-content:space-between;"><h5 style="color:#fff;font-weight:800;margin:0;font-size:14px;">English Language — 20 Nov 2026</h5><span style="font-size:11px;color:rgba(255,255,255,.8);">Mrs. Eze</span></div>
+            <div style="padding:16px 18px;">
+              <div style="margin-bottom:12px;"><p style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-muted);margin-bottom:5px;">Strengths</p><p style="font-size:13px;color:var(--tt-text-2);margin:0;">Vocabulary has improved noticeably. Reading comprehension up from 60% to 78%.</p></div>
+              <div><p style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-muted);margin-bottom:5px;">Next Steps</p><p style="font-size:13px;color:var(--tt-text-2);margin:0;">Write one paragraph daily. Practice comma rules from worksheet provided.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="card"><div class="card-header"><h4 class="card-title">Subject Progress</h4></div>
+        <div class="card-body">
+          <div class="prog-row">
+            <div class="sub-label"><span class="sub-name">Mathematics</span><span class="sub-pct">78%</span></div>
+            <div class="progress" style="height:10px;"><div class="progress-bar" role="progressbar" style="width:78%;background:var(--tt-teal)!important;"></div></div>
+            <div style="font-size:11px;color:var(--tt-muted);margin-top:4px;">14 sessions · Dr. Okafor</div>
+          </div>
+          <div class="prog-row">
+            <div class="sub-label"><span class="sub-name">English Language</span><span class="sub-pct">72%</span></div>
+            <div class="progress" style="height:10px;"><div class="progress-bar" role="progressbar" style="width:72%;background:var(--tt-orange)!important;"></div></div>
+            <div style="font-size:11px;color:var(--tt-muted);margin-top:4px;">8 sessions · Mrs. Eze</div>
+          </div>
+          <div class="prog-row">
+            <div class="sub-label"><span class="sub-name">Physics</span><span class="sub-pct">Start</span></div>
+            <div class="progress" style="height:10px;"><div class="progress-bar" role="progressbar" style="width:5%;background:var(--tt-yellow-dark)!important;"></div></div>
+            <div style="font-size:11px;color:var(--tt-muted);margin-top:4px;">1 session booked</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:0;"><div class="card-header"><h4 class="card-title">Attendance</h4></div>
+        <div class="card-body" style="text-align:center;">
+          <div style="font-size:52px;font-weight:900;color:var(--tt-success);font-family:var(--tt-font-head);">100%</div>
+          <p style="color:var(--tt-muted);font-size:13px;margin:4px 0 0;">14/14 sessions attended this month</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MY SUBJECTS ===== -->
+<div id="section-subjects" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-teal-soft);color:var(--tt-teal);"><i class="la la-book"></i></span> My Subjects</h4>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card" style="border-top:4px solid var(--tt-teal);"><div class="card-body" style="text-align:center;padding:28px;">
+        <div style="font-size:40px;margin-bottom:12px;">📐</div>
+        <h4 style="font-weight:900;color:var(--tt-text);margin-bottom:4px;">Mathematics</h4>
+        <p style="color:var(--tt-muted);font-size:13px;">JSS 2 · BECE Prep</p>
+        <span class="status-badge status-active">Active</span>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--tt-border-soft);">
+          <div style="font-size:28px;font-weight:900;color:var(--tt-teal);">78%</div>
+          <div style="font-size:11px;color:var(--tt-muted);font-weight:700;">Current Progress</div>
+        </div>
+        <div style="margin-top:12px;text-align:left;">
+          <div style="font-size:12px;font-weight:700;color:var(--tt-muted);">Topics covered:</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">
+            <span class="tt-tag">Algebra</span><span class="tt-tag">Quadratics</span><span class="tt-tag">Geometry</span><span class="tt-tag tt-tag-upcoming" style="background:var(--tt-yellow-soft);color:var(--tt-yellow-dark);">Trigonometry →</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="col-md-4">
+      <div class="card" style="border-top:4px solid var(--tt-orange);"><div class="card-body" style="text-align:center;padding:28px;">
+        <div style="font-size:40px;margin-bottom:12px;">📖</div>
+        <h4 style="font-weight:900;color:var(--tt-text);margin-bottom:4px;">English Language</h4>
+        <p style="color:var(--tt-muted);font-size:13px;">JSS 2 · Reading &amp; Writing</p>
+        <span class="status-badge status-active">Active</span>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--tt-border-soft);">
+          <div style="font-size:28px;font-weight:900;color:var(--tt-orange);">72%</div>
+          <div style="font-size:11px;color:var(--tt-muted);font-weight:700;">Current Progress</div>
+        </div>
+        <div style="margin-top:12px;text-align:left;">
+          <div style="font-size:12px;font-weight:700;color:var(--tt-muted);">Topics covered:</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">
+            <span class="tt-tag">Comprehension</span><span class="tt-tag">Vocabulary</span><span class="tt-tag tt-tag-upcoming" style="background:var(--tt-yellow-soft);color:var(--tt-yellow-dark);">Essay Writing →</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="col-md-4">
+      <div class="card" style="border-top:4px solid var(--tt-yellow-dark);"><div class="card-body" style="text-align:center;padding:28px;">
+        <div style="font-size:40px;margin-bottom:12px;">⚛️</div>
+        <h4 style="font-weight:900;color:var(--tt-text);margin-bottom:4px;">Physics</h4>
+        <p style="color:var(--tt-muted);font-size:13px;">JSS 2 · Starting Soon</p>
+        <span class="status-badge status-scheduled">Booked</span>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--tt-border-soft);">
+          <div style="font-size:28px;font-weight:900;color:var(--tt-yellow-dark);">—</div>
+          <div style="font-size:11px;color:var(--tt-muted);font-weight:700;">First session Dec 1</div>
+        </div>
+        <div style="margin-top:12px;">
+          <p style="font-size:12px;color:var(--tt-muted);">Miss Fatima Al-Amin</p>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MY TUTORS ===== -->
+<div id="section-tutors" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-orange-soft);color:var(--tt-orange);"><i class="la la-graduation-cap"></i></span> My Tutors</h4>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card"><div style="height:70px;background:linear-gradient(135deg,var(--tt-teal),var(--tt-teal-dark));border-radius:var(--tt-radius-lg) var(--tt-radius-lg) 0 0;position:relative;"></div>
+        <div style="padding:40px 20px 20px;position:relative;">
+          <img src="assets/img/profile.jpg" style="width:72px;height:72px;border-radius:50%;border:4px solid var(--tt-white);position:absolute;top:-36px;left:20px;object-fit:cover;">
+          <h4 style="font-weight:900;margin:0 0 2px;font-size:16px;">Dr. Adebayo Okafor</h4>
+          <p style="color:var(--tt-muted);font-size:13px;margin-bottom:10px;">Mathematics &amp; Further Maths</p>
+          <span class="status-badge status-verified"><i class="la la-check-circle"></i> Verified</span>
+          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--tt-border-soft);display:flex;justify-content:space-around;text-align:center;">
+            <div><div style="font-size:18px;font-weight:900;color:var(--tt-teal);">14</div><div style="font-size:10px;color:var(--tt-muted);font-weight:700;">Sessions</div></div>
+            <div><div style="font-size:18px;font-weight:900;color:var(--tt-yellow-dark);">★ 4.9</div><div style="font-size:10px;color:var(--tt-muted);font-weight:700;">Rating</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card"><div style="height:70px;background:linear-gradient(135deg,var(--tt-orange),var(--tt-yellow-dark));border-radius:var(--tt-radius-lg) var(--tt-radius-lg) 0 0;position:relative;"></div>
+        <div style="padding:40px 20px 20px;position:relative;">
+          <img src="assets/img/profile.jpg" style="width:72px;height:72px;border-radius:50%;border:4px solid var(--tt-white);position:absolute;top:-36px;left:20px;object-fit:cover;">
+          <h4 style="font-weight:900;margin:0 0 2px;font-size:16px;">Mrs. Chidinma Eze</h4>
+          <p style="color:var(--tt-muted);font-size:13px;margin-bottom:10px;">English Language &amp; Literature</p>
+          <span class="status-badge status-verified"><i class="la la-check-circle"></i> Verified</span>
+          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--tt-border-soft);display:flex;justify-content:space-around;text-align:center;">
+            <div><div style="font-size:18px;font-weight:900;color:var(--tt-orange);">8</div><div style="font-size:10px;color:var(--tt-muted);font-weight:700;">Sessions</div></div>
+            <div><div style="font-size:18px;font-weight:900;color:var(--tt-yellow-dark);">★ 4.8</div><div style="font-size:10px;color:var(--tt-muted);font-weight:700;">Rating</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NOTIFICATIONS ===== -->
+<div id="section-notifications" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-yellow-soft);color:var(--tt-yellow-dark);"><i class="la la-bell"></i></span> Notifications</h4>
+  <div class="card"><div class="card-header"><h4 class="card-title">Recent Notifications</h4></div>
+    <div class="card-body">
+      <div class="notif-item"><div class="n-dot" style="background:var(--tt-teal-soft);color:var(--tt-teal);"><i class="la la-calendar"></i></div><div><div style="font-weight:700;font-size:13px;color:var(--tt-text);">Maths session confirmed — Monday 28 Nov at 4:00 PM with Dr. Okafor</div><div style="font-size:11px;color:var(--tt-faint);">1 hour ago</div></div></div>
+      <div class="notif-item"><div class="n-dot" style="background:var(--tt-danger-soft);color:var(--tt-danger);"><i class="la la-tasks"></i></div><div><div style="font-weight:700;font-size:13px;color:var(--tt-text);">Reminder: Trigonometry assignment due tomorrow — please submit before 11:59 PM</div><div style="font-size:11px;color:var(--tt-faint);">3 hours ago</div></div></div>
+      <div class="notif-item"><div class="n-dot" style="background:var(--tt-orange-soft);color:var(--tt-orange);"><i class="la la-file-text"></i></div><div><div style="font-weight:700;font-size:13px;color:var(--tt-text);">Progress report submitted by Mrs. Eze for English session on 20 Nov</div><div style="font-size:11px;color:var(--tt-faint);">2 days ago</div></div></div>
+      <div class="notif-item"><div class="n-dot" style="background:var(--tt-teal-soft);color:var(--tt-teal);"><i class="la la-graduation-cap"></i></div><div><div style="font-weight:700;font-size:13px;color:var(--tt-text);">Physics booking confirmed with Miss Fatima Al-Amin — Dec 1 at 3:00 PM</div><div style="font-size:11px;color:var(--tt-faint);">Yesterday</div></div></div>
+    </div>
+  </div>
+</div>
+
+</div></div>
+<footer class="footer"><div class="container-fluid"><div class="copyright">&copy; 2026 2tors.ng — All rights reserved.</div></div></footer>
+</div>
+
+</div>
+
+<!-- Submit Assignment Modal -->
+<div class="modal fade" id="submitModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"><div class="modal-content" style="border-radius:var(--tt-radius-lg);">
+    <div class="modal-header" style="background:var(--tt-orange);border-radius:var(--tt-radius-lg) var(--tt-radius-lg) 0 0;">
+      <h5 class="modal-title" style="color:#fff;font-weight:800;"><i class="la la-tasks"></i> Submit Assignment</h5>
+      <button type="button" class="close" data-dismiss="modal" style="color:#fff;opacity:.8;"><span>&times;</span></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--tt-muted);">Assignment</label><p style="font-weight:700;color:var(--tt-text);">Trigonometry Practice — Pages 142–148</p></div>
+      <div class="form-group"><label style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--tt-muted);">Your Answer / Notes</label><textarea class="form-control" rows="4" placeholder="Write your answer or any notes for your tutor…"></textarea></div>
+      <div class="form-group"><label style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--tt-muted);">Upload Work (optional)</label><input type="file" class="form-control" accept=".pdf,.jpg,.png,.doc,.docx"></div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default btn-rounded" data-dismiss="modal">Cancel</button>
+      <button type="button" class="btn btn-primary btn-rounded"><i class="la la-send"></i> Submit Assignment</button>
+    </div>
+  </div></div>
+</div>
+
+<script src="assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/ready.min.js"></script>
+<script src="assets/js/dashboard.js"></script>
+<script src="../js/learnroom.js"></script>
+<script src="assets/js/lrt-shell.js"></script>
+<script>
+function showSection(id){
+  document.querySelectorAll('.dashboard-section').forEach(function(s){s.style.display='none';});
+  var el=document.getElementById(id);
+  if(el)el.style.display='block';
+  document.querySelectorAll('.sidebar .nav > li').forEach(function(li){li.classList.remove('active');});
+  var link=document.querySelector('.sidebar .nav a[href="#'+id+'"]');
+  if(link)link.closest('li').classList.add('active');
+}
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.sidebar .nav a[href^="#section-"]').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();showSection(this.getAttribute('href').substring(1));});
+  });
+});
+</script>
+</body>
+</html>

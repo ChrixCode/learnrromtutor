@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <title>Sign In — 2tors.ng</title>
+     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../css/font-awesome.min.css">
+     <link rel="stylesheet" href="../css/learnroom-tokens.css">
+     <style>
+          body {
+               background: var(--tt-bg);
+               min-height: 100vh;
+               display: flex;
+               align-items: stretch;
+               padding-top: 0;
+               font-family: var(--tt-font-body);
+          }
+          .auth-split { display: flex; min-height: 100vh; width: 100%; }
+
+          /* ── Left panel ── */
+          .auth-panel-left {
+               flex: 0 0 460px;
+               background: var(--tt-white);
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               padding: 48px;
+               position: relative;
+               z-index: 2;
+               box-shadow: 4px 0 32px rgba(0,0,0,.08);
+          }
+
+          /* ── Right brand panel ── */
+          .auth-panel-right {
+               flex: 1;
+               background: linear-gradient(135deg, #1C1E2E 0%, #0d2d3f 50%, #1a3a2a 100%);
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: center;
+               padding: 48px;
+               position: relative;
+               overflow: hidden;
+          }
+          .auth-panel-right::before {
+               content: ''; position: absolute;
+               top: -100px; right: -100px;
+               width: 500px; height: 500px; border-radius: 50%;
+               background: rgba(0,191,165,.08);
+          }
+          .auth-panel-right::after {
+               content: ''; position: absolute;
+               bottom: -80px; left: -60px;
+               width: 400px; height: 400px; border-radius: 50%;
+               background: rgba(255,107,53,.07);
+          }
+
+          .auth-brand { font-family: var(--tt-font-head); font-size: 28px; font-weight: 900; color: var(--tt-teal); text-decoration: none; display: block; margin-bottom: 32px; }
+          .auth-brand span { color: var(--tt-orange); }
+          .auth-heading { font-size: 26px; font-weight: 900; color: var(--tt-text); margin: 0 0 6px; }
+          .auth-sub { font-size: 14px; color: var(--tt-muted); margin-bottom: 28px; }
+
+          /* ── 4 role pills ── */
+          .role-grid {
+               display: grid;
+               grid-template-columns: 1fr 1fr;
+               gap: 10px;
+               margin-bottom: 28px;
+          }
+          .role-pill {
+               text-align: center;
+               padding: 14px 10px;
+               border: 2px solid var(--tt-border);
+               border-radius: var(--tt-radius-lg);
+               cursor: pointer;
+               transition: var(--tt-transition);
+               background: var(--tt-white);
+          }
+          .role-pill:hover { border-color: var(--tt-teal); background: var(--tt-teal-soft); }
+          .role-pill.active { border-color: var(--tt-teal); background: var(--tt-teal-soft); }
+          /* Tutor — orange accent */
+          .role-pill.r-tutor:hover,
+          .role-pill.r-tutor.active { border-color: var(--tt-orange); background: var(--tt-orange-soft); }
+          /* Student — yellow accent */
+          .role-pill.r-student:hover,
+          .role-pill.r-student.active { border-color: var(--tt-yellow-dark); background: var(--tt-yellow-soft); }
+          /* Admin — magenta accent */
+          .role-pill.r-admin:hover,
+          .role-pill.r-admin.active { border-color: var(--tt-magenta); background: var(--tt-magenta-soft); }
+
+          .role-pill i { display: block; font-size: 22px; margin-bottom: 6px; color: var(--tt-teal); }
+          .role-pill.r-tutor   i { color: var(--tt-orange); }
+          .role-pill.r-student i { color: var(--tt-yellow-dark); }
+          .role-pill.r-admin   i { color: var(--tt-magenta); }
+          .role-pill span { font-size: 11px; font-weight: 800; color: var(--tt-text-2); text-transform: uppercase; letter-spacing: .5px; }
+
+          /* ── Form ── */
+          .auth-label { display: block; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; color: var(--tt-text-2); margin-bottom: 6px; }
+          .auth-input { width: 100%; height: 50px; padding: 0 16px; border: 2px solid var(--tt-border); border-radius: var(--tt-radius); font-family: var(--tt-font-body); font-size: 14px; color: var(--tt-text); background: var(--tt-white); transition: var(--tt-transition); outline: none; margin-bottom: 18px; display: block; }
+          .auth-input:focus { border-color: var(--tt-teal); box-shadow: 0 0 0 3px rgba(0,191,165,.12); }
+          .auth-input::placeholder { color: var(--tt-faint); }
+
+          .auth-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; font-size: 13px; }
+          .auth-row label { display: flex; align-items: center; gap: 7px; color: var(--tt-text-2); font-weight: 600; cursor: pointer; }
+          .auth-row a { color: var(--tt-teal); font-weight: 700; text-decoration: none; }
+          .auth-row a:hover { color: var(--tt-orange); }
+
+          .auth-submit { width: 100%; height: 52px; background: var(--tt-teal); color: #fff; border: none; border-radius: var(--tt-radius-pill); font-family: var(--tt-font-body); font-size: 15px; font-weight: 800; cursor: pointer; transition: var(--tt-transition); box-shadow: var(--tt-shadow-teal); margin-bottom: 20px; }
+          .auth-submit:hover { background: var(--tt-orange); box-shadow: var(--tt-shadow-orange); transform: translateY(-2px); }
+
+          .auth-footer-text { text-align: center; font-size: 13px; color: var(--tt-muted); }
+          .auth-footer-text a { color: var(--tt-teal); font-weight: 700; text-decoration: none; }
+          .auth-footer-text a:hover { color: var(--tt-orange); }
+
+          /* ── Right panel ── */
+          .auth-right-content { position: relative; z-index: 2; text-align: center; max-width: 480px; }
+          .auth-right-brand { font-family: var(--tt-font-head); font-size: 48px; font-weight: 900; color: var(--tt-teal); margin-bottom: 8px; }
+          .auth-right-brand span { color: var(--tt-orange); }
+          .auth-right-tagline { font-size: 20px; font-weight: 400; color: rgba(255,255,255,.75); line-height: 1.5; margin-bottom: 48px; }
+
+          /* ── Role legend ── */
+          .role-legend { text-align: left; }
+          .legend-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+          .legend-icon { width: 44px; height: 44px; border-radius: var(--tt-radius); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+          .legend-text strong { display: block; color: rgba(255,255,255,.95); font-size: 14px; font-weight: 800; margin-bottom: 2px; }
+          .legend-text span { color: rgba(255,255,255,.65); font-size: 13px; }
+
+          @media (max-width: 768px) {
+               .auth-panel-right { display: none; }
+               .auth-panel-left { flex: 1; padding: 36px 24px; }
+          }
+     </style>
+</head>
+<body>
+<div class="auth-split">
+
+     <!-- ===== LEFT: Form ===== -->
+     <div class="auth-panel-left">
+          <a href="../index.html" class="auth-brand">2tors<span>.ng</span></a>
+          <h2 class="auth-heading">Welcome back</h2>
+          <p class="auth-sub">Select your role and sign in to your dashboard.</p>
+
+          <!-- 4-role grid -->
+          <div class="role-grid">
+               <div class="role-pill r-parent active" onclick="selectRole('parent', this)">
+                    <i class="fa fa-home"></i>
+                    <span>Parent</span>
+               </div>
+               <div class="role-pill r-tutor" onclick="selectRole('tutor', this)">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span>Tutor</span>
+               </div>
+               <div class="role-pill r-student" onclick="selectRole('student', this)">
+                    <i class="fa fa-child"></i>
+                    <span>Student</span>
+               </div>
+               <div class="role-pill r-admin" onclick="selectRole('admin', this)">
+                    <i class="fa fa-cog"></i>
+                    <span>Admin</span>
+               </div>
+          </div>
+
+          <form id="login-form" action="learner.html" method="get">
+               <input type="hidden" name="role" id="role-hidden" value="parent">
+
+               <label class="auth-label">Email Address</label>
+               <input type="email" class="auth-input" placeholder="your@email.com" required>
+
+               <label class="auth-label">Password</label>
+               <input type="password" class="auth-input" placeholder="Your password" required>
+
+               <div class="auth-row">
+                    <label><input type="checkbox" style="accent-color:var(--tt-teal);width:15px;height:15px;"> Keep me signed in</label>
+                    <a href="forgot-password.html">Forgot password?</a>
+               </div>
+
+               <button type="submit" class="auth-submit" id="submit-btn">Sign In as Parent</button>
+          </form>
+
+          <div class="auth-footer-text">
+               Don't have an account? <a href="register.html">Sign up free</a>
+          </div>
+          <div class="auth-footer-text" style="margin-top:6px;">
+               Registering as a tutor? <a href="signup-tutor.html">Tutor registration →</a>
+          </div>
+          <p style="text-align:center;font-size:11px;color:var(--tt-faint);margin-top:28px;">&copy; 2026 2tors.ng. All rights reserved.</p>
+     </div>
+
+     <!-- ===== RIGHT: Brand panel ===== -->
+     <div class="auth-panel-right">
+          <div class="auth-right-content">
+               <div class="auth-right-brand">2tors<span>.ng</span></div>
+               <p class="auth-right-tagline">Nigeria's trusted private tutoring platform</p>
+               <div class="role-legend">
+                    <div class="legend-item">
+                         <div class="legend-icon" style="background:rgba(0,191,165,.15);color:var(--tt-teal);">
+                              <i class="fa fa-home"></i>
+                         </div>
+                         <div class="legend-text">
+                              <strong>Parent / Guardian</strong>
+                              <span>Manage your children, book tutors, view progress reports</span>
+                         </div>
+                    </div>
+                    <div class="legend-item">
+                         <div class="legend-icon" style="background:rgba(255,107,53,.15);color:var(--tt-orange);">
+                              <i class="fa fa-graduation-cap"></i>
+                         </div>
+                         <div class="legend-text">
+                              <strong>Tutor / Educator</strong>
+                              <span>Manage your profile, bookings, sessions and earnings</span>
+                         </div>
+                    </div>
+                    <div class="legend-item">
+                         <div class="legend-icon" style="background:rgba(255,214,0,.15);color:var(--tt-yellow-dark);">
+                              <i class="fa fa-child"></i>
+                         </div>
+                         <div class="legend-text">
+                              <strong>Student / Learner</strong>
+                              <span>View your lessons, assignments and progress</span>
+                         </div>
+                    </div>
+                    <div class="legend-item">
+                         <div class="legend-icon" style="background:rgba(233,30,140,.15);color:var(--tt-magenta);">
+                              <i class="fa fa-cog"></i>
+                         </div>
+                         <div class="legend-text">
+                              <strong>Administrator</strong>
+                              <span>Platform management — 2tors.ng team only</span>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+</div>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script>
+var destinations = {
+     parent:  'learner.html',
+     tutor:   'tutor.html',
+     student: 'student.html',
+     admin:   'admin.html'
+};
+var labels = {
+     parent:  'Sign In as Parent',
+     tutor:   'Sign In as Tutor',
+     student: 'Sign In as Student',
+     admin:   'Sign In as Admin'
+};
+
+function selectRole(role, el) {
+     document.querySelectorAll('.role-pill').forEach(function(p) { p.classList.remove('active'); });
+     el.classList.add('active');
+     document.getElementById('role-hidden').value = role;
+     document.getElementById('login-form').action = destinations[role] || 'learner.html';
+     document.getElementById('submit-btn').textContent = labels[role] || 'Sign In';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Dr. Adebayo Okafor — Mathematics Tutor — 2tors.ng</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="Verified Mathematics tutor in Lagos. Home visits and online sessions available.">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/learnroom-tokens.css">
+     <link rel="stylesheet" href="css/style.css">
+     <style>
+       .profile-hero{background:linear-gradient(135deg,#1C1E2E 0%,#0d2d3f 100%);padding:0;position:relative;overflow:hidden;}
+       .profile-hero::after{content:'';position:absolute;bottom:-80px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(0,191,165,.08);}
+       .profile-cover{height:220px;background:linear-gradient(135deg,var(--tt-teal),var(--tt-teal-dark));}
+       .profile-meta-row{display:flex;align-items:flex-end;gap:24px;padding:0 0 32px;position:relative;z-index:2;}
+       .profile-avatar-wrap{position:relative;margin-top:-60px;}
+       .profile-avatar{width:120px;height:120px;border-radius:var(--tt-radius-lg);object-fit:cover;border:5px solid var(--tt-white);box-shadow:var(--tt-shadow);}
+       .profile-name-block{flex:1;padding-bottom:4px;}
+       .pname{font-size:28px;font-weight:900;color:var(--tt-white);margin:0 0 4px;}
+       .psubject{font-size:16px;color:rgba(255,255,255,.75);margin:0 0 8px;}
+       .pmeta-tags{display:flex;flex-wrap:wrap;gap:8px;}
+       .pmeta-tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:rgba(255,255,255,.85);background:rgba(255,255,255,.1);padding:4px 12px;border-radius:var(--tt-radius-pill);}
+       .pmeta-tag i{font-size:13px;}
+       .review-card{background:var(--tt-white);border-radius:var(--tt-radius-lg);border:1px solid var(--tt-border-soft);padding:20px 24px;margin-bottom:16px;box-shadow:var(--tt-shadow-xs);}
+       .review-stars{color:var(--tt-yellow-dark);font-size:14px;margin-bottom:8px;}
+       .review-text{font-size:14px;color:var(--tt-text-2);line-height:1.6;font-style:italic;margin-bottom:12px;}
+       .review-author{display:flex;align-items:center;gap:10px;}
+       .review-author img{width:36px;height:36px;border-radius:50%;object-fit:cover;}
+       .review-author .rname{font-weight:800;font-size:13px;color:var(--tt-text);}
+       .review-author .rdate{font-size:11px;color:var(--tt-muted);}
+       .booking-widget{background:var(--tt-white);border-radius:var(--tt-radius-xl);box-shadow:var(--tt-shadow);border:1px solid var(--tt-border-soft);padding:28px;position:sticky;top:90px;}
+       .bw-rate{font-size:32px;font-weight:900;color:var(--tt-text);}
+       .bw-rate small{font-size:16px;font-weight:400;color:var(--tt-muted);}
+       .mode-toggle{display:flex;gap:8px;margin-bottom:20px;}
+       .mode-btn{flex:1;padding:12px 10px;border:2px solid var(--tt-border);border-radius:var(--tt-radius);text-align:center;cursor:pointer;transition:var(--tt-transition);font-size:13px;font-weight:700;color:var(--tt-text-2);}
+       .mode-btn.active{border-color:var(--tt-teal);background:var(--tt-teal-soft);color:var(--tt-teal);}
+       .mode-btn i{display:block;font-size:20px;margin-bottom:4px;}
+       .avail-preview{display:flex;gap:6px;flex-wrap:wrap;}
+       .avail-pill{padding:5px 12px;border-radius:var(--tt-radius-pill);font-size:11px;font-weight:700;background:var(--tt-teal-soft);color:var(--tt-teal);}
+       .avail-pill.off{background:var(--tt-bg-soft);color:var(--tt-faint);}
+       .similar-card{background:var(--tt-white);border-radius:var(--tt-radius-lg);border:1px solid var(--tt-border-soft);box-shadow:var(--tt-shadow-xs);overflow:hidden;margin-bottom:20px;transition:var(--tt-transition);}
+       .similar-card:hover{box-shadow:var(--tt-shadow);transform:translateY(-3px);}
+       .sim-cover{height:60px;background:linear-gradient(135deg,var(--tt-orange),var(--tt-yellow-dark));}
+       .sim-body{padding:40px 16px 16px;position:relative;}
+       .sim-avatar{width:60px;height:60px;border-radius:50%;border:3px solid var(--tt-white);object-fit:cover;position:absolute;top:-30px;left:16px;}
+     </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+     <div class="container">
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+               <a href="index.html" class="navbar-brand">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+          </div>
+          <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-nav-first">
+                    <li><a href="browse-tutors.html">Find a Tutor</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                              <li><a href="how-it-works.html"><i class="fa fa-play-circle"></i> How It Works</a></li>
+                              <li><a href="about.html"><i class="fa fa-info-circle"></i> About 2tors.ng</a></li>
+                              <li><a href="faq.html"><i class="fa fa-question-circle"></i> FAQ</a></li>
+                              <li><a href="blog.html"><i class="fa fa-rss"></i> Blog</a></li>
+                              <li><a href="contact.html"><i class="fa fa-envelope"></i> Contact</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><a href="contact.html"><i class="fa fa-calendar"></i> Request a Demo</a></li>
+                         </ul>
+                    </li>
+               </ul></li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                    <li><a href="dashboards/login.html" style="display:inline-block;padding:9px 22px;border:2px solid var(--tt-border);border-radius:var(--tt-radius-pill);font-weight:700;font-size:14px;color:var(--tt-text-2)!important;line-height:1.4;margin-top:15px;transition:var(--tt-transition);"><i class="fa fa-sign-in"></i> Sign In</a></li>
+                    <li><a href="dashboards/register.html" style="display:inline-block;padding:10px 24px;background:var(--tt-teal);color:#fff!important;border-radius:var(--tt-radius-pill);font-weight:800;font-size:14px;line-height:1.4;margin-top:15px;border:2px solid var(--tt-teal);transition:var(--tt-transition);box-shadow:0 3px 12px rgba(0,191,165,.25);"><i class="fa fa-user-plus"></i> Get Started Free</a></li>
+               </ul>
+          </div>
+     </div>
+</section>
+
+<!-- PROFILE HERO -->
+<div class="profile-hero" style="margin-top:70px;">
+     <div class="profile-cover"></div>
+     <div class="container">
+          <div class="profile-meta-row">
+               <div class="profile-avatar-wrap">
+                    <img src="images/author-image1.jpg" class="profile-avatar" alt="Dr. Adebayo Okafor">
+               </div>
+               <div class="profile-name-block">
+                    <h1 class="pname">Dr. Adebayo Okafor</h1>
+                    <p class="psubject">Mathematics &amp; Further Mathematics Tutor</p>
+                    <div class="pmeta-tags">
+                         <span class="pmeta-tag"><i class="fa fa-shield"></i> Verified Tutor</span>
+                         <span class="pmeta-tag"><i class="fa fa-star"></i> 4.9 · 142 reviews</span>
+                         <span class="pmeta-tag"><i class="fa fa-map-marker"></i> Lagos (Victoria Island, Lekki, Ajah)</span>
+                         <span class="pmeta-tag"><i class="fa fa-home"></i> Home Visits</span>
+                         <span class="pmeta-tag"><i class="fa fa-video-camera"></i> Online Sessions</span>
+                         <span class="pmeta-tag"><i class="fa fa-clock-o"></i> 6 years experience</span>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
+<!-- BREADCRUMB -->
+<section class="breadcrumb-section">
+     <div class="container">
+          <ol class="breadcrumb">
+               <li><a href="index.html">Home</a></li>
+               <li><a href="browse-tutors.html">Browse Tutors</a></li>
+               <li class="active">Dr. Adebayo Okafor</li>
+          </ol>
+     </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section style="padding:48px 0;background:var(--tt-bg);">
+     <div class="container">
+          <div class="row">
+
+               <!-- LEFT: Profile Details -->
+               <div class="col-md-8">
+
+                    <!-- About -->
+                    <div style="background:var(--tt-white);border-radius:var(--tt-radius-lg);padding:28px;box-shadow:var(--tt-shadow-xs);border:1px solid var(--tt-border-soft);margin-bottom:24px;">
+                         <h3 style="font-size:18px;font-weight:900;color:var(--tt-text);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--tt-border-soft);">About Dr. Okafor</h3>
+                         <p>I am a PhD-qualified Mathematics tutor with 6 years of experience teaching JSS, SSS and JAMB students in Lagos. I specialise in making abstract concepts tangible through real-world examples and structured problem-solving techniques.</p>
+                         <p>Having taught over 200 students, I pride myself on identifying each learner's specific gaps and tailoring every session to address those directly. My students have consistently improved their grades by at least one full grade level within two months.</p>
+                         <p>I am patient, punctual, well-prepared for every session and committed to helping every child reach their full potential.</p>
+                    </div>
+
+                    <!-- Subjects & Levels -->
+                    <div style="background:var(--tt-white);border-radius:var(--tt-radius-lg);padding:28px;box-shadow:var(--tt-shadow-xs);border:1px solid var(--tt-border-soft);margin-bottom:24px;">
+                         <h3 style="font-size:18px;font-weight:900;color:var(--tt-text);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--tt-border-soft);">Subjects &amp; Education Levels</h3>
+                         <div style="margin-bottom:16px;">
+                              <p style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-muted);margin-bottom:10px;">Subjects</p>
+                              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                                   <span class="tt-tag" style="background:var(--tt-teal-soft);color:var(--tt-teal);border-color:transparent;">Mathematics</span>
+                                   <span class="tt-tag" style="background:var(--tt-teal-soft);color:var(--tt-teal);border-color:transparent;">Further Mathematics</span>
+                                   <span class="tt-tag" style="background:var(--tt-teal-soft);color:var(--tt-teal);border-color:transparent;">JAMB Mathematics</span>
+                                   <span class="tt-tag" style="background:var(--tt-teal-soft);color:var(--tt-teal);border-color:transparent;">WAEC Mathematics</span>
+                                   <span class="tt-tag" style="background:var(--tt-teal-soft);color:var(--tt-teal);border-color:transparent;">Statistics</span>
+                              </div>
+                         </div>
+                         <div>
+                              <p style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-muted);margin-bottom:10px;">Education Levels</p>
+                              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                                   <span class="tt-tag">Primary</span>
+                                   <span class="tt-tag">JSS 1–3</span>
+                                   <span class="tt-tag">SSS 1–3 (WAEC)</span>
+                                   <span class="tt-tag">JAMB Prep</span>
+                                   <span class="tt-tag">First Year University</span>
+                              </div>
+                         </div>
+                    </div>
+
+                    <!-- Availability -->
+                    <div style="background:var(--tt-white);border-radius:var(--tt-radius-lg);padding:28px;box-shadow:var(--tt-shadow-xs);border:1px solid var(--tt-border-soft);margin-bottom:24px;">
+                         <h3 style="font-size:18px;font-weight:900;color:var(--tt-text);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--tt-border-soft);">Availability</h3>
+                         <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;text-align:center;">
+                              <div><div style="font-size:11px;font-weight:800;color:var(--tt-muted);margin-bottom:6px;">Mon</div><div class="avail-pill" style="text-align:center;margin-bottom:4px;">PM</div><div class="avail-pill" style="text-align:center;">Eve</div></div>
+                              <div><div style="font-size:11px;font-weight:800;color:var(--tt-muted);margin-bottom:6px;">Tue</div><div class="avail-pill off" style="text-align:center;margin-bottom:4px;">AM</div><div class="avail-pill" style="text-align:center;">PM</div></div>
+                              <div><div style="font-size:11px;font-weight:800;color:var(--tt-muted);margin-bottom:6px;">Wed</div><div class="avail-pill" style="text-align:center;margin-bottom:4px;">PM</div><div class="avail-pill" style="text-align:center;">Eve</div></div>
+                              <div><div style="font-size:11px;font-weight:800;color:var(--tt-muted);margin-bottom:6px;">Thu</div><div class="avail-pill" style="text-align:center;margin-bottom:4px;">PM</div><div class="avail-pill" style="text-align:center;">Eve</div></div>
+                              <div><div style="font-size:11px;font-weight:800;color:var(--tt-muted);margin-bottom:6px;">Fri</div><div class="avail-pill" style="text-align:center;margin-bottom:4px;">PM</div><div class="avail-pill off" style="text-align:center;">Eve</div></div>
+                              <div><div style="font-size:11px;font-weight:800;color:var(--tt-muted);margin-bottom:6px;">Sat</div><div class="avail-pill" style="text-align:center;margin-bottom:4px;">AM</div><div class="avail-pill" style="text-align:center;">PM</div></div>
+                              <div><div style="font-size:11px;font-weight:800;color:var(--tt-muted);margin-bottom:6px;">Sun</div><div class="avail-pill off" style="text-align:center;margin-bottom:4px;">AM</div><div class="avail-pill off" style="text-align:center;">PM</div></div>
+                         </div>
+                         <p style="font-size:12px;color:var(--tt-muted);margin-top:14px;"><span style="background:var(--tt-teal-soft);color:var(--tt-teal);padding:2px 8px;border-radius:4px;font-weight:700;">Teal = Available</span> &nbsp; AM = morning · PM = afternoon · Eve = evening</p>
+                    </div>
+
+                    <!-- Reviews -->
+                    <div style="background:var(--tt-white);border-radius:var(--tt-radius-lg);padding:28px;box-shadow:var(--tt-shadow-xs);border:1px solid var(--tt-border-soft);">
+                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--tt-border-soft);">
+                              <h3 style="font-size:18px;font-weight:900;color:var(--tt-text);margin:0;">Reviews</h3>
+                              <div style="display:flex;align-items:center;gap:10px;">
+                                   <div style="font-size:36px;font-weight:900;color:var(--tt-text);">4.9</div>
+                                   <div>
+                                        <div style="color:var(--tt-yellow-dark);font-size:16px;">★★★★★</div>
+                                        <div style="font-size:12px;color:var(--tt-muted);font-weight:600;">142 reviews</div>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="review-card">
+                              <div class="review-stars">★★★★★</div>
+                              <p class="review-text">"Dr. Okafor is phenomenal. My son went from failing Maths to scoring a B in his WAEC mock exam in just 2 months. He explains things clearly, never makes the child feel stupid and always comes prepared."</p>
+                              <div class="review-author"><img src="images/author-image1.jpg" alt=""><div><div class="rname">Mrs. Ngozi Adeyemi</div><div class="rdate">Parent · October 2026</div></div></div>
+                         </div>
+                         <div class="review-card">
+                              <div class="review-stars">★★★★★</div>
+                              <p class="review-text">"My daughter has gained so much confidence in Mathematics since starting with Dr. Okafor. He identifies exactly where she gets stuck and fixes it systematically. His progress reports after every session are incredibly detailed."</p>
+                              <div class="review-author"><img src="images/author-image2.jpg" alt=""><div><div class="rname">Mr. Biodun Fashola</div><div class="rdate">Parent · September 2026</div></div></div>
+                         </div>
+                         <div class="review-card">
+                              <div class="review-stars">★★★★★</div>
+                              <p class="review-text">"Punctual, professional and genuinely passionate about teaching. We have never had a cancelled session without notice. Would recommend without hesitation to any parent in Lagos."</p>
+                              <div class="review-author"><img src="images/author-image3.jpg" alt=""><div><div class="rname">Mrs. Amaka Okonkwo</div><div class="rdate">Parent · August 2026</div></div></div>
+                         </div>
+                    </div>
+
+               </div><!-- /col-md-8 -->
+
+               <!-- RIGHT: Booking Widget -->
+               <div class="col-md-4">
+                    <div class="booking-widget">
+                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+                              <div class="bw-rate">₦5,000 <small>/ session</small></div>
+                              <span class="tt-badge tt-badge-teal"><i class="fa fa-shield"></i> Verified</span>
+                         </div>
+                         <p style="font-size:12px;color:var(--tt-muted);margin-bottom:16px;">Sessions are 90 minutes. Subject to tutor confirmation.</p>
+
+                         <label style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-muted);margin-bottom:8px;display:block;">Delivery Mode</label>
+                         <div class="mode-toggle">
+                              <div class="mode-btn active" onclick="this.parentNode.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')"><i class="fa fa-home"></i>Home Visit</div>
+                              <div class="mode-btn" onclick="this.parentNode.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')"><i class="fa fa-video-camera"></i>Online</div>
+                         </div>
+
+                         <div style="margin-bottom:16px;">
+                              <label style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-muted);margin-bottom:6px;display:block;">Preferred Date</label>
+                              <input type="date" style="width:100%;padding:11px 14px;border:2px solid var(--tt-border);border-radius:var(--tt-radius);font-size:13px;font-family:var(--tt-font-body);outline:none;transition:var(--tt-transition);" min="2026-11-27">
+                         </div>
+
+                         <div style="margin-bottom:16px;">
+                              <label style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-muted);margin-bottom:6px;display:block;">Preferred Time</label>
+                              <select style="width:100%;padding:11px 14px;border:2px solid var(--tt-border);border-radius:var(--tt-radius);font-size:13px;font-family:var(--tt-font-body);outline:none;appearance:none;background:var(--tt-white);">
+                                   <option>Morning (7 AM – 12 PM)</option>
+                                   <option selected>Afternoon (12 PM – 5 PM)</option>
+                                   <option>Evening (5 PM – 9 PM)</option>
+                              </select>
+                         </div>
+
+                         <div style="margin-bottom:20px;">
+                              <label style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-muted);margin-bottom:6px;display:block;">Subject</label>
+                              <select style="width:100%;padding:11px 14px;border:2px solid var(--tt-border);border-radius:var(--tt-radius);font-size:13px;font-family:var(--tt-font-body);outline:none;appearance:none;background:var(--tt-white);">
+                                   <option>Mathematics</option>
+                                   <option>Further Mathematics</option>
+                                   <option>JAMB Mathematics</option>
+                                   <option>WAEC Mathematics</option>
+                              </select>
+                         </div>
+
+                         <a href="dashboards/login.html" class="tt-btn tt-btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:15px;">Request a Booking</a>
+                         <p style="font-size:11px;color:var(--tt-muted);text-align:center;margin-top:10px;">Sign in or create an account to book. No payment taken until session is confirmed.</p>
+
+                         <hr style="border-top:1px solid var(--tt-border-soft);margin:16px 0;">
+
+                         <div style="display:flex;justify-content:space-around;text-align:center;">
+                              <div><div style="font-size:18px;font-weight:900;color:var(--tt-teal);">4.9</div><div style="font-size:10px;color:var(--tt-muted);font-weight:700;">Rating</div></div>
+                              <div><div style="font-size:18px;font-weight:900;color:var(--tt-orange);">142</div><div style="font-size:10px;color:var(--tt-muted);font-weight:700;">Reviews</div></div>
+                              <div><div style="font-size:18px;font-weight:900;color:var(--tt-magenta);">200+</div><div style="font-size:10px;color:var(--tt-muted);font-weight:700;">Students</div></div>
+                              <div><div style="font-size:18px;font-weight:900;color:var(--tt-yellow-dark);">6</div><div style="font-size:10px;color:var(--tt-muted);font-weight:700;">Yrs Exp</div></div>
+                         </div>
+                    </div>
+               </div>
+
+          </div><!-- /row -->
+
+          <!-- Similar Tutors -->
+          <div style="margin-top:48px;">
+               <h3 style="font-size:20px;font-weight:900;color:var(--tt-text);margin-bottom:24px;">Similar Tutors You May Like</h3>
+               <div class="row">
+                    <div class="col-md-4">
+                         <div class="similar-card">
+                              <div class="sim-cover"></div>
+                              <div class="sim-body">
+                                   <img src="images/author-image3.jpg" class="sim-avatar" alt="">
+                                   <div style="margin-top:36px;"><div style="font-weight:900;font-size:15px;color:var(--tt-text);">Mr. Emeka Nwachukwu</div><div style="font-size:13px;color:var(--tt-muted);margin-bottom:8px;">Physics &amp; Chemistry</div><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;font-weight:900;">₦6,000/session</span><a href="tutor-profile.html" class="tt-btn tt-btn-primary tt-btn-sm">View</a></div></div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-md-4">
+                         <div class="similar-card">
+                              <div class="sim-cover" style="background:linear-gradient(135deg,var(--tt-magenta),#7c3aed);"></div>
+                              <div class="sim-body">
+                                   <img src="images/author-image4.jpg" class="sim-avatar" alt="">
+                                   <div style="margin-top:36px;"><div style="font-weight:900;font-size:15px;color:var(--tt-text);">Miss Fatima Al-Amin</div><div style="font-size:13px;color:var(--tt-muted);margin-bottom:8px;">Robotics &amp; Computer Sci</div><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;font-weight:900;">₦5,500/session</span><a href="tutor-profile.html" class="tt-btn tt-btn-primary tt-btn-sm">View</a></div></div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-md-4">
+                         <div class="similar-card">
+                              <div class="sim-cover" style="background:linear-gradient(135deg,var(--tt-teal-dark),#0288d1);"></div>
+                              <div class="sim-body">
+                                   <img src="images/author-image1.jpg" class="sim-avatar" alt="">
+                                   <div style="margin-top:36px;"><div style="font-weight:900;font-size:15px;color:var(--tt-text);">Mr. Babajide Fashola</div><div style="font-size:13px;color:var(--tt-muted);margin-bottom:8px;">Economics &amp; Commerce</div><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;font-weight:900;">₦4,000/session</span><a href="tutor-profile.html" class="tt-btn tt-btn-primary tt-btn-sm">View</a></div></div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+
+     </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-4 col-sm-6">
+                    <a href="index.html" style="font-family:var(--tt-font-head);font-size:26px;font-weight:900;color:var(--tt-teal);text-decoration:none;display:inline-block;margin-bottom:12px;">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+                    <p>Nigeria's trusted private tutoring platform. Connecting families with verified tutors for home-based and online sessions.</p>
+                    <ul class="social-icon">
+                         <li><a href="https://facebook.com/2tors.ng" target="_blank" class="fa fa-facebook-square"></a></li>
+                         <li><a href="https://twitter.com/2tors.ng" target="_blank" class="fa fa-twitter"></a></li>
+                         <li><a href="https://instagram.com/2tors.ng" target="_blank" class="fa fa-instagram"></a></li>
+                         <li><a href="https://linkedin.com/company/2tors.ng" target="_blank" class="fa fa-linkedin"></a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Platform</h2>
+                    <ul>
+                         <li><a href="browse-tutors.html">Find a Tutor</a></li>
+                         <li><a href="dashboards/signup-tutor.html">Become a Tutor</a></li>
+                         <li><a href="how-it-works.html">How It Works</a></li>
+                         <li><a href="pricing-plans.html">Pricing</a></li>
+                         <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Company</h2>
+                    <ul>
+                         <li><a href="about.html">About Us</a></li>
+                         <li><a href="blog.html">Blog</a></li>
+                         <li><a href="contact.html">Contact</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Legal</h2>
+                    <ul>
+                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                         <li><a href="terms-of-service.html">Terms of Service</a></li>
+                         <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                         <li><a href="refund-policy.html">Refund Policy</a></li>
+                         <li><a href="code-of-conduct.html">Code of Conduct</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-12">
+                    <h2>Stay Updated</h2>
+                    <p style="font-size:13px;">Get tutor tips and platform news in your inbox.</p>
+                    <div class="newsletter-form">
+                         <form action="index.html" method="get">
+                              <input type="email" class="form-control" placeholder="Your email" name="email" required>
+                              <input type="submit" value="Subscribe" style="margin-top:0;">
+                         </form>
+                    </div>
+               </div>
+          </div>
+          <div class="footer-bottom">
+               <p>&copy; 2026 2tors.ng — Learnroom Technology. All rights reserved.</p>
+               <p>Made with <span style="color:var(--tt-orange);">&#9829;</span> in Nigeria</p>
+          </div>
+     </div>
+</footer>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/learnroom.js"></script>
+<script src="js/custom.js"></script>
+<script>$(window).scroll(function(){if($(this).scrollTop()>60)$('.custom-navbar').addClass('scrolled');else $('.custom-navbar').removeClass('scrolled');});</script>
+</body>
+</html>

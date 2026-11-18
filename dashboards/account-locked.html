@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <title>Account Locked — 2tors.ng</title>
+     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../css/font-awesome.min.css">
+     <link rel="stylesheet" href="../css/learnroom-tokens.css">
+     <style>
+          body{background:var(--tt-bg);min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:var(--tt-font-body);overflow:hidden;}
+          .lock-wrap{text-align:center;max-width:460px;width:100%;padding:40px 24px;position:relative;z-index:2;}
+          .lock-icon{width:88px;height:88px;border-radius:50%;background:var(--tt-orange-soft);color:var(--tt-orange);display:flex;align-items:center;justify-content:center;font-size:44px;margin:0 auto 24px;}
+          .lock-wrap h2{font-size:28px;font-weight:900;color:var(--tt-text);margin-bottom:10px;}
+          .lock-wrap p{color:var(--tt-muted);font-size:14px;line-height:1.7;margin-bottom:28px;}
+          .lock-actions{display:flex;flex-direction:column;align-items:center;gap:12px;}
+          .blob{position:fixed;border-radius:50%;filter:blur(80px);opacity:.1;z-index:0;}
+          .blob1{width:350px;height:350px;background:var(--tt-orange);top:-80px;left:-80px;}
+          .blob2{width:300px;height:300px;background:var(--tt-teal);bottom:-60px;right:-60px;}
+     </style>
+</head>
+<body>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="lock-wrap">
+     <a href="../index.html" style="font-family:var(--tt-font-head);font-size:22px;font-weight:900;color:var(--tt-teal);display:block;margin-bottom:28px;">2tors<span style="color:var(--tt-orange)">.</span>ng</a>
+     <div class="lock-icon"><i class="fa fa-lock"></i></div>
+     <h2>Account Locked</h2>
+     <p>Your account has been temporarily locked due to too many failed sign-in attempts. For your security, access has been suspended for <strong>30 minutes</strong>.</p>
+     <div style="background:var(--tt-orange-soft);border:1px solid var(--tt-orange);border-radius:var(--tt-radius);padding:14px 20px;font-size:13px;color:var(--tt-orange-dark);margin-bottom:28px;font-weight:600;"><i class="fa fa-info-circle"></i> If you did not trigger this lock, your account may have been targeted. Please change your password immediately.</div>
+     <div class="lock-actions">
+          <a href="forgot-password.html" class="tt-btn tt-btn-primary" style="width:100%;justify-content:center;"><i class="fa fa-key"></i> Reset My Password</a>
+          <a href="login.html" style="color:var(--tt-muted);font-size:13px;font-weight:700;">Try again later</a>
+          <a href="../contact.html" style="color:var(--tt-teal);font-size:13px;font-weight:700;"><i class="fa fa-envelope"></i> Contact Support</a>
+     </div>
+     <p style="margin-top:28px;font-size:11px;color:var(--tt-faint);">&copy; 2026 2tors.ng. All rights reserved.</p>
+</div>
+</body>
+</html>

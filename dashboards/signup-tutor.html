@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <title>Register as a Tutor — 2tors.ng</title>
+     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../css/font-awesome.min.css">
+     <link rel="stylesheet" href="../css/learnroom-tokens.css">
+     <style>
+          body{background:var(--tt-bg);min-height:100vh;padding-top:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;font-family:var(--tt-font-body);}
+          .tutor-signup-wrap{width:100%;max-width:680px;margin:40px auto;padding:20px;}
+          .signup-logo{text-align:center;margin-bottom:28px;}
+          .signup-logo a{font-family:var(--tt-font-head);font-size:26px;font-weight:900;color:var(--tt-teal);text-decoration:none;}
+          .signup-logo a span{color:var(--tt-orange);}
+          .step-nav{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:40px;}
+          .snav-step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;}
+          .snav-step::after{content:'';position:absolute;top:18px;left:60%;right:-40%;height:2px;background:var(--tt-border);z-index:0;}
+          .snav-step:last-child::after{display:none;}
+          .snav-step.done::after,.snav-step.active::after{background:var(--tt-teal);}
+          .snav-num{width:36px;height:36px;border-radius:50%;background:var(--tt-border);color:var(--tt-muted);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;position:relative;z-index:1;transition:var(--tt-transition);}
+          .snav-step.done .snav-num{background:var(--tt-success);color:#fff;}
+          .snav-step.active .snav-num{background:var(--tt-teal);color:#fff;box-shadow:0 2px 12px rgba(0,191,165,.3);}
+          .snav-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--tt-faint);margin-top:6px;}
+          .snav-step.active .snav-label{color:var(--tt-teal);}
+          .snav-step.done .snav-label{color:var(--tt-success);}
+          .signup-box{background:var(--tt-white);border-radius:var(--tt-radius-xl);box-shadow:var(--tt-shadow);border:1px solid var(--tt-border-soft);padding:40px;}
+          .signup-box h2{font-size:22px;font-weight:900;color:var(--tt-text);margin-bottom:6px;}
+          .signup-box > p{color:var(--tt-muted);margin-bottom:28px;font-size:14px;}
+          .form-step{display:none;}
+          .form-step.show{display:block;}
+          .tt-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-text-2);margin-bottom:6px;}
+          .form-control{border:2px solid var(--tt-border)!important;border-radius:var(--tt-radius)!important;height:48px;font-family:var(--tt-font-body)!important;font-size:14px!important;transition:var(--tt-transition)!important;box-shadow:none!important;}
+          .form-control:focus{border-color:var(--tt-teal)!important;box-shadow:0 0 0 3px rgba(0,191,165,.12)!important;}
+          textarea.form-control{height:auto;}
+          .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--tt-border-soft);}
+          .btn-next{background:var(--tt-teal);color:#fff;border:none;border-radius:var(--tt-radius-pill);padding:12px 32px;font-weight:800;font-size:14px;cursor:pointer;transition:var(--tt-transition);}
+          .btn-next:hover{background:var(--tt-orange);transform:translateY(-2px);}
+          .btn-back{background:transparent;color:var(--tt-muted);border:2px solid var(--tt-border);border-radius:var(--tt-radius-pill);padding:11px 24px;font-weight:700;font-size:14px;cursor:pointer;transition:var(--tt-transition);}
+          .btn-back:hover{border-color:var(--tt-teal);color:var(--tt-teal);}
+          .doc-upload{border:2px dashed var(--tt-border);border-radius:var(--tt-radius-lg);padding:32px;text-align:center;cursor:pointer;transition:var(--tt-transition);margin-bottom:14px;}
+          .doc-upload:hover{border-color:var(--tt-teal);background:var(--tt-teal-soft);}
+          .doc-upload i{font-size:40px;color:var(--tt-muted);display:block;margin-bottom:8px;}
+          .doc-upload p{margin:0;font-size:13px;font-weight:700;color:var(--tt-muted);}
+          .pending-note{background:var(--tt-yellow-soft);border:1px solid var(--tt-yellow-dark);border-radius:var(--tt-radius);padding:12px 16px;font-size:13px;color:#7a5c00;margin-bottom:20px;display:flex;align-items:flex-start;gap:10px;}
+          .check-row{display:flex;flex-wrap:wrap;gap:12px;}
+          .check-item{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--tt-text-2);cursor:pointer;}
+          .check-item input{accent-color:var(--tt-teal);width:16px;height:16px;}
+     </style>
+</head>
+<body>
+<div class="tutor-signup-wrap">
+     <div class="signup-logo"><a href="../index.html">2tors<span>.ng</span></a></div>
+
+     <!-- STEP INDICATOR -->
+     <div class="step-nav" id="step-nav">
+          <div class="snav-step done" id="snav-1"><div class="snav-num"><i class="fa fa-check"></i></div><div class="snav-label">Account</div></div>
+          <div class="snav-step active" id="snav-2"><div class="snav-num">2</div><div class="snav-label">Profile</div></div>
+          <div class="snav-step" id="snav-3"><div class="snav-num">3</div><div class="snav-label">Documents</div></div>
+     </div>
+
+     <div class="signup-box">
+
+          <!-- STEP 1: Account (pre-filled from register flow) -->
+          <div class="form-step" id="step-1">
+               <h2>Create Your Account</h2>
+               <p>Start by entering your personal details.</p>
+               <div class="row">
+                    <div class="col-md-6"><div class="form-group"><label class="tt-label">Full Name *</label><input type="text" class="form-control" placeholder="Your full name" required></div></div>
+                    <div class="col-md-6"><div class="form-group"><label class="tt-label">Email Address *</label><input type="email" class="form-control" placeholder="your@email.com" required></div></div>
+               </div>
+               <div class="row">
+                    <div class="col-md-6"><div class="form-group"><label class="tt-label">Phone Number *</label><input type="tel" class="form-control" placeholder="+234 …" required></div></div>
+                    <div class="col-md-6"><div class="form-group"><label class="tt-label">State</label><select class="form-control"><option>Lagos</option><option>Abuja (FCT)</option><option>Port Harcourt</option><option>Ibadan</option><option>Enugu</option><option>Kano</option></select></div></div>
+               </div>
+               <div class="row">
+                    <div class="col-md-6"><div class="form-group"><label class="tt-label">Password *</label><input type="password" class="form-control" placeholder="Create a password" required></div></div>
+                    <div class="col-md-6"><div class="form-group"><label class="tt-label">Confirm Password *</label><input type="password" class="form-control" placeholder="Confirm password" required></div></div>
+               </div>
+               <div class="form-group"><label style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;cursor:pointer;"><input type="checkbox" required style="accent-color:var(--tt-teal);width:16px;height:16px;"> I agree to the <a href="../terms-of-service.html" style="color:var(--tt-teal);">Terms of Service</a> and <a href="../privacy-policy.html" style="color:var(--tt-teal);">Privacy Policy</a></label></div>
+               <div class="nav-btns"><span></span><button class="btn-next" onclick="gotoStep(2)">Next: Profile &rarr;</button></div>
+          </div>
+
+          <!-- STEP 2: Profile & Subjects -->
+          <div class="form-step show" id="step-2">
+               <h2>Build Your Tutor Profile</h2>
+               <p>Tell families about your teaching background and what you offer.</p>
+               <div class="form-group"><label class="tt-label">Biography / About Me *</label><textarea class="form-control" rows="4" placeholder="Describe your teaching experience, style and what makes you effective. This is what parents read first." required></textarea></div>
+               <div class="row">
+                    <div class="col-md-6"><div class="form-group"><label class="tt-label">Years of Experience *</label><input type="number" class="form-control" placeholder="e.g. 3" min="0" max="50" required></div></div>
+                    <div class="col-md-6"><div class="form-group"><label class="tt-label">Session Rate (₦ per session) *</label><input type="number" class="form-control" placeholder="e.g. 5000" min="1000" required></div></div>
+               </div>
+               <div class="form-group"><label class="tt-label">Subjects Taught *</label>
+                    <div class="check-row">
+                         <label class="check-item"><input type="checkbox"> Mathematics</label>
+                         <label class="check-item"><input type="checkbox"> Further Mathematics</label>
+                         <label class="check-item"><input type="checkbox"> English Language</label>
+                         <label class="check-item"><input type="checkbox"> Physics</label>
+                         <label class="check-item"><input type="checkbox"> Chemistry</label>
+                         <label class="check-item"><input type="checkbox"> Biology</label>
+                         <label class="check-item"><input type="checkbox"> Economics</label>
+                         <label class="check-item"><input type="checkbox"> Government</label>
+                         <label class="check-item"><input type="checkbox"> Computer Science</label>
+                         <label class="check-item"><input type="checkbox"> Robotics</label>
+                         <label class="check-item"><input type="checkbox"> French</label>
+                         <label class="check-item"><input type="checkbox"> Music</label>
+                    </div>
+               </div>
+               <div class="form-group"><label class="tt-label">Education Levels Served *</label>
+                    <div class="check-row">
+                         <label class="check-item"><input type="checkbox"> Nursery/Kindergarten</label>
+                         <label class="check-item"><input type="checkbox"> Primary</label>
+                         <label class="check-item"><input type="checkbox"> JSS 1–3</label>
+                         <label class="check-item"><input type="checkbox"> SSS 1–3 / WAEC</label>
+                         <label class="check-item"><input type="checkbox"> JAMB Prep</label>
+                         <label class="check-item"><input type="checkbox"> University</label>
+                    </div>
+               </div>
+               <div class="form-group"><label class="tt-label">Delivery Modes *</label>
+                    <div class="check-row">
+                         <label class="check-item"><input type="checkbox"> Home Visit</label>
+                         <label class="check-item"><input type="checkbox"> Online Session</label>
+                         <label class="check-item"><input type="checkbox"> School-based</label>
+                    </div>
+               </div>
+               <div class="form-group"><label class="tt-label">Service Areas (for home visits)</label><input type="text" class="form-control" placeholder="e.g. Victoria Island, Lekki, Ajah, Surulere (Lagos)"></div>
+               <div class="form-group"><label class="tt-label">Session Duration</label><select class="form-control"><option>60 minutes</option><option selected>90 minutes</option><option>120 minutes</option></select></div>
+               <div class="nav-btns">
+                    <button class="btn-back" onclick="gotoStep(1)">&larr; Back</button>
+                    <button class="btn-next" onclick="gotoStep(3)">Next: Documents &rarr;</button>
+               </div>
+          </div>
+
+          <!-- STEP 3: Verification Documents -->
+          <div class="form-step" id="step-3">
+               <h2>Verification Documents</h2>
+               <p>Upload your ID and qualification. Our team manually reviews all submissions within 48 hours.</p>
+               <div class="pending-note"><i class="fa fa-info-circle" style="font-size:18px;flex-shrink:0;margin-top:1px;"></i><span>Your profile will be <strong>pending</strong> until documents are reviewed and approved. You will not appear in search or be able to accept bookings until verified.</span></div>
+               <div class="form-group"><label class="tt-label">Government-Issued ID *</label>
+                    <div class="doc-upload"><i class="fa fa-id-card"></i><p>Upload National ID, International Passport or Driver's Licence</p><p style="font-size:11px;margin-top:6px;color:var(--tt-faint);">JPG, PNG or PDF · Max 5MB</p><input type="file" accept=".jpg,.jpeg,.png,.pdf" style="display:none;"></div>
+               </div>
+               <div class="form-group"><label class="tt-label">Qualification Certificate *</label>
+                    <div class="doc-upload"><i class="fa fa-graduation-cap"></i><p>Upload your degree, diploma or professional certification</p><p style="font-size:11px;margin-top:6px;color:var(--tt-faint);">JPG, PNG or PDF · Max 5MB</p><input type="file" accept=".jpg,.jpeg,.png,.pdf" style="display:none;"></div>
+               </div>
+               <div class="form-group"><label class="tt-label">Brief Statement (optional)</label><textarea class="form-control" rows="3" placeholder="Anything else the review team should know about your qualifications or experience?"></textarea></div>
+               <div class="form-group"><label style="display:flex;align-items:flex-start;gap:8px;font-size:13px;font-weight:600;cursor:pointer;"><input type="checkbox" required style="accent-color:var(--tt-teal);width:16px;height:16px;margin-top:2px;"> I confirm that all documents uploaded are genuine and I authorise 2tors.ng to verify them as part of the tutor registration process.</label></div>
+               <div class="nav-btns">
+                    <button class="btn-back" onclick="gotoStep(2)">&larr; Back</button>
+                    <button class="btn-next" onclick="submitApplication()" style="background:var(--tt-orange);"><i class="fa fa-send"></i> Submit Application</button>
+               </div>
+          </div>
+
+          <!-- SUCCESS STATE -->
+          <div class="form-step" id="step-success" style="text-align:center;padding:20px 0;">
+               <div style="width:80px;height:80px;border-radius:50%;background:var(--tt-success-soft);color:var(--tt-success);display:flex;align-items:center;justify-content:center;font-size:40px;margin:0 auto 20px;"><i class="fa fa-check-circle"></i></div>
+               <h2 style="font-size:24px;font-weight:900;color:var(--tt-text);">Application Submitted!</h2>
+               <p style="color:var(--tt-muted);font-size:15px;margin-bottom:24px;">Your tutor application is under review. We typically respond within <strong>48 hours</strong>. You'll receive an email once a decision is made.</p>
+               <a href="login.html" class="tt-btn tt-btn-primary"><i class="fa fa-sign-in"></i> Sign In to Your Dashboard</a>
+          </div>
+
+     </div>
+     <div style="text-align:center;margin-top:20px;"><p style="font-size:12px;color:var(--tt-faint);">&copy; 2026 2tors.ng. All rights reserved. | <a href="../privacy-policy.html" style="color:var(--tt-teal);">Privacy Policy</a></p></div>
+</div>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script>
+var currentStep=2;
+function gotoStep(n){
+     document.querySelectorAll('.form-step').forEach(function(s){s.classList.remove('show');});
+     document.getElementById('step-'+n).classList.add('show');
+     document.querySelectorAll('.snav-step').forEach(function(s,i){
+          s.classList.remove('done','active');
+          if(i+1<n)s.classList.add('done');
+          if(i+1===n)s.classList.add('active');
+          var num=s.querySelector('.snav-num');
+          if(i+1<n)num.innerHTML='<i class="fa fa-check"></i>';
+          else num.textContent=i+1;
+     });
+     currentStep=n;
+}
+function submitApplication(){
+     document.querySelectorAll('.form-step').forEach(function(s){s.classList.remove('show');});
+     document.getElementById('step-success').classList.add('show');
+}
+document.querySelectorAll('.doc-upload').forEach(function(d){
+     d.addEventListener('click',function(){this.querySelector('input[type="file"]').click();});
+     d.querySelector('input[type="file"]').addEventListener('change',function(){
+          if(this.files.length>0){
+               var p=this.closest('.doc-upload').querySelector('p');
+               p.textContent='✓ '+this.files[0].name;
+               p.style.color='var(--tt-success)';
+          }
+     });
+});
+</script>
+</body>
+</html>

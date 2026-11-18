@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>FAQ — Frequently Asked Questions — 2tors.ng</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="Answers to common questions about 2tors.ng — for parents, tutors and schools.">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/learnroom-tokens.css">
+     <link rel="stylesheet" href="css/style.css">
+     <style>
+       .faq-tabs{display:flex;gap:8px;margin-bottom:36px;flex-wrap:wrap;}
+       .faq-tab{padding:10px 24px;border-radius:var(--tt-radius-pill);font-size:14px;font-weight:800;border:2px solid var(--tt-border);color:var(--tt-text-2);cursor:pointer;transition:var(--tt-transition);}
+       .faq-tab.active{background:var(--tt-teal);border-color:var(--tt-teal);color:#fff;}
+       .faq-tab.orange.active{background:var(--tt-orange);border-color:var(--tt-orange);}
+       .faq-panel{display:none;}
+       .faq-panel.show{display:block;}
+       .faq-item{border:1px solid var(--tt-border-soft);border-radius:var(--tt-radius-lg);margin-bottom:10px;overflow:hidden;}
+       .faq-q{padding:18px 20px;font-weight:800;font-size:14px;color:var(--tt-text);cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--tt-white);transition:var(--tt-transition);}
+       .faq-q:hover{background:var(--tt-bg-soft);}
+       .faq-q.open{background:var(--tt-teal-soft);color:var(--tt-teal);}
+       .faq-q i{font-size:18px;transition:var(--tt-transition);}
+       .faq-q.open i{transform:rotate(45deg);color:var(--tt-teal);}
+       .faq-a{display:none;padding:4px 20px 18px;font-size:14px;color:var(--tt-text-2);line-height:1.7;background:var(--tt-white);border-top:1px solid var(--tt-border-soft);}
+     </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+     <div class="container">
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+               <a href="index.html" class="navbar-brand">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+          </div>
+          <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-nav-first">
+                    <li><a href="browse-tutors.html">Find a Tutor</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                              <li><a href="how-it-works.html"><i class="fa fa-play-circle"></i> How It Works</a></li>
+                              <li><a href="about.html"><i class="fa fa-info-circle"></i> About 2tors.ng</a></li>
+                              <li><a href="faq.html"><i class="fa fa-question-circle"></i> FAQ</a></li>
+                              <li><a href="blog.html"><i class="fa fa-rss"></i> Blog</a></li>
+                              <li><a href="contact.html"><i class="fa fa-envelope"></i> Contact</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><a href="contact.html"><i class="fa fa-calendar"></i> Request a Demo</a></li>
+                         </ul>
+                    </li>
+               </ul></li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                    <li><a href="dashboards/login.html" style="display:inline-block;padding:9px 22px;border:2px solid var(--tt-border);border-radius:var(--tt-radius-pill);font-weight:700;font-size:14px;color:var(--tt-text-2)!important;line-height:1.4;margin-top:15px;transition:var(--tt-transition);"><i class="fa fa-sign-in"></i> Sign In</a></li>
+                    <li><a href="dashboards/register.html" style="display:inline-block;padding:10px 24px;background:var(--tt-teal);color:#fff!important;border-radius:var(--tt-radius-pill);font-weight:800;font-size:14px;line-height:1.4;margin-top:15px;border:2px solid var(--tt-teal);transition:var(--tt-transition);box-shadow:0 3px 12px rgba(0,191,165,.25);"><i class="fa fa-user-plus"></i> Get Started Free</a></li>
+               </ul>
+          </div>
+     </div>
+</section>
+
+<section class="page-header"><div class="container"><div class="col-md-8"><h1>Frequently Asked Questions</h1><p>Answers to the most common questions about 2tors.ng</p></div></div></section>
+<section class="breadcrumb-section"><div class="container"><ol class="breadcrumb"><li><a href="index.html">Home</a></li><li class="active">FAQ</li></ol></div></section>
+
+<section style="padding:60px 0;background:var(--tt-bg);">
+     <div class="container">
+          <div class="faq-tabs">
+               <div class="faq-tab active" onclick="showTab('parents',this)"><i class="fa fa-home"></i> For Parents</div>
+               <div class="faq-tab orange" onclick="showTab('tutors',this)"><i class="fa fa-graduation-cap"></i> For Tutors</div>
+               <div class="faq-tab" onclick="showTab('schools',this)" style="border-color:var(--tt-border);"><i class="fa fa-university"></i> For Schools</div>
+               <div class="faq-tab" onclick="showTab('platform',this)"><i class="fa fa-info-circle"></i> Platform</div>
+          </div>
+
+          <!-- PARENTS -->
+          <div id="tab-parents" class="faq-panel show">
+               <h3 style="font-size:20px;font-weight:900;color:var(--tt-text);margin-bottom:20px;">For Parents &amp; Guardians</h3>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I find a tutor for my child? <i class="fa fa-plus"></i></div><div class="faq-a">Go to <a href="browse-tutors.html">Browse Tutors</a>, then filter by subject, education level, delivery mode (home visit or online) and your state/city. You can also search by name. All results show only verified tutors. Click any tutor to view their full profile, qualifications, availability and reviews, then request a booking.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are all tutors on 2tors.ng verified? <i class="fa fa-plus"></i></div><div class="faq-a">Yes. Every tutor must submit a government-issued ID and relevant qualification certificates. Our team manually reviews every application before approving a tutor's account. Tutors who do not pass verification cannot appear in search results or accept bookings. The verified badge on a tutor's profile confirms this review has been completed.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I add more than one child to my account? <i class="fa fa-plus"></i></div><div class="faq-a">Yes. You can add as many child profiles as you need under your single parent account. Each child has their own profile with their name, date of birth, education level, subjects and goals. Bookings, progress reports, assignments and sessions are tracked separately per child.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can other guardians (e.g. the child's father or aunt) access my child's profile? <i class="fa fa-plus"></i></div><div class="faq-a">Yes, but only if you explicitly invite them. As the account owner, you can invite additional guardians and set their permissions individually — for example, allowing them to view progress reports but not to book sessions, or restricting them entirely from camera controls. You can revoke any guardian's access at any time.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I see my child's progress after a session? <i class="fa fa-plus"></i></div><div class="faq-a">After every session, the tutor submits a structured progress report. You receive a notification when it is submitted. You can view it from your parent dashboard under <strong>Progress Reports</strong>, filtered by child. Reports include attendance status, strengths, areas to improve, homework set and next steps.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if a tutor does not show up? <i class="fa fa-plus"></i></div><div class="faq-a">Please report this through the support ticket system in your dashboard. Our team will investigate and work towards a resolution — this may include a rescheduled session or a refund, depending on the circumstances. All confirmed sessions are logged, so we have a full record of what was booked.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do home visits work? Is it safe? <i class="fa fa-plus"></i></div><div class="faq-a">Every tutor who offers home visits has completed identity verification. We recommend that a parent or responsible adult is present in the home during the session, especially for younger children. Sessions are logged in the platform and tutors only receive the address details necessary for the confirmed session.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does online tutoring work? <i class="fa fa-plus"></i></div><div class="faq-a">For online sessions, the platform provides a secure video call link at session time. Both the learner and the tutor join through 2tors.ng — no need to share personal contact details. Online sessions work on any device with a camera, microphone and stable internet connection.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I cancel or reschedule a booking? <i class="fa fa-plus"></i></div><div class="faq-a">Go to <strong>Booking History</strong> in your parent dashboard and click the booking you want to manage. You can cancel or request a reschedule. Please note that late cancellations (less than 24 hours before the session) may affect refund eligibility according to our refund policy.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a minimum number of sessions I must book? <i class="fa fa-plus"></i></div><div class="faq-a">No. You can book a single session at any time. There is no subscription or minimum commitment. Many parents book on an ongoing basis once they find a tutor they trust, but this is entirely your choice.</div></div>
+          </div>
+
+          <!-- TUTORS -->
+          <div id="tab-tutors" class="faq-panel">
+               <h3 style="font-size:20px;font-weight:900;color:var(--tt-text);margin-bottom:20px;">For Tutors &amp; Educators</h3>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I register as a tutor? <i class="fa fa-plus"></i></div><div class="faq-a">Click <a href="dashboards/signup-tutor.html">Register as a Tutor</a>, create your account, complete your profile (subjects, levels, delivery modes, availability, service areas) and upload your verification documents (government-issued ID and qualification certificates). Our team reviews and approves applications typically within 48 hours.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What documents do I need to register? <i class="fa fa-plus"></i></div><div class="faq-a">You need a valid government-issued ID (National ID, International Passport or Driver's Licence) and at least one relevant qualification certificate (degree, diploma, NYSC, professional certification etc.). The certificate should be related to the subjects you are applying to teach.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does verification take? <i class="fa fa-plus"></i></div><div class="faq-a">Our team aims to complete verification within 48 hours of document submission. If we need additional information, we will contact you via email. You can check your verification status in real time from your tutor dashboard under Verification Documents.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I get paid? <i class="fa fa-plus"></i></div><div class="faq-a">At the end of each month, you can request a payout from your earnings in the platform. We deduct a 10% platform commission from each session and transfer the net amount to your designated bank account. The minimum payout amount is ₦10,000. Payment is processed within 3–5 business days of the request.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the platform commission? <i class="fa fa-plus"></i></div><div class="faq-a">2tors.ng charges a 10% commission on each session. If your session rate is ₦5,000, you receive ₦4,500 after the platform commission. This is disclosed transparently and there are no hidden fees. The commission covers platform operations, verification processes, marketing that brings you bookings, and ongoing support.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I set my own rate? <i class="fa fa-plus"></i></div><div class="faq-a">Yes. You set your own session rate in your profile. You can also choose your session duration and maximum number of sessions per day. We provide guidelines on market rates across different subjects and locations to help you price competitively, but the final decision is yours.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do tutors automatically get household camera access? <i class="fa fa-plus"></i></div><div class="faq-a">No. Tutors never have access to household cameras. Camera access is a completely separate system reserved for authorised guardians only. A confirmed booking or active learner relationship does not grant any camera viewing access under any circumstances.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What information can I see about a learner? <i class="fa fa-plus"></i></div><div class="faq-a">You can only see the minimum information needed for your confirmed assignment: the child's first name, education level, subjects and any notes provided by the parent at time of booking. You cannot see the child's surname, date of birth, full address (until confirmed for home visit) or any other child's information.</div></div>
+          </div>
+
+          <!-- SCHOOLS -->
+          <div id="tab-schools" class="faq-panel">
+               <h3 style="font-size:20px;font-weight:900;color:var(--tt-text);margin-bottom:20px;">For Schools &amp; Institutions</h3>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does 2tors.ng work for schools? <i class="fa fa-plus"></i></div><div class="faq-a">Schools register as institutions and receive a secure, isolated school workspace. Inside this workspace, you can create classes, enrol learners, invite parent guardians, assign teachers and request specialist tutors from the marketplace. Your school's data is entirely separate from every other school on the platform.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can another school see our learners' data? <i class="fa fa-plus"></i></div><div class="faq-a">No. School data is strictly tenant-scoped. It is technically impossible for another school to view your learners, classes, staff or reports by guessing or changing an ID in a URL or request. This is enforced at the database level, not just the UI.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What documents does the school need to register? <i class="fa fa-plus"></i></div><div class="faq-a">Schools should submit their CAC registration certificate, any SUBEB or state ministry of education approval letter, and an ID document for the registering administrator. Our team reviews school applications before approving institutional access.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can schools request tutors from the marketplace? <i class="fa fa-plus"></i></div><div class="faq-a">Yes. Once verified, school administrators can browse the tutor marketplace and request specialist tutors (e.g. for Robotics, Music, Languages or exam preparation) on behalf of enrolled learners. The standard booking workflow applies.</div></div>
+          </div>
+
+          <!-- PLATFORM -->
+          <div id="tab-platform" class="faq-panel">
+               <h3 style="font-size:20px;font-weight:900;color:var(--tt-text);margin-bottom:20px;">Platform &amp; General</h3>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is 2tors.ng available outside Lagos? <i class="fa fa-plus"></i></div><div class="faq-a">Yes. While we started in Lagos, tutors and families from all Nigerian states can register and use the platform. Online sessions are available nationwide. Home visit coverage depends on the tutor's listed service area. We are expanding to cover more cities as we grow.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is the platform free to use? <i class="fa fa-plus"></i></div><div class="faq-a">Registration and account creation are completely free for parents, tutors and schools. Parents pay only for confirmed sessions at the rate set by the tutor. Tutors pay a 10% platform commission deducted from each completed session. There are no monthly subscription fees for the basic platform.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I report a safeguarding concern? <i class="fa fa-plus"></i></div><div class="faq-a">Use the <strong>Report a Concern</strong> option in your dashboard menu, or email safeguarding@2tors.ng directly. All reports are treated with strict confidentiality and assigned to a safeguarding officer. For urgent child safety concerns, please also contact local authorities as needed.</div></div>
+               <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is my child's data protected? <i class="fa fa-plus"></i></div><div class="faq-a">We collect only the minimum data necessary. Child data is never shared publicly or sold. Tutors only see the minimum information needed for their active assignments. All sensitive data is stored securely. We operate in accordance with the Nigeria Data Protection Act (NDPA). See our <a href="privacy-policy.html">Privacy Policy</a> for full details.</div></div>
+          </div>
+
+          <!-- Contact CTA -->
+          <div style="margin-top:48px;text-align:center;background:var(--tt-bg-soft);border-radius:var(--tt-radius-xl);padding:40px;">
+               <h3 style="font-size:22px;font-weight:900;color:var(--tt-text);margin-bottom:8px;">Still have questions?</h3>
+               <p style="color:var(--tt-muted);">Our support team is available Monday–Friday, 8 AM–6 PM (WAT)</p>
+               <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px;">
+                    <a href="contact.html" class="tt-btn tt-btn-primary"><i class="fa fa-envelope"></i> Send us a Message</a>
+                    <a href="mailto:hello@2tors.ng" class="tt-btn tt-btn-outline"><i class="fa fa-envelope-o"></i> hello@2tors.ng</a>
+               </div>
+          </div>
+
+     </div>
+</section>
+
+<footer id="footer">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-4 col-sm-6">
+                    <a href="index.html" style="font-family:var(--tt-font-head);font-size:26px;font-weight:900;color:var(--tt-teal);text-decoration:none;display:inline-block;margin-bottom:12px;">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+                    <p>Nigeria's trusted private tutoring platform. Connecting families with verified tutors for home-based and online sessions.</p>
+                    <ul class="social-icon">
+                         <li><a href="https://facebook.com/2tors.ng" target="_blank" class="fa fa-facebook-square"></a></li>
+                         <li><a href="https://twitter.com/2tors.ng" target="_blank" class="fa fa-twitter"></a></li>
+                         <li><a href="https://instagram.com/2tors.ng" target="_blank" class="fa fa-instagram"></a></li>
+                         <li><a href="https://linkedin.com/company/2tors.ng" target="_blank" class="fa fa-linkedin"></a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Platform</h2>
+                    <ul>
+                         <li><a href="browse-tutors.html">Find a Tutor</a></li>
+                         <li><a href="dashboards/signup-tutor.html">Become a Tutor</a></li>
+                         <li><a href="how-it-works.html">How It Works</a></li>
+                         <li><a href="pricing-plans.html">Pricing</a></li>
+                         <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Company</h2>
+                    <ul>
+                         <li><a href="about.html">About Us</a></li>
+                         <li><a href="blog.html">Blog</a></li>
+                         <li><a href="contact.html">Contact</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Legal</h2>
+                    <ul>
+                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                         <li><a href="terms-of-service.html">Terms of Service</a></li>
+                         <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                         <li><a href="refund-policy.html">Refund Policy</a></li>
+                         <li><a href="code-of-conduct.html">Code of Conduct</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-12">
+                    <h2>Stay Updated</h2>
+                    <p style="font-size:13px;">Get tutor tips and platform news in your inbox.</p>
+                    <div class="newsletter-form">
+                         <form action="index.html" method="get">
+                              <input type="email" class="form-control" placeholder="Your email" name="email" required>
+                              <input type="submit" value="Subscribe" style="margin-top:0;">
+                         </form>
+                    </div>
+               </div>
+          </div>
+          <div class="footer-bottom">
+               <p>&copy; 2026 2tors.ng — Learnroom Technology. All rights reserved.</p>
+               <p>Made with <span style="color:var(--tt-orange);">&#9829;</span> in Nigeria</p>
+          </div>
+     </div>
+</footer>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/learnroom.js"></script>
+<script src="js/custom.js"></script>
+<script>
+function showTab(tab, el){
+     document.querySelectorAll('.faq-panel').forEach(function(p){p.classList.remove('show');});
+     document.getElementById('tab-'+tab).classList.add('show');
+     document.querySelectorAll('.faq-tab').forEach(function(t){t.classList.remove('active');});
+     el.classList.add('active');
+}
+function toggleFaq(el){
+     var a=el.nextElementSibling;
+     var open=el.classList.contains('open');
+     el.closest('.faq-item').closest('div').querySelectorAll('.faq-q').forEach(function(q){q.classList.remove('open');q.nextElementSibling.style.display='none';});
+     if(!open){el.classList.add('open');a.style.display='block';}
+}
+$(window).scroll(function(){if($(this).scrollTop()>60)$('.custom-navbar').addClass('scrolled');else $('.custom-navbar').removeClass('scrolled');});
+</script>
+</body>
+</html>

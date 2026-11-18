@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Pricing — 2tors.ng</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="2tors.ng is free for parents and students. Tutors pay a small platform commission only on completed sessions.">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/learnroom-tokens.css">
+     <link rel="stylesheet" href="css/style.css">
+     <style>
+       .pricing-card{background:var(--tt-white);border-radius:var(--tt-radius-xl);padding:36px 32px;border:2px solid var(--tt-border-soft);box-shadow:var(--tt-shadow-sm);text-align:center;position:relative;transition:var(--tt-transition);}
+       .pricing-card:hover{box-shadow:var(--tt-shadow);transform:translateY(-4px);}
+       .pricing-card.featured{border-color:var(--tt-teal);box-shadow:var(--tt-shadow-teal);}
+       .pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--tt-teal);color:#fff;padding:4px 20px;border-radius:var(--tt-radius-pill);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap;}
+       .pricing-role{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--tt-muted);margin-bottom:12px;}
+       .pricing-title{font-size:26px;font-weight:900;color:var(--tt-text);margin-bottom:8px;}
+       .pricing-price{font-size:52px;font-weight:900;color:var(--tt-text);line-height:1;font-family:var(--tt-font-head);}
+       .pricing-price .currency{font-size:24px;vertical-align:super;color:var(--tt-muted);}
+       .pricing-price .period{font-size:16px;font-weight:400;color:var(--tt-muted);}
+       .pricing-desc{font-size:14px;color:var(--tt-muted);margin:16px 0 24px;min-height:40px;}
+       .pricing-features{list-style:none;padding:0;margin:0 0 28px;text-align:left;}
+       .pricing-features li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--tt-border-soft);font-size:14px;color:var(--tt-text-2);font-weight:600;}
+       .pricing-features li:last-child{border-bottom:none;}
+       .pricing-features li i{color:var(--tt-teal);font-size:17px;flex-shrink:0;margin-top:1px;}
+       .pricing-features li i.fa-times{color:var(--tt-faint);}
+       .commission-box{background:linear-gradient(135deg,var(--tt-teal),var(--tt-teal-dark));border-radius:var(--tt-radius-xl);padding:40px;color:#fff;text-align:center;margin-top:48px;}
+       .commission-box h3{color:#fff;font-size:28px;font-weight:900;margin-bottom:12px;}
+       .commission-box p{color:rgba(255,255,255,.85);font-size:15px;margin-bottom:0;}
+       .commission-pct{font-size:80px;font-weight:900;color:var(--tt-yellow);font-family:var(--tt-font-head);line-height:1;}
+       .faq-simple{background:var(--tt-white);border-radius:var(--tt-radius-lg);border:1px solid var(--tt-border-soft);overflow:hidden;margin-bottom:10px;}
+       .faq-q2{padding:18px 20px;font-weight:800;font-size:14px;color:var(--tt-text);cursor:pointer;display:flex;align-items:center;justify-content:space-between;}
+       .faq-q2:hover{background:var(--tt-bg-soft);}
+       .faq-a2{display:none;padding:4px 20px 18px;font-size:14px;color:var(--tt-text-2);line-height:1.7;border-top:1px solid var(--tt-border-soft);}
+     </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+     <div class="container">
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+               <a href="index.html" class="navbar-brand">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+          </div>
+                    <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-nav-first">
+                    <li><a href="browse-tutors.html">Find a Tutor</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                              <li><a href="how-it-works.html"><i class="fa fa-play-circle"></i> How It Works</a></li>
+                              <li><a href="about.html"><i class="fa fa-info-circle"></i> About 2tors.ng</a></li>
+                              <li><a href="faq.html"><i class="fa fa-question-circle"></i> FAQ</a></li>
+                              <li><a href="blog.html"><i class="fa fa-rss"></i> Blog</a></li>
+                              <li><a href="contact.html"><i class="fa fa-envelope"></i> Contact</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><a href="contact.html"><i class="fa fa-calendar"></i> Request a Demo</a></li>
+                         </ul>
+                    </li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                    <li><a href="dashboards/login.html" style="display:inline-block;padding:9px 22px;border:2px solid var(--tt-border);border-radius:var(--tt-radius-pill);font-weight:700;font-size:14px;color:var(--tt-text-2)!important;line-height:1.4;margin-top:15px;transition:var(--tt-transition);"><i class="fa fa-sign-in"></i> Sign In</a></li>
+                    <li><a href="dashboards/register.html" style="display:inline-block;padding:10px 24px;background:var(--tt-teal);color:#fff!important;border-radius:var(--tt-radius-pill);font-weight:800;font-size:14px;line-height:1.4;margin-top:15px;border:2px solid var(--tt-teal);transition:var(--tt-transition);box-shadow:0 3px 12px rgba(0,191,165,.25);"><i class="fa fa-user-plus"></i> Get Started Free</a></li>
+               </ul>
+          </div>
+     </div>
+</section>
+
+<section class="page-header"><div class="container"><div class="col-md-8"><h1>Simple, Transparent Pricing</h1><p>Free for parents and students. Tutors pay only on completed sessions — never upfront.</p></div></div></section>
+<section class="breadcrumb-section"><div class="container"><ol class="breadcrumb"><li><a href="index.html">Home</a></li><li class="active">Pricing</li></ol></div></section>
+
+<!-- PRICING CARDS -->
+<section style="padding:72px 0;background:var(--tt-bg);">
+     <div class="container">
+
+          <div class="row" style="margin-bottom:48px;">
+               <!-- PARENTS -->
+               <div class="col-md-4" style="margin-bottom:24px;">
+                    <div class="pricing-card">
+                         <div class="pricing-role">Parent / Guardian</div>
+                         <div class="pricing-title">Always Free</div>
+                         <div class="pricing-price">₦0 <span class="period">/ month</span></div>
+                         <p class="pricing-desc">Create your account, add your children and start finding tutors at zero cost.</p>
+                         <ul class="pricing-features">
+                              <li><i class="fa fa-check-circle"></i> Unlimited child profiles</li>
+                              <li><i class="fa fa-check-circle"></i> Browse all verified tutors</li>
+                              <li><i class="fa fa-check-circle"></i> Send unlimited booking requests</li>
+                              <li><i class="fa fa-check-circle"></i> View all progress reports</li>
+                              <li><i class="fa fa-check-circle"></i> Session scheduling &amp; calendar</li>
+                              <li><i class="fa fa-check-circle"></i> Multiple guardian permissions</li>
+                              <li><i class="fa fa-check-circle"></i> In-platform messaging</li>
+                              <li><i class="fa fa-check-circle"></i> Payment history records</li>
+                         </ul>
+                         <a href="dashboards/register.html" class="tt-btn tt-btn-outline" style="width:100%;justify-content:center;">Create Parent Account</a>
+                    </div>
+               </div>
+
+               <!-- STUDENTS -->
+               <div class="col-md-4" style="margin-bottom:24px;">
+                    <div class="pricing-card featured">
+                         <div class="pricing-badge">Most Popular</div>
+                         <div class="pricing-role">Student / Learner</div>
+                         <div class="pricing-title">Always Free</div>
+                         <div class="pricing-price">₦0 <span class="period">/ month</span></div>
+                         <p class="pricing-desc">Students are added under a parent account. No separate fee, no separate payment.</p>
+                         <ul class="pricing-features">
+                              <li><i class="fa fa-check-circle"></i> Personal student dashboard</li>
+                              <li><i class="fa fa-check-circle"></i> View upcoming lessons &amp; schedule</li>
+                              <li><i class="fa fa-check-circle"></i> Submit assignments online</li>
+                              <li><i class="fa fa-check-circle"></i> View own progress reports</li>
+                              <li><i class="fa fa-check-circle"></i> Subject progress tracking</li>
+                              <li><i class="fa fa-check-circle"></i> See assigned tutors</li>
+                              <li><i class="fa fa-check-circle"></i> Session notifications</li>
+                              <li><i class="fa fa-check-circle"></i> Added by parent — instant access</li>
+                         </ul>
+                         <a href="dashboards/register.html" class="tt-btn tt-btn-primary" style="width:100%;justify-content:center;">Start via Parent Account</a>
+                    </div>
+               </div>
+
+               <!-- TUTORS -->
+               <div class="col-md-4" style="margin-bottom:24px;">
+                    <div class="pricing-card">
+                         <div class="pricing-role">Tutor / Educator</div>
+                         <div class="pricing-title">Commission Only</div>
+                         <div class="pricing-price"><span class="currency"></span>10% <span class="period">/ session</span></div>
+                         <p class="pricing-desc">Free to register and get verified. We only earn when you earn — 10% on each completed session.</p>
+                         <ul class="pricing-features">
+                              <li><i class="fa fa-check-circle"></i> Free registration &amp; verification</li>
+                              <li><i class="fa fa-check-circle"></i> Full profile with subjects &amp; availability</li>
+                              <li><i class="fa fa-check-circle"></i> Appear in family search results</li>
+                              <li><i class="fa fa-check-circle"></i> Booking requests &amp; management</li>
+                              <li><i class="fa fa-check-circle"></i> Session scheduling calendar</li>
+                              <li><i class="fa fa-check-circle"></i> Progress report tools</li>
+                              <li><i class="fa fa-check-circle"></i> Monthly payout to bank account</li>
+                              <li><i class="fa fa-check-circle"></i> Earnings dashboard &amp; history</li>
+                         </ul>
+                         <a href="dashboards/signup-tutor.html" class="tt-btn tt-btn-secondary" style="width:100%;justify-content:center;">Register as a Tutor</a>
+                    </div>
+               </div>
+          </div>
+
+          <!-- Commission explainer -->
+          <div class="commission-box">
+               <div class="row" style="align-items:center;">
+                    <div class="col-md-4" style="text-align:center;margin-bottom:16px;">
+                         <div class="commission-pct">10%</div>
+                         <p style="color:rgba(255,255,255,.75);font-size:14px;margin-top:8px;">Platform commission per completed session</p>
+                    </div>
+                    <div class="col-md-8">
+                         <h3>How the 10% Commission Works</h3>
+                         <p>When a tutor sets their rate at <strong style="color:var(--tt-yellow);">₦5,000 per session</strong>, the parent pays ₦5,000. 2tors.ng retains ₦500 (10%) as a platform fee. The tutor receives <strong style="color:var(--tt-yellow);">₦4,500</strong> in their monthly payout.</p>
+                         <p style="margin-bottom:0;">There are no signup fees, no monthly subscriptions and no hidden charges. Tutors are only charged when they successfully complete a session. Minimum payout threshold: <strong style="color:var(--tt-yellow);">₦10,000</strong>.</p>
+                    </div>
+               </div>
+          </div>
+
+          <!-- Comparison table -->
+          <div style="margin-top:64px;">
+               <h2 style="font-size:28px;font-weight:900;text-align:center;margin-bottom:36px;">Full Feature Comparison</h2>
+               <div style="overflow-x:auto;">
+                    <table class="table" style="background:var(--tt-white);border-radius:var(--tt-radius-lg);box-shadow:var(--tt-shadow-sm);overflow:hidden;">
+                         <thead>
+                              <tr>
+                                   <th style="width:40%;padding:18px 20px;background:var(--tt-bg-soft);font-size:13px;font-weight:800;color:var(--tt-text-2);">Feature</th>
+                                   <th style="text-align:center;padding:18px;background:var(--tt-teal-soft);font-size:13px;font-weight:800;color:var(--tt-teal);">Parent</th>
+                                   <th style="text-align:center;padding:18px;background:var(--tt-yellow-soft);font-size:13px;font-weight:800;color:var(--tt-yellow-dark);">Student</th>
+                                   <th style="text-align:center;padding:18px;background:var(--tt-orange-soft);font-size:13px;font-weight:800;color:var(--tt-orange);">Tutor</th>
+                              </tr>
+                         </thead>
+                         <tbody>
+                              <tr><td style="padding:14px 20px;font-weight:700;font-size:13px;">Registration &amp; account creation</td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td></tr>
+                              <tr><td style="padding:14px 20px;font-weight:700;font-size:13px;">Browse verified tutors</td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-minus-circle" style="color:var(--tt-faint);font-size:18px;"></i></td></tr>
+                              <tr><td style="padding:14px 20px;font-weight:700;font-size:13px;">Book tutoring sessions</td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-minus-circle" style="color:var(--tt-faint);font-size:18px;"></i><small style="display:block;color:var(--tt-muted);font-size:10px;">via parent</small></td><td style="text-align:center;"><i class="fa fa-minus-circle" style="color:var(--tt-faint);font-size:18px;"></i></td></tr>
+                              <tr><td style="padding:14px 20px;font-weight:700;font-size:13px;">View progress reports</td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td><td style="text-align:center;"><small style="color:var(--tt-muted);font-size:12px;font-weight:700;">Creates</small></td></tr>
+                              <tr><td style="padding:14px 20px;font-weight:700;font-size:13px;">Submit assignments</td><td style="text-align:center;"><i class="fa fa-minus-circle" style="color:var(--tt-faint);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td><td style="text-align:center;"><small style="color:var(--tt-muted);font-size:12px;font-weight:700;">Assigns</small></td></tr>
+                              <tr><td style="padding:14px 20px;font-weight:700;font-size:13px;">In-platform messaging</td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-minus-circle" style="color:var(--tt-faint);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td></tr>
+                              <tr><td style="padding:14px 20px;font-weight:700;font-size:13px;">Earnings &amp; payout management</td><td style="text-align:center;"><i class="fa fa-minus-circle" style="color:var(--tt-faint);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-minus-circle" style="color:var(--tt-faint);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-check-circle" style="color:var(--tt-success);font-size:18px;"></i></td></tr>
+                              <tr><td style="padding:14px 20px;font-weight:700;font-size:13px;">Profile visible in search</td><td style="text-align:center;"><i class="fa fa-minus-circle" style="color:var(--tt-faint);font-size:18px;"></i></td><td style="text-align:center;"><i class="fa fa-minus-circle" style="color:var(--tt-faint);font-size:18px;"></i></td><td style="text-align:center;"><small style="color:var(--tt-teal);font-size:12px;font-weight:800;">After verification</small></td></tr>
+                              <tr><td style="padding:14px 20px;font-weight:700;font-size:13px;">Monthly cost</td><td style="text-align:center;font-weight:900;color:var(--tt-success);">FREE</td><td style="text-align:center;font-weight:900;color:var(--tt-success);">FREE</td><td style="text-align:center;font-weight:900;color:var(--tt-orange);">10% per session</td></tr>
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+
+          <!-- Pricing FAQ -->
+          <div style="margin-top:64px;">
+               <h2 style="font-size:28px;font-weight:900;text-align:center;margin-bottom:36px;">Pricing Questions</h2>
+               <div class="row">
+                    <div class="col-md-6">
+                         <div class="faq-simple"><div class="faq-q2" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">When does the tutor pay the commission? <i class="fa fa-plus"></i></div><div class="faq-a2">The 10% platform commission is deducted automatically from each completed session before payout. Tutors do not pay upfront — the commission is only applied when a session is marked complete and payment is confirmed.</div></div>
+                         <div class="faq-simple"><div class="faq-q2" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">Is there any signup fee for tutors? <i class="fa fa-plus"></i></div><div class="faq-a2">No. Registration is completely free. The only cost to tutors is the 10% commission on completed sessions. There are no monthly fees, no listing fees and no charge for the verification process.</div></div>
+                         <div class="faq-simple"><div class="faq-q2" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">Do parents pay anything to use the platform? <i class="fa fa-plus"></i></div><div class="faq-a2">No. Creating an account, adding children, browsing tutors, sending booking requests and viewing progress reports are all free for parents. Parents only pay the tutor's session fee — set by the tutor — when a booking is confirmed and a session takes place.</div></div>
+                    </div>
+                    <div class="col-md-6">
+                         <div class="faq-simple"><div class="faq-q2" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">How and when do tutors receive payouts? <i class="fa fa-plus"></i></div><div class="faq-a2">Tutors can request a payout at any time once their balance reaches ₦10,000. Payment is made directly to their registered Nigerian bank account within 3–5 business days. A full payout history and earnings dashboard is available in the tutor portal.</div></div>
+                         <div class="faq-simple"><div class="faq-q2" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">What happens if a session is cancelled? <i class="fa fa-plus"></i></div><div class="faq-a2">No commission is charged on cancelled sessions. If a session is cancelled with less than 24 hours' notice by the tutor, the platform may apply a cancellation policy. See our full refund policy for details.</div></div>
+                         <div class="faq-simple"><div class="faq-q2" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">Will the commission rate ever change? <i class="fa fa-plus"></i></div><div class="faq-a2">The current rate is 10% and we commit to providing tutors with at least 60 days' notice before any change to the commission structure. Our goal is to remain the most tutor-friendly platform in Nigeria.</div></div>
+                    </div>
+               </div>
+          </div>
+
+     </div>
+</section>
+
+<!-- CTA -->
+<section class="tt-cta-banner">
+     <div class="container" style="position:relative;z-index:2;">
+          <h2>Free to Join. Start Today.</h2>
+          <p>No credit card required. Parents and students always free. Tutors earn more by keeping 90%.</p>
+          <div class="hero-actions" style="justify-content:center;">
+               <a href="dashboards/register.html" class="tt-btn tt-btn-yellow tt-btn-lg">Create Free Account</a>
+               <a href="dashboards/signup-tutor.html" class="tt-btn tt-btn-outline-white tt-btn-lg">Register as Tutor</a>
+          </div>
+     </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-4 col-sm-6">
+                    <a href="index.html" style="font-family:var(--tt-font-head);font-size:26px;font-weight:900;color:var(--tt-teal);text-decoration:none;display:inline-block;margin-bottom:12px;">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+                    <p>Nigeria's trusted private tutoring platform. Connecting families with verified tutors for home-based and online sessions.</p>
+                    <ul class="social-icon"><li><a href="https://facebook.com/2tors.ng" target="_blank" class="fa fa-facebook-square"></a></li><li><a href="https://twitter.com/2tors.ng" target="_blank" class="fa fa-twitter"></a></li><li><a href="https://instagram.com/2tors.ng" target="_blank" class="fa fa-instagram"></a></li><li><a href="https://linkedin.com/company/2tors.ng" target="_blank" class="fa fa-linkedin"></a></li></ul>
+               </div>
+               <div class="col-md-2 col-sm-6"><h2>Platform</h2><ul><li><a href="browse-tutors.html">Find a Tutor</a></li><li><a href="dashboards/signup-tutor.html">Become a Tutor</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="pricing-plans.html">Pricing</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
+               <div class="col-md-2 col-sm-6"><h2>Company</h2><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+               <div class="col-md-2 col-sm-6"><h2>Legal</h2><ul><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-of-service.html">Terms of Service</a></li><li><a href="cookie-policy.html">Cookie Policy</a></li><li><a href="refund-policy.html">Refund Policy</a></li><li><a href="code-of-conduct.html">Code of Conduct</a></li></ul></div>
+               <div class="col-md-2 col-sm-12"><h2>Stay Updated</h2><p style="font-size:13px;">Get tutor tips and platform news in your inbox.</p><div class="newsletter-form"><form action="index.html" method="get"><input type="email" class="form-control" placeholder="Your email" name="email" required><input type="submit" value="Subscribe" style="margin-top:0;"></form></div></div>
+          </div>
+          <div class="footer-bottom"><p>&copy; 2026 2tors.ng — Learnroom Technology. All rights reserved.</p><p>Made with <span style="color:var(--tt-orange);">&#9829;</span> in Nigeria</p></div>
+     </div>
+</footer>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/learnroom.js"></script>
+<script src="js/custom.js"></script>
+<script>$(window).scroll(function(){if($(this).scrollTop()>60)$('.custom-navbar').addClass('scrolled');else $('.custom-navbar').removeClass('scrolled');});</script>
+</body>
+</html>

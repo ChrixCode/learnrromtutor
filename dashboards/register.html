@@ -1,0 +1,379 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <title>Create Account — 2tors.ng</title>
+     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../css/font-awesome.min.css">
+     <link rel="stylesheet" href="../css/learnroom-tokens.css">
+     <style>
+          body {
+               background: var(--tt-bg);
+               min-height: 100vh;
+               display: flex;
+               align-items: stretch;
+               padding-top: 0;
+               font-family: var(--tt-font-body);
+          }
+          .auth-split { display: flex; min-height: 100vh; width: 100%; }
+
+          /* ── Left panel (form) ── */
+          .auth-panel-left {
+               flex: 0 0 460px;
+               background: var(--tt-white);
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               padding: 48px;
+               position: relative;
+               z-index: 2;
+               box-shadow: 4px 0 32px rgba(0,0,0,.08);
+               overflow-y: auto;
+          }
+
+          /* ── Right brand panel ── */
+          .auth-panel-right {
+               flex: 1;
+               background: linear-gradient(135deg, #1C1E2E 0%, #0d2d3f 50%, #1a3a2a 100%);
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: center;
+               padding: 48px;
+               position: relative;
+               overflow: hidden;
+          }
+          .auth-panel-right::before {
+               content: '';
+               position: absolute;
+               top: -100px; right: -100px;
+               width: 500px; height: 500px;
+               border-radius: 50%;
+               background: rgba(0,191,165,.08);
+          }
+          .auth-panel-right::after {
+               content: '';
+               position: absolute;
+               bottom: -80px; left: -60px;
+               width: 400px; height: 400px;
+               border-radius: 50%;
+               background: rgba(255,107,53,.07);
+          }
+
+          /* ── Brand link ── */
+          .auth-brand {
+               font-family: var(--tt-font-head);
+               font-size: 28px;
+               font-weight: 900;
+               color: var(--tt-teal);
+               text-decoration: none;
+               display: block;
+               margin-bottom: 32px;
+          }
+          .auth-brand span { color: var(--tt-orange); }
+
+          /* ── Headings ── */
+          .auth-heading { font-size: 24px; font-weight: 900; color: var(--tt-text); margin: 0 0 6px; }
+          .auth-sub { font-size: 14px; color: var(--tt-muted); margin-bottom: 28px; }
+
+          /* ── Role pills ── */
+          .role-pills {
+               display: flex;
+               gap: 10px;
+               margin-bottom: 28px;
+          }
+          .role-pill {
+               flex: 1;
+               text-align: center;
+               padding: 16px 10px;
+               border: 2px solid var(--tt-border);
+               border-radius: var(--tt-radius-lg);
+               cursor: pointer;
+               transition: var(--tt-transition);
+               background: var(--tt-white);
+               position: relative;
+          }
+          .role-pill:hover { border-color: var(--tt-teal); background: var(--tt-teal-soft); }
+          .role-pill.active { border-color: var(--tt-teal); background: var(--tt-teal-soft); }
+          .role-pill.tutor-pill:hover,
+          .role-pill.tutor-pill.active { border-color: var(--tt-orange); background: var(--tt-orange-soft); }
+          .role-pill i {
+               display: block;
+               font-size: 24px;
+               color: var(--tt-teal);
+               margin-bottom: 8px;
+          }
+          .role-pill.tutor-pill i { color: var(--tt-orange); }
+          .role-pill.active.tutor-pill i { color: var(--tt-orange-dark); }
+          .role-pill span {
+               font-size: 12px;
+               font-weight: 800;
+               color: var(--tt-text-2);
+               text-transform: uppercase;
+               letter-spacing: .5px;
+               display: block;
+          }
+          .role-pill.active span { color: var(--tt-teal-dark); }
+          .role-pill.active.tutor-pill span { color: var(--tt-orange-dark); }
+
+          /* ── Form inputs ── */
+          .auth-label {
+               display: block;
+               font-size: 12px;
+               font-weight: 800;
+               text-transform: uppercase;
+               letter-spacing: .8px;
+               color: var(--tt-text-2);
+               margin-bottom: 6px;
+          }
+          .auth-input {
+               width: 100%;
+               height: 50px;
+               padding: 0 16px;
+               border: 2px solid var(--tt-border);
+               border-radius: var(--tt-radius);
+               font-family: var(--tt-font-body);
+               font-size: 14px;
+               color: var(--tt-text);
+               background: var(--tt-white);
+               transition: var(--tt-transition);
+               outline: none;
+               margin-bottom: 18px;
+               display: block;
+          }
+          .auth-input:focus {
+               border-color: var(--tt-teal);
+               box-shadow: 0 0 0 3px rgba(0,191,165,.12);
+          }
+          .auth-input::placeholder { color: var(--tt-faint); }
+          select.auth-input { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+
+          /* ── Info note ── */
+          .info-note {
+               background: var(--tt-yellow-soft);
+               border: 1px solid var(--tt-yellow-dark);
+               border-radius: var(--tt-radius);
+               padding: 10px 14px;
+               font-size: 13px;
+               color: #7a5c00;
+               margin-bottom: 20px;
+               display: none;
+               align-items: flex-start;
+               gap: 8px;
+          }
+          .info-note i { flex-shrink: 0; margin-top: 1px; }
+
+          /* ── Submit button ── */
+          .auth-submit {
+               width: 100%;
+               height: 52px;
+               background: var(--tt-teal);
+               color: #fff;
+               border: none;
+               border-radius: var(--tt-radius-pill);
+               font-family: var(--tt-font-body);
+               font-size: 15px;
+               font-weight: 800;
+               cursor: pointer;
+               transition: var(--tt-transition);
+               box-shadow: var(--tt-shadow-teal);
+               margin-bottom: 20px;
+               letter-spacing: .3px;
+          }
+          .auth-submit:hover {
+               background: var(--tt-orange);
+               box-shadow: var(--tt-shadow-orange);
+               transform: translateY(-2px);
+          }
+          .auth-footer-text { text-align: center; font-size: 13px; color: var(--tt-muted); }
+          .auth-footer-text a { color: var(--tt-teal); font-weight: 700; text-decoration: none; }
+          .auth-footer-text a:hover { color: var(--tt-orange); }
+
+          /* ── Right panel content ── */
+          .auth-right-content { position: relative; z-index: 2; text-align: center; max-width: 480px; }
+          .auth-right-brand { font-family: var(--tt-font-head); font-size: 48px; font-weight: 900; color: var(--tt-teal); margin-bottom: 8px; }
+          .auth-right-brand span { color: var(--tt-orange); }
+          .auth-right-tagline { font-size: 20px; font-weight: 400; color: rgba(255,255,255,.75); line-height: 1.5; margin-bottom: 48px; }
+          .auth-feature-list { text-align: left; }
+          .auth-feature-item { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; color: rgba(255,255,255,.85); font-size: 15px; font-weight: 600; }
+          .auth-feature-icon { width: 44px; height: 44px; border-radius: var(--tt-radius); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+
+          /* ── Student note ── */
+          .student-note {
+               background: var(--tt-teal-soft);
+               border: 1px solid var(--tt-teal);
+               border-radius: var(--tt-radius);
+               padding: 14px 16px;
+               font-size: 13px;
+               color: var(--tt-teal-dark);
+               margin-bottom: 24px;
+               display: none;
+               align-items: flex-start;
+               gap: 10px;
+               line-height: 1.6;
+          }
+
+          @media (max-width: 768px) {
+               .auth-panel-right { display: none; }
+               .auth-panel-left { flex: 1; padding: 36px 24px; }
+          }
+     </style>
+</head>
+<body>
+<div class="auth-split">
+
+     <!-- ===== LEFT: Form ===== -->
+     <div class="auth-panel-left">
+          <a href="../index.html" class="auth-brand">2tors<span>.ng</span></a>
+          <h2 class="auth-heading">Create Your Account</h2>
+          <p class="auth-sub">Join Nigeria's trusted private tutoring platform.</p>
+
+          <!-- Role selection — only 2 public roles -->
+          <div class="role-pills">
+               <div class="role-pill active" onclick="selectRole('parent', this)">
+                    <i class="fa fa-home"></i>
+                    <span>Parent / Guardian</span>
+               </div>
+               <div class="role-pill tutor-pill" onclick="selectRole('tutor', this)">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span>Tutor / Educator</span>
+               </div>
+          </div>
+
+          <!-- Parent info note -->
+          <div id="note-parent" class="info-note" style="display:flex;">
+               <i class="fa fa-info-circle"></i>
+               <span>As a parent, you can add multiple children to your account and book verified tutors for each of them. Students are managed under your parent account — they do not need a separate login.</span>
+          </div>
+
+          <!-- Tutor verification note -->
+          <div id="note-tutor" class="info-note">
+               <i class="fa fa-info-circle"></i>
+               <span>Tutor accounts require document verification by our team before you can appear in search results or accept bookings. This typically takes 48 hours.</span>
+          </div>
+
+          <form id="reg-form" action="login.html" method="get">
+               <input type="hidden" name="role" id="role-input" value="parent">
+
+               <label class="auth-label">Full Name</label>
+               <input type="text" class="auth-input" placeholder="Your full name" required>
+
+               <label class="auth-label">Email Address</label>
+               <input type="email" class="auth-input" placeholder="your@email.com" required>
+
+               <label class="auth-label">Phone Number</label>
+               <input type="tel" class="auth-input" placeholder="+234 …" required>
+
+               <!-- State — parent only (tutors have full profile setup) -->
+               <div id="field-state">
+                    <label class="auth-label">State</label>
+                    <select class="auth-input">
+                         <option value="">Select your state</option>
+                         <option>Lagos</option>
+                         <option>Abuja (FCT)</option>
+                         <option>Port Harcourt</option>
+                         <option>Ibadan</option>
+                         <option>Kano</option>
+                         <option>Enugu</option>
+                         <option>Benin City</option>
+                         <option>Calabar</option>
+                         <option>Other</option>
+                    </select>
+               </div>
+
+               <label class="auth-label">Password</label>
+               <input type="password" class="auth-input" placeholder="Create a strong password" required>
+
+               <label class="auth-label">Confirm Password</label>
+               <input type="password" class="auth-input" placeholder="Repeat your password" required>
+
+               <div style="margin-bottom:20px;">
+                    <label style="display:flex;align-items:flex-start;gap:9px;font-size:13px;font-weight:600;cursor:pointer;color:var(--tt-text-2);">
+                         <input type="checkbox" required style="width:16px;height:16px;accent-color:var(--tt-teal);flex-shrink:0;margin-top:2px;">
+                         I agree to the <a href="../terms-of-service.html" style="color:var(--tt-teal);">Terms of Service</a> and <a href="../privacy-policy.html" style="color:var(--tt-teal);">Privacy Policy</a>
+                    </label>
+               </div>
+
+               <button type="submit" class="auth-submit" id="submit-btn">
+                    <i class="fa fa-user-plus"></i> Create Parent Account
+               </button>
+          </form>
+
+          <div class="auth-footer-text">
+               Already have an account? <a href="login.html">Sign in</a>
+          </div>
+          <div class="auth-footer-text" style="margin-top:8px;">
+               Registering as a tutor? <a href="signup-tutor.html">Tutor registration →</a>
+          </div>
+          <p style="text-align:center;font-size:11px;color:var(--tt-faint);margin-top:28px;">&copy; 2026 2tors.ng. All rights reserved.</p>
+     </div>
+
+     <!-- ===== RIGHT: Brand panel ===== -->
+     <div class="auth-panel-right">
+          <div class="auth-right-content">
+               <div class="auth-right-brand">2tors<span>.ng</span></div>
+               <p class="auth-right-tagline">Nigeria's trusted platform for private tutoring — home visits and online sessions</p>
+               <div class="auth-feature-list">
+                    <div class="auth-feature-item">
+                         <div class="auth-feature-icon" style="background:rgba(0,191,165,.15);color:var(--tt-teal);">
+                              <i class="fa fa-shield"></i>
+                         </div>
+                         <span>All tutors are manually verified before accepting bookings</span>
+                    </div>
+                    <div class="auth-feature-item">
+                         <div class="auth-feature-icon" style="background:rgba(255,107,53,.15);color:var(--tt-orange);">
+                              <i class="fa fa-child"></i>
+                         </div>
+                         <span>Add all your children and manage their learning in one place</span>
+                    </div>
+                    <div class="auth-feature-item">
+                         <div class="auth-feature-icon" style="background:rgba(255,214,0,.15);color:var(--tt-yellow-dark);">
+                              <i class="fa fa-bar-chart"></i>
+                         </div>
+                         <span>Progress reports after every session, per student</span>
+                    </div>
+                    <div class="auth-feature-item">
+                         <div class="auth-feature-icon" style="background:rgba(233,30,140,.15);color:var(--tt-magenta);">
+                              <i class="fa fa-home"></i>
+                         </div>
+                         <span>Book home visits or online sessions — your choice every time</span>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+</div>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script>
+function selectRole(role, el) {
+     // Reset all pills
+     document.querySelectorAll('.role-pill').forEach(function(p) { p.classList.remove('active'); });
+     el.classList.add('active');
+     document.getElementById('role-input').value = role;
+
+     // Info notes
+     document.getElementById('note-parent').style.display = (role === 'parent') ? 'flex' : 'none';
+     document.getElementById('note-tutor').style.display  = (role === 'tutor')  ? 'flex' : 'none';
+
+     // State field — only for parents
+     document.getElementById('field-state').style.display = (role === 'parent') ? 'block' : 'none';
+
+     // Button label
+     var btn = document.getElementById('submit-btn');
+     if (role === 'tutor') {
+          btn.innerHTML = '<i class="fa fa-graduation-cap"></i> Continue as Tutor';
+          document.getElementById('reg-form').action = 'signup-tutor.html';
+     } else {
+          btn.innerHTML = '<i class="fa fa-user-plus"></i> Create Parent Account';
+          document.getElementById('reg-form').action = 'login.html';
+     }
+}
+// Show parent note by default
+document.getElementById('note-parent').style.display = 'flex';
+</script>
+</body>
+</html>

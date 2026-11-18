@@ -1,0 +1,646 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Browse Verified Tutors — 2tors.ng</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="Browse verified private tutors in Nigeria. Filter by subject, level, delivery mode and location.">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/learnroom-tokens.css">
+     <link rel="stylesheet" href="css/style.css">
+     <style>
+          /* ── Page-specific enhancements ── */
+          .tutor-grid-card {
+               background: var(--tt-white);
+               border-radius: var(--tt-radius-lg);
+               box-shadow: var(--tt-shadow-xs);
+               border: 1px solid var(--tt-border-soft);
+               overflow: hidden;
+               margin-bottom: 24px;
+               transition: var(--tt-transition);
+          }
+          .tutor-grid-card:hover {
+               box-shadow: var(--tt-shadow);
+               transform: translateY(-4px);
+               border-color: var(--tt-teal);
+          }
+          .tutor-card-cover {
+               height: 72px;
+               background: linear-gradient(135deg, var(--tt-teal) 0%, var(--tt-teal-dark) 100%);
+               position: relative;
+          }
+          .tutor-card-cover.orange { background: linear-gradient(135deg, var(--tt-yellow-dark) 0%, var(--tt-orange) 100%); }
+          .tutor-card-cover.magenta { background: linear-gradient(135deg, var(--tt-magenta) 0%, #7c3aed 100%); }
+          .tutor-card-cover.teal2 { background: linear-gradient(135deg, #0288d1 0%, var(--tt-teal) 100%); }
+          .tutor-card-avatar {
+               width: 68px; height: 68px;
+               border-radius: 50%;
+               border: 4px solid var(--tt-white);
+               object-fit: cover;
+               position: absolute;
+               bottom: -34px;
+               left: 20px;
+               background: var(--tt-teal-soft);
+          }
+          .tutor-card-body { padding: 42px 20px 20px; }
+          .tutor-card-name { font-size: 16px; font-weight: 900; color: var(--tt-text); margin: 0 0 2px; }
+          .tutor-card-subject { font-size: 13px; color: var(--tt-muted); margin-bottom: 10px; }
+          .tutor-card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px; }
+          .tutor-card-tag {
+               display: inline-block;
+               padding: 3px 10px;
+               border-radius: var(--tt-radius-pill);
+               font-size: 11px;
+               font-weight: 700;
+               background: var(--tt-bg-soft);
+               color: var(--tt-text-2);
+               border: 1px solid var(--tt-border);
+          }
+          .tutor-card-tag.delivery { background: var(--tt-teal-soft); color: var(--tt-teal-dark); border-color: transparent; }
+          .tutor-card-stats {
+               display: flex;
+               align-items: center;
+               gap: 16px;
+               font-size: 12px;
+               color: var(--tt-muted);
+               font-weight: 700;
+               margin-bottom: 14px;
+          }
+          .tutor-card-stats i { color: var(--tt-teal); margin-right: 3px; }
+          .tutor-card-stats .stars i { color: var(--tt-yellow-dark); }
+          .tutor-card-footer {
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               padding: 14px 20px;
+               border-top: 1px solid var(--tt-border-soft);
+               background: var(--tt-bg-soft);
+          }
+          .tutor-rate { font-size: 15px; font-weight: 900; color: var(--tt-text); }
+          .tutor-rate span { font-size: 11px; font-weight: 600; color: var(--tt-muted); }
+          .tutor-verified-badge {
+               display: inline-flex;
+               align-items: center;
+               gap: 4px;
+               font-size: 11px;
+               font-weight: 800;
+               color: var(--tt-success);
+               background: var(--tt-success-soft);
+               padding: 3px 8px;
+               border-radius: var(--tt-radius-pill);
+          }
+          .filter-sidebar {
+               background: var(--tt-white);
+               border-radius: var(--tt-radius-lg);
+               padding: 24px;
+               box-shadow: var(--tt-shadow-xs);
+               border: 1px solid var(--tt-border-soft);
+               position: sticky;
+               top: 90px;
+          }
+          .filter-group { margin-bottom: 24px; }
+          .filter-group-title {
+               font-size: 12px;
+               font-weight: 900;
+               text-transform: uppercase;
+               letter-spacing: 0.8px;
+               color: var(--tt-text-2);
+               margin-bottom: 12px;
+               display: flex;
+               align-items: center;
+               gap: 6px;
+          }
+          .filter-group-title i { color: var(--tt-teal); }
+          .filter-check {
+               display: flex;
+               align-items: center;
+               gap: 8px;
+               margin-bottom: 8px;
+               font-size: 13px;
+               font-weight: 600;
+               color: var(--tt-text-2);
+               cursor: pointer;
+          }
+          .filter-check input[type="checkbox"] { accent-color: var(--tt-teal); width: 15px; height: 15px; }
+          .filter-check .count {
+               margin-left: auto;
+               font-size: 11px;
+               color: var(--tt-faint);
+               background: var(--tt-bg-soft);
+               padding: 1px 7px;
+               border-radius: var(--tt-radius-pill);
+          }
+          .filter-select {
+               width: 100%;
+               padding: 10px 14px;
+               border: 2px solid var(--tt-border);
+               border-radius: var(--tt-radius);
+               font-size: 13px;
+               font-family: var(--tt-font-body);
+               color: var(--tt-text);
+               background: var(--tt-white);
+               outline: none;
+               transition: var(--tt-transition);
+               appearance: none;
+          }
+          .filter-select:focus { border-color: var(--tt-teal); box-shadow: 0 0 0 3px rgba(0,191,165,0.12); }
+          .search-top-bar {
+               display: flex;
+               align-items: center;
+               gap: 12px;
+               margin-bottom: 24px;
+               flex-wrap: wrap;
+          }
+          .search-top-bar .search-input-wrap {
+               flex: 1;
+               min-width: 200px;
+               position: relative;
+          }
+          .search-top-bar input {
+               width: 100%;
+               height: 48px;
+               padding: 0 16px 0 44px;
+               border: 2px solid var(--tt-border);
+               border-radius: var(--tt-radius-pill);
+               font-size: 14px;
+               font-family: var(--tt-font-body);
+               color: var(--tt-text);
+               outline: none;
+               transition: var(--tt-transition);
+          }
+          .search-top-bar input:focus { border-color: var(--tt-teal); box-shadow: 0 0 0 3px rgba(0,191,165,0.12); }
+          .search-top-bar .search-icon {
+               position: absolute;
+               left: 16px; top: 50%;
+               transform: translateY(-50%);
+               color: var(--tt-muted);
+               font-size: 15px;
+          }
+          .results-meta { font-size: 13px; color: var(--tt-muted); font-weight: 600; margin-bottom: 20px; }
+          .results-meta strong { color: var(--tt-text); }
+          .sort-select {
+               height: 40px;
+               padding: 0 14px;
+               border: 2px solid var(--tt-border);
+               border-radius: var(--tt-radius);
+               font-size: 13px;
+               font-family: var(--tt-font-body);
+               color: var(--tt-text-2);
+               font-weight: 600;
+               outline: none;
+               background: var(--tt-white);
+               cursor: pointer;
+          }
+          .sort-select:focus { border-color: var(--tt-teal); }
+          .active-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+          .active-filter-tag {
+               display: inline-flex;
+               align-items: center;
+               gap: 6px;
+               padding: 5px 12px;
+               background: var(--tt-teal-soft);
+               color: var(--tt-teal-dark);
+               border-radius: var(--tt-radius-pill);
+               font-size: 12px;
+               font-weight: 700;
+          }
+          .active-filter-tag .remove { cursor: pointer; font-size: 11px; color: var(--tt-teal); margin-left: 2px; }
+          .active-filter-tag .remove:hover { color: var(--tt-danger); }
+          @media (max-width: 991px) {
+               .filter-sidebar { position: static; margin-bottom: 24px; }
+          }
+     </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+     <div class="container">
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+               </button>
+               <a href="index.html" class="navbar-brand">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+          </div>
+                    <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-nav-first">
+                    <li><a href="browse-tutors.html">Find a Tutor</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                              <li><a href="how-it-works.html"><i class="fa fa-play-circle"></i> How It Works</a></li>
+                              <li><a href="about.html"><i class="fa fa-info-circle"></i> About 2tors.ng</a></li>
+                              <li><a href="faq.html"><i class="fa fa-question-circle"></i> FAQ</a></li>
+                              <li><a href="blog.html"><i class="fa fa-rss"></i> Blog</a></li>
+                              <li><a href="contact.html"><i class="fa fa-envelope"></i> Contact</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><a href="contact.html"><i class="fa fa-calendar"></i> Request a Demo</a></li>
+                         </ul>
+                    </li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                    <li><a href="dashboards/login.html" style="display:inline-block;padding:9px 22px;border:2px solid var(--tt-border);border-radius:var(--tt-radius-pill);font-weight:700;font-size:14px;color:var(--tt-text-2)!important;line-height:1.4;margin-top:15px;transition:var(--tt-transition);"><i class="fa fa-sign-in"></i> Sign In</a></li>
+                    <li><a href="dashboards/register.html" style="display:inline-block;padding:10px 24px;background:var(--tt-teal);color:#fff!important;border-radius:var(--tt-radius-pill);font-weight:800;font-size:14px;line-height:1.4;margin-top:15px;border:2px solid var(--tt-teal);transition:var(--tt-transition);box-shadow:0 3px 12px rgba(0,191,165,.25);"><i class="fa fa-user-plus"></i> Get Started Free</a></li>
+               </ul>
+          </div>
+     </div>
+</section>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+     <div class="container">
+          <div class="col-md-8">
+               <h1>Browse Verified Tutors</h1>
+               <p>All tutors are manually reviewed and approved before teaching on 2tors.ng</p>
+          </div>
+     </div>
+</section>
+
+<!-- BREADCRUMB -->
+<section class="breadcrumb-section">
+     <div class="container">
+          <ol class="breadcrumb">
+               <li><a href="index.html">Home</a></li>
+               <li class="active">Browse Tutors</li>
+          </ol>
+     </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section style="padding: 48px 0; background: var(--tt-bg);">
+     <div class="container">
+          <div class="row">
+
+               <!-- SIDEBAR FILTERS -->
+               <div class="col-md-3 col-sm-12">
+                    <div class="filter-sidebar">
+                         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
+                              <h4 style="margin:0; font-size:16px; font-weight:900; color:var(--tt-text);">Filters</h4>
+                              <a href="browse-tutors.html" style="font-size:12px; font-weight:700; color:var(--tt-orange);">Clear all</a>
+                         </div>
+
+                         <!-- Subject -->
+                         <div class="filter-group">
+                              <div class="filter-group-title"><i class="fa fa-book"></i> Subject</div>
+                              <select class="filter-select">
+                                   <option value="">All Subjects</option>
+                                   <option>Mathematics</option>
+                                   <option>Further Mathematics</option>
+                                   <option>English Language</option>
+                                   <option>Literature in English</option>
+                                   <option>Physics</option>
+                                   <option>Chemistry</option>
+                                   <option>Biology</option>
+                                   <option>Computer Science</option>
+                                   <option>Economics</option>
+                                   <option>Government</option>
+                                   <option>Robotics</option>
+                                   <option>Music</option>
+                                   <option>French</option>
+                              </select>
+                         </div>
+
+                         <!-- Education Level -->
+                         <div class="filter-group">
+                              <div class="filter-group-title"><i class="fa fa-graduation-cap"></i> Education Level</div>
+                              <label class="filter-check"><input type="checkbox"> Primary School <span class="count">234</span></label>
+                              <label class="filter-check"><input type="checkbox"> JSS 1–3 <span class="count">198</span></label>
+                              <label class="filter-check"><input type="checkbox"> SSS 1–3 / WAEC <span class="count">312</span></label>
+                              <label class="filter-check"><input type="checkbox"> University / JAMB <span class="count">156</span></label>
+                              <label class="filter-check"><input type="checkbox"> Adult Learning <span class="count">44</span></label>
+                         </div>
+
+                         <!-- Delivery Mode -->
+                         <div class="filter-group">
+                              <div class="filter-group-title"><i class="fa fa-video-camera"></i> Session Type</div>
+                              <label class="filter-check"><input type="checkbox"> Home Visit <span class="count">487</span></label>
+                              <label class="filter-check"><input type="checkbox"> Online Session <span class="count">643</span></label>
+                              <label class="filter-check"><input type="checkbox"> School-based <span class="count">89</span></label>
+                         </div>
+
+                         <!-- State -->
+                         <div class="filter-group">
+                              <div class="filter-group-title"><i class="fa fa-map-marker"></i> State / City</div>
+                              <select class="filter-select">
+                                   <option value="">All Nigeria</option>
+                                   <option>Lagos</option>
+                                   <option>Abuja (FCT)</option>
+                                   <option>Port Harcourt</option>
+                                   <option>Ibadan</option>
+                                   <option>Kano</option>
+                                   <option>Enugu</option>
+                                   <option>Benin City</option>
+                                   <option>Calabar</option>
+                              </select>
+                         </div>
+
+                         <!-- Rating -->
+                         <div class="filter-group">
+                              <div class="filter-group-title"><i class="fa fa-star"></i> Minimum Rating</div>
+                              <label class="filter-check"><input type="radio" name="rating"> Any Rating</label>
+                              <label class="filter-check"><input type="radio" name="rating"> 4.0+ &#9733;&#9733;&#9733;&#9733;</label>
+                              <label class="filter-check"><input type="radio" name="rating"> 4.5+ &#9733;&#9733;&#9733;&#9733;&#9733;</label>
+                              <label class="filter-check"><input type="radio" name="rating"> 5.0 only &#9733;&#9733;&#9733;&#9733;&#9733;</label>
+                         </div>
+
+                         <!-- Verification -->
+                         <div class="filter-group">
+                              <div class="filter-group-title"><i class="fa fa-shield"></i> Verification</div>
+                              <label class="filter-check"><input type="checkbox" checked> Verified Only <span class="count">1,187</span></label>
+                         </div>
+
+                         <button class="tt-btn tt-btn-primary" style="width:100%; justify-content:center; margin-top:4px;">Apply Filters</button>
+                    </div>
+               </div>
+
+               <!-- TUTOR GRID -->
+               <div class="col-md-9 col-sm-12">
+
+                    <!-- Search + Sort bar -->
+                    <div class="search-top-bar">
+                         <div class="search-input-wrap">
+                              <i class="fa fa-search search-icon"></i>
+                              <input type="text" placeholder="Search by name, subject or keyword…">
+                         </div>
+                         <select class="sort-select">
+                              <option>Sort: Most Relevant</option>
+                              <option>Sort: Highest Rated</option>
+                              <option>Sort: Most Reviews</option>
+                              <option>Sort: Newest</option>
+                         </select>
+                    </div>
+
+                    <!-- Active filter tags -->
+                    <div class="active-filters">
+                         <span class="active-filter-tag">Verified Only <span class="remove">&#10005;</span></span>
+                    </div>
+
+                    <p class="results-meta">Showing <strong>1,187</strong> verified tutors</p>
+
+                    <div class="row">
+
+                         <!-- Tutor Card 1 -->
+                         <div class="col-md-4 col-sm-6">
+                              <div class="tutor-grid-card">
+                                   <div class="tutor-card-cover">
+                                        <img src="images/author-image1.jpg" alt="" class="tutor-card-avatar">
+                                   </div>
+                                   <div class="tutor-card-body">
+                                        <span class="tutor-verified-badge"><i class="fa fa-check-circle"></i> Verified</span>
+                                        <div class="tutor-card-name" style="margin-top:8px;">Dr. Adebayo Okafor</div>
+                                        <div class="tutor-card-subject">Mathematics &amp; Further Maths</div>
+                                        <div class="tutor-card-tags">
+                                             <span class="tutor-card-tag delivery"><i class="fa fa-home"></i> Home</span>
+                                             <span class="tutor-card-tag delivery"><i class="fa fa-video-camera"></i> Online</span>
+                                             <span class="tutor-card-tag">WAEC</span>
+                                             <span class="tutor-card-tag">JAMB</span>
+                                        </div>
+                                        <div class="tutor-card-stats">
+                                             <span class="stars"><i class="fa fa-star"></i> 4.9</span>
+                                             <span><i class="fa fa-comment-o"></i> 142 reviews</span>
+                                             <span><i class="fa fa-clock-o"></i> 6 yrs</span>
+                                        </div>
+                                   </div>
+                                   <div class="tutor-card-footer">
+                                        <div class="tutor-rate">₦5,000 <span>/ session</span></div>
+                                        <a href="tutor-profile.html" class="tt-btn tt-btn-primary tt-btn-sm">View Profile</a>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <!-- Tutor Card 2 -->
+                         <div class="col-md-4 col-sm-6">
+                              <div class="tutor-grid-card">
+                                   <div class="tutor-card-cover orange">
+                                        <img src="images/author-image2.jpg" alt="" class="tutor-card-avatar">
+                                   </div>
+                                   <div class="tutor-card-body">
+                                        <span class="tutor-verified-badge"><i class="fa fa-check-circle"></i> Verified</span>
+                                        <div class="tutor-card-name" style="margin-top:8px;">Mrs. Chidinma Eze</div>
+                                        <div class="tutor-card-subject">English Language &amp; Literature</div>
+                                        <div class="tutor-card-tags">
+                                             <span class="tutor-card-tag delivery"><i class="fa fa-video-camera"></i> Online</span>
+                                             <span class="tutor-card-tag">JSS</span>
+                                             <span class="tutor-card-tag">SSS</span>
+                                             <span class="tutor-card-tag">WAEC</span>
+                                        </div>
+                                        <div class="tutor-card-stats">
+                                             <span class="stars"><i class="fa fa-star"></i> 4.8</span>
+                                             <span><i class="fa fa-comment-o"></i> 98 reviews</span>
+                                             <span><i class="fa fa-clock-o"></i> 9 yrs</span>
+                                        </div>
+                                   </div>
+                                   <div class="tutor-card-footer">
+                                        <div class="tutor-rate">₦4,500 <span>/ session</span></div>
+                                        <a href="tutor-profile.html" class="tt-btn tt-btn-primary tt-btn-sm">View Profile</a>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <!-- Tutor Card 3 -->
+                         <div class="col-md-4 col-sm-6">
+                              <div class="tutor-grid-card">
+                                   <div class="tutor-card-cover teal2">
+                                        <img src="images/author-image3.jpg" alt="" class="tutor-card-avatar">
+                                   </div>
+                                   <div class="tutor-card-body">
+                                        <span class="tutor-verified-badge"><i class="fa fa-check-circle"></i> Verified</span>
+                                        <div class="tutor-card-name" style="margin-top:8px;">Mr. Emeka Nwachukwu</div>
+                                        <div class="tutor-card-subject">Physics &amp; Chemistry</div>
+                                        <div class="tutor-card-tags">
+                                             <span class="tutor-card-tag delivery"><i class="fa fa-home"></i> Home</span>
+                                             <span class="tutor-card-tag delivery"><i class="fa fa-video-camera"></i> Online</span>
+                                             <span class="tutor-card-tag">SSS</span>
+                                             <span class="tutor-card-tag">WAEC</span>
+                                        </div>
+                                        <div class="tutor-card-stats">
+                                             <span class="stars"><i class="fa fa-star"></i> 5.0</span>
+                                             <span><i class="fa fa-comment-o"></i> 67 reviews</span>
+                                             <span><i class="fa fa-clock-o"></i> 4 yrs</span>
+                                        </div>
+                                   </div>
+                                   <div class="tutor-card-footer">
+                                        <div class="tutor-rate">₦6,000 <span>/ session</span></div>
+                                        <a href="tutor-profile.html" class="tt-btn tt-btn-primary tt-btn-sm">View Profile</a>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <!-- Tutor Card 4 -->
+                         <div class="col-md-4 col-sm-6">
+                              <div class="tutor-grid-card">
+                                   <div class="tutor-card-cover magenta">
+                                        <img src="images/author-image4.jpg" alt="" class="tutor-card-avatar">
+                                   </div>
+                                   <div class="tutor-card-body">
+                                        <span class="tutor-verified-badge"><i class="fa fa-check-circle"></i> Verified</span>
+                                        <div class="tutor-card-name" style="margin-top:8px;">Miss Fatima Al-Amin</div>
+                                        <div class="tutor-card-subject">Robotics &amp; Computer Science</div>
+                                        <div class="tutor-card-tags">
+                                             <span class="tutor-card-tag delivery"><i class="fa fa-video-camera"></i> Online</span>
+                                             <span class="tutor-card-tag">Primary</span>
+                                             <span class="tutor-card-tag">JSS</span>
+                                        </div>
+                                        <div class="tutor-card-stats">
+                                             <span class="stars"><i class="fa fa-star"></i> 4.9</span>
+                                             <span><i class="fa fa-comment-o"></i> 55 reviews</span>
+                                             <span><i class="fa fa-clock-o"></i> 3 yrs</span>
+                                        </div>
+                                   </div>
+                                   <div class="tutor-card-footer">
+                                        <div class="tutor-rate">₦5,500 <span>/ session</span></div>
+                                        <a href="tutor-profile.html" class="tt-btn tt-btn-primary tt-btn-sm">View Profile</a>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <!-- Tutor Card 5 -->
+                         <div class="col-md-4 col-sm-6">
+                              <div class="tutor-grid-card">
+                                   <div class="tutor-card-cover">
+                                        <img src="images/author-image1.jpg" alt="" class="tutor-card-avatar">
+                                   </div>
+                                   <div class="tutor-card-body">
+                                        <span class="tutor-verified-badge"><i class="fa fa-check-circle"></i> Verified</span>
+                                        <div class="tutor-card-name" style="margin-top:8px;">Mr. Babajide Fashola</div>
+                                        <div class="tutor-card-subject">Economics &amp; Commerce</div>
+                                        <div class="tutor-card-tags">
+                                             <span class="tutor-card-tag delivery"><i class="fa fa-home"></i> Home</span>
+                                             <span class="tutor-card-tag">SSS</span>
+                                             <span class="tutor-card-tag">WAEC</span>
+                                        </div>
+                                        <div class="tutor-card-stats">
+                                             <span class="stars"><i class="fa fa-star"></i> 4.7</span>
+                                             <span><i class="fa fa-comment-o"></i> 83 reviews</span>
+                                             <span><i class="fa fa-clock-o"></i> 7 yrs</span>
+                                        </div>
+                                   </div>
+                                   <div class="tutor-card-footer">
+                                        <div class="tutor-rate">₦4,000 <span>/ session</span></div>
+                                        <a href="tutor-profile.html" class="tt-btn tt-btn-primary tt-btn-sm">View Profile</a>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <!-- Tutor Card 6 -->
+                         <div class="col-md-4 col-sm-6">
+                              <div class="tutor-grid-card">
+                                   <div class="tutor-card-cover orange">
+                                        <img src="images/author-image2.jpg" alt="" class="tutor-card-avatar">
+                                   </div>
+                                   <div class="tutor-card-body">
+                                        <span class="tutor-verified-badge"><i class="fa fa-check-circle"></i> Verified</span>
+                                        <div class="tutor-card-name" style="margin-top:8px;">Mrs. Amaka Okonkwo</div>
+                                        <div class="tutor-card-subject">Biology &amp; Agricultural Science</div>
+                                        <div class="tutor-card-tags">
+                                             <span class="tutor-card-tag delivery"><i class="fa fa-home"></i> Home</span>
+                                             <span class="tutor-card-tag delivery"><i class="fa fa-video-camera"></i> Online</span>
+                                             <span class="tutor-card-tag">JSS</span>
+                                             <span class="tutor-card-tag">SSS</span>
+                                        </div>
+                                        <div class="tutor-card-stats">
+                                             <span class="stars"><i class="fa fa-star"></i> 4.8</span>
+                                             <span><i class="fa fa-comment-o"></i> 71 reviews</span>
+                                             <span><i class="fa fa-clock-o"></i> 5 yrs</span>
+                                        </div>
+                                   </div>
+                                   <div class="tutor-card-footer">
+                                        <div class="tutor-rate">₦4,800 <span>/ session</span></div>
+                                        <a href="tutor-profile.html" class="tt-btn tt-btn-primary tt-btn-sm">View Profile</a>
+                                   </div>
+                              </div>
+                         </div>
+
+                    </div><!-- /row -->
+
+                    <!-- Pagination -->
+                    <div style="text-align:center; margin-top:16px;">
+                         <ul class="pagination" style="display:inline-flex; gap:4px; list-style:none; padding:0;">
+                              <li><a href="#" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--tt-radius);border:2px solid var(--tt-border);font-weight:700;color:var(--tt-muted);font-size:14px;">&#8249;</a></li>
+                              <li><a href="#" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--tt-radius);background:var(--tt-teal);color:#fff;font-weight:800;font-size:14px;">1</a></li>
+                              <li><a href="#" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--tt-radius);border:2px solid var(--tt-border);font-weight:700;color:var(--tt-text-2);font-size:14px;">2</a></li>
+                              <li><a href="#" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--tt-radius);border:2px solid var(--tt-border);font-weight:700;color:var(--tt-text-2);font-size:14px;">3</a></li>
+                              <li><a href="#" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--tt-radius);border:2px solid var(--tt-border);font-weight:700;color:var(--tt-muted);font-size:14px;">&#8250;</a></li>
+                         </ul>
+                    </div>
+
+               </div><!-- /col -->
+          </div><!-- /row -->
+     </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-4 col-sm-6">
+                    <a href="index.html" style="font-family:var(--tt-font-head);font-size:26px;font-weight:900;color:var(--tt-teal);text-decoration:none;display:inline-block;margin-bottom:12px;">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+                    <p>Nigeria's trusted private tutoring platform. Connecting families with verified tutors for home-based and online sessions.</p>
+                    <ul class="social-icon">
+                         <li><a href="https://facebook.com/2tors.ng" target="_blank" class="fa fa-facebook-square"></a></li>
+                         <li><a href="https://twitter.com/2tors.ng" target="_blank" class="fa fa-twitter"></a></li>
+                         <li><a href="https://instagram.com/2tors.ng" target="_blank" class="fa fa-instagram"></a></li>
+                         <li><a href="https://linkedin.com/company/2tors.ng" target="_blank" class="fa fa-linkedin"></a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Platform</h2>
+                    <ul>
+                         <li class="active"><a href="browse-tutors.html">Find a Tutor</a></li>
+                         <li><a href="dashboards/signup-tutor.html">Become a Tutor</a></li>
+                         <li><a href="how-it-works.html">How It Works</a></li>
+                         <li><a href="pricing-plans.html">Pricing</a></li>
+                         <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Company</h2>
+                    <ul>
+                         <li><a href="about.html">About Us</a></li>
+                         <li><a href="blog.html">Blog</a></li>
+                         <li><a href="contact.html">Contact</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Legal</h2>
+                    <ul>
+                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                         <li><a href="terms-of-service.html">Terms of Service</a></li>
+                         <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                         <li><a href="refund-policy.html">Refund Policy</a></li>
+                         <li><a href="code-of-conduct.html">Code of Conduct</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-12">
+                    <h2>Stay Updated</h2>
+                    <p style="font-size:13px;">Get tutor tips and platform news in your inbox.</p>
+                    <div class="newsletter-form">
+                         <form action="index.html" method="get">
+                              <input type="email" class="form-control" placeholder="Your email" name="email" required>
+                              <input type="submit" value="Subscribe" style="margin-top:0;">
+                         </form>
+                    </div>
+               </div>
+          </div>
+          <div class="footer-bottom">
+               <p>&copy; 2026 2tors.ng — Learnroom Technology. All rights reserved.</p>
+               <p>Made with <span style="color:var(--tt-orange);">&#9829;</span> in Nigeria</p>
+          </div>
+     </div>
+</footer>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/learnroom.js"></script>
+<script src="js/custom.js"></script>
+<script>
+$(window).scroll(function(){
+     if($(this).scrollTop() > 60) $('.custom-navbar').addClass('scrolled');
+     else $('.custom-navbar').removeClass('scrolled');
+});
+</script>
+</body>
+</html>

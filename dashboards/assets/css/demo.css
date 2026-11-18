@@ -1,0 +1,88 @@
+/* ============================================================
+   2TORS.NG — Dashboard Demo / Component Overrides
+   ============================================================ */
+
+/* Upgrade button (sidebar) */
+.update-pro { margin: 15px 10px; }
+.update-pro button {
+     padding: 13px 20px;
+     background: linear-gradient(135deg, var(--tt-orange), var(--tt-yellow-dark));
+     color: #fff;
+     border-radius: var(--tt-radius);
+     width: 100%;
+     border: 0;
+     cursor: pointer;
+     font-family: var(--tt-font-body);
+     font-size: 13px;
+     font-weight: 800;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     transition: var(--tt-transition);
+}
+.update-pro button:hover {
+     transform: translateY(-2px);
+     box-shadow: var(--tt-shadow-orange);
+}
+.update-pro button p, .update-pro button i {
+     color: #fff !important;
+     margin-bottom: 0;
+}
+.update-pro button i {
+     font-size: 20px;
+}
+
+/* Chart containers */
+.chart { min-height: 220px; }
+.chart-circle { text-align: center; padding: 20px 0; }
+.chart-pie { min-height: 200px; }
+
+/* Map placeholder */
+.mapcontainer .map {
+     background: var(--tt-bg-soft);
+     border-radius: var(--tt-radius);
+     min-height: 220px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: var(--tt-muted);
+     font-size: 13px;
+     font-weight: 600;
+     border: 2px dashed var(--tt-border);
+}
+
+/* Demo form elements */
+.demo .btn { margin-bottom: 10px !important; }
+.demo .progress { margin-bottom: 12px !important; }
+.demo .form-check-label { margin-right: 12px; }
+
+/* Typo demo table */
+.table-typo tbody > tr > td { border-color: var(--tt-border-soft); }
+.table-typo tbody > tr > td:first-child { min-width: 200px; vertical-align: bottom; }
+.table-typo tbody > tr > td:first-child p { font-size: 14px; color: var(--tt-text); }
+
+/* Icon grid */
+.demo-icon {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     gap: 12px;
+     margin-bottom: 16px;
+     padding: 10px;
+     border-radius: var(--tt-radius-sm);
+     transition: var(--tt-transition);
+}
+.demo-icon:hover {
+     background: var(--tt-bg-soft);
+}
+.demo-icon i {
+     font-size: 22px;
+     color: var(--tt-teal);
+     width: 32px;
+     text-align: center;
+}
+.demo-icon span {
+     font-size: 13px;
+     color: var(--tt-text-2);
+     font-weight: 600;
+}

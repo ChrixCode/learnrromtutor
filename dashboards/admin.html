@@ -1,0 +1,489 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard — 2tors.ng</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,shrink-to-fit=no"/>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/learnroom-tokens.css">
+  <link rel="stylesheet" href="assets/css/ready.css">
+  <link rel="stylesheet" href="assets/css/demo.css">
+  <link rel="stylesheet" href="assets/css/dashboard-responsive.css">
+  <style>
+    .verif-card{background:var(--tt-white);border-radius:var(--tt-radius-lg);border:1px solid var(--tt-border-soft);box-shadow:var(--tt-shadow-xs);padding:18px;margin-bottom:14px;display:flex;align-items:flex-start;gap:14px;}
+    .verif-card:hover{border-color:var(--tt-teal);box-shadow:var(--tt-shadow-teal);}
+    .verif-info{flex:1;}
+    .verif-name{font-weight:800;font-size:14px;color:var(--tt-text);}
+    .verif-meta{font-size:12px;color:var(--tt-muted);margin-top:3px;}
+    .verif-docs{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+    .verif-doc{font-size:11px;font-weight:700;color:var(--tt-teal);background:var(--tt-teal-soft);padding:3px 8px;border-radius:var(--tt-radius-sm);}
+    .verif-actions{display:flex;gap:6px;flex-direction:column;flex-shrink:0;}
+    .incident-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--tt-border-soft);}
+    .severity-high{background:var(--tt-danger-soft);color:var(--tt-danger);}
+    .severity-medium{background:var(--tt-orange-soft);color:var(--tt-orange-dark);}
+    .severity-low{background:var(--tt-yellow-soft);color:#7a5c00;}
+  </style>
+</head>
+<body data-lr-shell="admin">
+<div class="wrapper">
+
+<!-- TOP BAR -->
+<div class="main-header">
+  <div class="logo-header">
+    <a href="../index.html" class="logo" style="font-weight:900;color:var(--tt-teal);font-family:var(--tt-font-head);">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+    <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"><span class="navbar-toggler-icon"></span></button>
+    <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+  </div>
+  <nav class="navbar navbar-header navbar-expand-lg">
+    <div class="container-fluid">
+      <form class="navbar-left navbar-form nav-search mr-md-3">
+        <div class="input-group">
+          <input type="text" placeholder="Search users, tutors…" class="form-control">
+          <div class="input-group-append"><span class="input-group-text"><i class="la la-search search-icon"></i></span></div>
+        </div>
+      </form>
+      <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+        <li class="nav-item dropdown hidden-caret">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-bell"></i><span class="notification">8</span></a>
+          <ul class="dropdown-menu notif-box">
+            <li><div class="dropdown-title">8 new notifications</div></li>
+            <li><div class="notif-center">
+              <a href="#section-verification"><div class="notif-icon notif-primary"><i class="la la-id-card"></i></div><div class="notif-content"><span class="block">3 new tutor verification requests pending review</span><span class="time">2 hours ago</span></div></a>
+              <a href="#section-safeguarding"><div class="notif-icon notif-danger"><i class="la la-exclamation-triangle"></i></div><div class="notif-content"><span class="block">New safeguarding incident reported — Severity: High</span><span class="time">4 hours ago</span></div></a>
+              <a href="#section-complaints"><div class="notif-icon notif-warning"><i class="la la-ticket"></i></div><div class="notif-content"><span class="block">5 new support tickets unassigned</span><span class="time">Today</span></div></a>
+            </div></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="assets/img/profile.jpg" alt="admin" width="36" class="img-circle"><span>Platform Admin</span></a>
+          <ul class="dropdown-menu dropdown-user">
+            <li><div class="user-box"><div class="u-img"><img src="assets/img/profile.jpg" alt="admin"></div><div class="u-text"><h4>Platform Admin</h4><p class="text-muted">admin@2tors.ng</p></div></div></li>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="login.html"><i class="la la-sign-out"></i> Logout</a>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="scrollbar-inner sidebar-wrapper">
+    <div class="user">
+      <div class="photo"><img src="assets/img/profile.jpg"></div>
+      <div class="info">
+        <a data-toggle="collapse" href="#collapseUser"><span>Platform Admin<span class="user-level">Administrator</span><span class="caret"></span></span></a>
+        <div class="collapse in" id="collapseUser"><ul class="nav"><li><a href="login.html"><span class="link-collapse">Logout</span></a></li></ul></div>
+      </div>
+    </div>
+    <ul class="nav" data-lr-nav="admin"></ul>
+  </div>
+</div>
+
+<!-- MAIN PANEL -->
+<div class="main-panel">
+<div class="content">
+<div class="container-fluid">
+
+<!-- ===== DASHBOARD ===== -->
+<div id="section-dashboard" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-magenta-soft);color:var(--tt-magenta);"><i class="la la-dashboard"></i></span> Platform Overview</h4>
+  <div class="row">
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-primary"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-users"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Total Users</p><h4 class="card-title">9,842</h4></div></div></div></div><div class="card-footer"><hr><div class="stats"><i class="la la-arrow-up" style="color:var(--tt-success);"></i> +234 this week</div></div></div></div>
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-success"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-id-card"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Verified Tutors</p><h4 class="card-title">1,187</h4></div></div></div></div><div class="card-footer"><hr><div class="stats"><i class="la la-clock-o"></i> 28 pending review</div></div></div></div>
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-warning"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-calendar"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Active Bookings</p><h4 class="card-title">342</h4></div></div></div></div><div class="card-footer"><hr><div class="stats"><i class="la la-check-circle"></i> This month</div></div></div></div>
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-danger"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-exclamation-triangle"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Pending Reviews</p><h4 class="card-title">28</h4></div></div></div></div><div class="card-footer"><hr><div class="stats"><i class="la la-clock-o"></i> Needs attention</div></div></div></div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card"><div class="card-header"><h4 class="card-title">Quick Actions</h4></div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:10px;">
+          <button class="btn btn-primary btn-rounded btn-full" onclick="showSection('section-verification')"><i class="la la-id-card"></i> Review Tutor Applications (28)</button>
+          <button class="btn btn-warning btn-rounded btn-full" onclick="showSection('section-users')"><i class="la la-users"></i> New User Registrations (12)</button>
+          <button class="btn btn-danger btn-rounded btn-full" onclick="showSection('section-safeguarding')"><i class="la la-shield"></i> Safeguarding Cases (2 High)</button>
+          <button class="btn btn-default btn-rounded btn-full" onclick="showSection('section-complaints')"><i class="la la-ticket"></i> Support Tickets (12 open)</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card"><div class="card-header"><h4 class="card-title">Recent Registrations</h4></div>
+        <div class="card-body" style="padding:0;">
+          <table class="table">
+            <thead><tr><th>Name</th><th>Role</th><th>Joined</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Mr. Tunde Bankole</strong><br><small>tunde.b@email.com</small></td><td><span class="tt-badge tt-badge-orange">Tutor</span></td><td>26 Nov 2026</td><td><span class="status-badge status-pending">Pending Review</span></td><td><button class="btn btn-sm btn-primary btn-rounded" onclick="showSection('section-verification')">Review</button></td></tr>
+              <tr><td><strong>Mrs. Adaeze Obi</strong><br><small>adaeze@email.com</small></td><td><span class="tt-badge tt-badge-teal">Parent</span></td><td>26 Nov 2026</td><td><span class="status-badge status-active">Active</span></td><td><button class="btn btn-sm btn-default btn-rounded">View</button></td></tr>
+              <tr><td><strong>Excellence Primary School</strong><br><small>admin@excellence.edu.ng</small></td><td><span class="tt-badge tt-badge-teal">Parent</span></td><td>25 Nov 2026</td><td><span class="status-badge status-pending">Pending Review</span></td><td><button class="btn btn-sm btn-primary btn-rounded" onclick="showSection('section-schools')">Review</button></td></tr>
+              <tr><td><strong>Mr. Chukwudi Eze</strong><br><small>chukwudi.e@email.com</small></td><td><span class="tt-badge tt-badge-orange">Tutor</span></td><td>24 Nov 2026</td><td><span class="status-badge status-pending">Pending Review</span></td><td><button class="btn btn-sm btn-primary btn-rounded" onclick="showSection('section-verification')">Review</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== USERS ===== -->
+<div id="section-users" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-teal-soft);color:var(--tt-teal);"><i class="la la-users"></i></span> User Management</h4>
+  <div class="card"><div class="card-header">
+    <h4 class="card-title">All Users</h4>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <input type="text" class="form-control" placeholder="Search by name or email…" style="width:220px;height:36px;">
+      <select class="form-control" style="width:140px;height:36px;"><option>All Roles</option><option>Parent</option><option>Tutor</option><option>School Admin</option></select>
+      <select class="form-control" style="width:140px;height:36px;"><option>All Status</option><option>Active</option><option>Pending</option><option>Suspended</option></select>
+    </div>
+  </div>
+    <div class="card-body" style="padding:0;">
+      <table class="table">
+        <thead><tr><th>Name / Email</th><th>Role</th><th>Status</th><th>Joined</th><th>Actions</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Mrs. Ngozi Adeyemi</strong><br><small style="color:var(--tt-muted);">ngozi@email.com</small></td><td><span class="tt-badge tt-badge-teal">Parent</span></td><td><span class="status-badge status-active">Active</span></td><td>12 Oct 2026</td><td><button class="btn btn-sm btn-default btn-rounded">View</button> <button class="btn btn-sm btn-warning btn-rounded">Suspend</button></td></tr>
+          <tr><td><strong>Dr. Adebayo Okafor</strong><br><small style="color:var(--tt-muted);">adebayo@email.com</small></td><td><span class="tt-badge tt-badge-orange">Tutor</span></td><td><span class="status-badge status-verified">Verified</span></td><td>8 Sep 2026</td><td><button class="btn btn-sm btn-default btn-rounded">View</button> <button class="btn btn-sm btn-warning btn-rounded">Suspend</button></td></tr>
+          <tr><td><strong>Mr. Chukwudi Eze</strong><br><small style="color:var(--tt-muted);">chukwudi@email.com</small></td><td><span class="tt-badge tt-badge-orange">Tutor</span></td><td><span class="status-badge status-pending">Pending</span></td><td>24 Nov 2026</td><td><button class="btn btn-sm btn-primary btn-rounded" onclick="showSection('section-verification')">Review</button></td></tr>
+          <tr><td><strong>Excellence Primary School</strong><br><small style="color:var(--tt-muted);">admin@excellence.edu.ng</small></td><td><span class="tt-badge tt-badge-teal">Parent</span></td><td><span class="status-badge status-pending">Pending</span></td><td>25 Nov 2026</td><td><button class="btn btn-sm btn-primary btn-rounded" onclick="showSection('section-schools')">Review</button></td></tr>
+          <tr><td><strong>Mrs. Bola Oduya</strong><br><small style="color:var(--tt-muted);">bola.o@email.com</small></td><td><span class="tt-badge tt-badge-teal">Parent</span></td><td><span class="status-badge status-suspended">Suspended</span></td><td>3 Nov 2026</td><td><button class="btn btn-sm btn-success btn-rounded">Reinstate</button> <button class="btn btn-sm btn-danger btn-rounded">Delete</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">Showing 5 of 9,842 users. <a href="#">Next page &rarr;</a></div>
+  </div>
+</div>
+
+<!-- ===== TUTOR VERIFICATION ===== -->
+<div id="section-verification" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-teal-soft);color:var(--tt-teal);"><i class="la la-id-card"></i></span> Tutor Verification Queue <span class="status-badge status-pending" style="font-size:11px;margin-left:8px;">28 pending</span></h4>
+  <div class="row">
+    <div class="col-md-8">
+      <!-- Application 1 -->
+      <div class="verif-card">
+        <img src="assets/img/profile.jpg" style="width:52px;height:52px;border-radius:50%;object-fit:cover;">
+        <div class="verif-info">
+          <div class="verif-name">Mr. Tunde Bankole</div>
+          <div class="verif-meta">tunde.b@email.com · Mathematics, Further Maths · Lagos · Submitted: 26 Nov 2026</div>
+          <div class="verif-docs">
+            <span class="verif-doc"><i class="la la-id-card"></i> National ID</span>
+            <span class="verif-doc"><i class="la la-graduation-cap"></i> BSc Mathematics</span>
+          </div>
+          <div style="margin-top:8px;"><input type="text" class="form-control" placeholder="Reviewer note (optional)…" style="font-size:12px;height:34px;"></div>
+        </div>
+        <div class="verif-actions">
+          <button class="btn btn-success btn-sm btn-rounded"><i class="la la-check"></i> Approve</button>
+          <button class="btn btn-danger btn-sm btn-rounded"><i class="la la-times"></i> Reject</button>
+          <button class="btn btn-warning btn-sm btn-rounded"><i class="la la-info-circle"></i> More Info</button>
+        </div>
+      </div>
+      <!-- Application 2 -->
+      <div class="verif-card">
+        <img src="assets/img/profile.jpg" style="width:52px;height:52px;border-radius:50%;object-fit:cover;">
+        <div class="verif-info">
+          <div class="verif-name">Miss Yetunde Adesanya</div>
+          <div class="verif-meta">yetunde@email.com · English Language, Literature · Ibadan · Submitted: 25 Nov 2026</div>
+          <div class="verif-docs">
+            <span class="verif-doc"><i class="la la-id-card"></i> International Passport</span>
+            <span class="verif-doc"><i class="la la-graduation-cap"></i> BA English</span>
+            <span class="verif-doc"><i class="la la-file-text"></i> NYSC Certificate</span>
+          </div>
+          <div style="margin-top:8px;"><input type="text" class="form-control" placeholder="Reviewer note (optional)…" style="font-size:12px;height:34px;"></div>
+        </div>
+        <div class="verif-actions">
+          <button class="btn btn-success btn-sm btn-rounded"><i class="la la-check"></i> Approve</button>
+          <button class="btn btn-danger btn-sm btn-rounded"><i class="la la-times"></i> Reject</button>
+          <button class="btn btn-warning btn-sm btn-rounded"><i class="la la-info-circle"></i> More Info</button>
+        </div>
+      </div>
+      <!-- Application 3 -->
+      <div class="verif-card">
+        <img src="assets/img/profile.jpg" style="width:52px;height:52px;border-radius:50%;object-fit:cover;">
+        <div class="verif-info">
+          <div class="verif-name">Mr. Chukwudi Eze</div>
+          <div class="verif-meta">chukwudi@email.com · Physics, Chemistry · Enugu · Submitted: 24 Nov 2026</div>
+          <div class="verif-docs">
+            <span class="verif-doc"><i class="la la-id-card"></i> National ID</span>
+            <span class="verif-doc"><i class="la la-graduation-cap"></i> MSc Physics</span>
+          </div>
+          <div style="margin-top:8px;"><input type="text" class="form-control" placeholder="Reviewer note (optional)…" style="font-size:12px;height:34px;"></div>
+        </div>
+        <div class="verif-actions">
+          <button class="btn btn-success btn-sm btn-rounded"><i class="la la-check"></i> Approve</button>
+          <button class="btn btn-danger btn-sm btn-rounded"><i class="la la-times"></i> Reject</button>
+          <button class="btn btn-warning btn-sm btn-rounded"><i class="la la-info-circle"></i> More Info</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card"><div class="card-header"><h4 class="card-title">Verification Summary</h4></div>
+        <div class="card-body">
+          <div class="quick-stat"><h3 style="color:var(--tt-yellow-dark);">28</h3><p>Pending review</p></div>
+          <div class="quick-stat"><h3 style="color:var(--tt-success);">1,187</h3><p>Approved tutors</p></div>
+          <div class="quick-stat"><h3 style="color:var(--tt-danger);">43</h3><p>Rejected this month</p></div>
+          <div class="quick-stat"><h3 style="color:var(--tt-muted);">8</h3><p>Awaiting more info</p></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:0;"><div class="card-header"><h4 class="card-title">Verification Checklist</h4></div>
+        <div class="card-body" style="font-size:13px;">
+          <p style="font-weight:700;color:var(--tt-text);margin-bottom:8px;">Before approving, confirm:</p>
+          <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;"><i class="la la-check-circle" style="color:var(--tt-teal);font-size:16px;margin-top:1px;"></i><span>Valid government-issued ID matches profile name</span></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;"><i class="la la-check-circle" style="color:var(--tt-teal);font-size:16px;margin-top:1px;"></i><span>Qualification certificate is relevant to claimed subject</span></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;"><i class="la la-check-circle" style="color:var(--tt-teal);font-size:16px;margin-top:1px;"></i><span>Documents appear authentic (not digitally altered)</span></div>
+          <div style="display:flex;align-items:flex-start;gap:8px;"><i class="la la-check-circle" style="color:var(--tt-teal);font-size:16px;margin-top:1px;"></i><span>No previous suspension or safeguarding flag on account</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STUDENTS ===== -->
+<div id="section-students" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:#e8f4fc;color:#0288d1;"><i class="la la-university"></i></span> Platform Overview</h4>
+  <div class="card"><div class="card-header"><h4 class="card-title">School Applications</h4></div>
+    <div class="card-body">
+      <!-- School 1 -->
+      <div class="verif-card" style="margin-bottom:16px;">
+        <div style="width:52px;height:52px;border-radius:var(--tt-radius);background:#e8f4fc;color:#0288d1;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;"><i class="la la-university"></i></div>
+        <div class="verif-info">
+          <div class="verif-name">Excellence Primary School</div>
+          <div class="verif-meta">admin@excellence.edu.ng · Lagos State · Reg No: CAC/ED/2019/0042 · Submitted: 25 Nov 2026</div>
+          <div class="verif-docs">
+            <span class="verif-doc"><i class="la la-file-text"></i> CAC Registration</span>
+            <span class="verif-doc"><i class="la la-file-text"></i> SUBEB Approval Letter</span>
+          </div>
+        </div>
+        <div class="verif-actions">
+          <button class="btn btn-success btn-sm btn-rounded"><i class="la la-check"></i> Approve</button>
+          <button class="btn btn-danger btn-sm btn-rounded"><i class="la la-times"></i> Reject</button>
+        </div>
+      </div>
+      <!-- School 2 -->
+      <div class="verif-card" style="margin-bottom:16px;">
+        <div style="width:52px;height:52px;border-radius:var(--tt-radius);background:#e8f4fc;color:#0288d1;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;"><i class="la la-university"></i></div>
+        <div class="verif-info">
+          <div class="verif-name">Bright Futures Secondary School</div>
+          <div class="verif-meta">info@brightfutures.edu.ng · Abuja (FCT) · Reg No: CAC/ED/2015/0188 · Submitted: 22 Nov 2026</div>
+          <div class="verif-docs">
+            <span class="verif-doc"><i class="la la-file-text"></i> CAC Registration</span>
+            <span class="verif-doc"><i class="la la-file-text"></i> NECO Approval</span>
+            <span class="verif-doc"><i class="la la-id-card"></i> Principal ID</span>
+          </div>
+        </div>
+        <div class="verif-actions">
+          <button class="btn btn-success btn-sm btn-rounded"><i class="la la-check"></i> Approve</button>
+          <button class="btn btn-danger btn-sm btn-rounded"><i class="la la-times"></i> Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BOOKINGS ===== -->
+<div id="section-bookings" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-teal-soft);color:var(--tt-teal);"><i class="la la-calendar"></i></span> Booking Overview</h4>
+  <div class="row" style="margin-bottom:20px;">
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-primary"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-calendar-check-o"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Confirmed</p><h4 class="card-title">289</h4></div></div></div></div></div></div>
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-success"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-check-circle"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Completed</p><h4 class="card-title">2,841</h4></div></div></div></div></div></div>
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-warning"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-hourglass-half"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Pending</p><h4 class="card-title">53</h4></div></div></div></div></div></div>
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-danger"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-times-circle"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Cancelled</p><h4 class="card-title">124</h4></div></div></div></div></div></div>
+  </div>
+  <div class="card"><div class="card-header"><h4 class="card-title">Recent Bookings</h4></div>
+    <div class="card-body" style="padding:0;">
+      <table class="table">
+        <thead><tr><th>ID</th><th>Parent / Child</th><th>Tutor</th><th>Subject</th><th>Date</th><th>Mode</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><small style="color:var(--tt-faint);">#BK-2026-891</small></td><td>Mrs. Ngozi Adeyemi<br><small>Chidi (JSS 2)</small></td><td>Dr. Adebayo Okafor</td><td>Mathematics</td><td>28 Nov 2026</td><td><span class="tt-badge tt-badge-teal">Home</span></td><td><span class="status-badge status-scheduled">Confirmed</span></td></tr>
+          <tr><td><small style="color:var(--tt-faint);">#BK-2026-890</small></td><td>Mr. Chukwuemeka Obi<br><small>Temi (Primary 5)</small></td><td>Mrs. Chidinma Eze</td><td>English</td><td>27 Nov 2026</td><td><span class="tt-badge tt-badge-magenta">Online</span></td><td><span class="status-badge status-completed">Completed</span></td></tr>
+          <tr><td><small style="color:var(--tt-faint);">#BK-2026-889</small></td><td>Mrs. Amaka Okonkwo<br><small>Dayo (Primary 6)</small></td><td>Mr. Emeka Nwachukwu</td><td>Mathematics</td><td>26 Nov 2026</td><td><span class="tt-badge tt-badge-teal">Home</span></td><td><span class="status-badge status-completed">Completed</span></td></tr>
+          <tr><td><small style="color:var(--tt-faint);">#BK-2026-888</small></td><td>Mr. Biodun Fashola<br><small>Kemi (SSS 3)</small></td><td>Dr. Adebayo Okafor</td><td>WAEC Maths</td><td>25 Nov 2026</td><td><span class="tt-badge tt-badge-magenta">Online</span></td><td><span class="status-badge status-scheduled">Confirmed</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CATEGORIES ===== -->
+<div id="section-categories" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-orange-soft);color:var(--tt-orange);"><i class="la la-tags"></i></span> Subjects &amp; Categories</h4>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card"><div class="card-header"><h4 class="card-title">Add Subject</h4></div>
+        <div class="card-body">
+          <div class="form-group"><label class="tt-label">Subject Name</label><input type="text" class="form-control" placeholder="e.g. Further Mathematics"></div>
+          <div class="form-group"><label class="tt-label">Category</label>
+            <select class="form-control"><option>Sciences</option><option>Humanities</option><option>Languages</option><option>Technology</option><option>Arts</option><option>Business</option><option>Test Prep</option></select></div>
+          <div class="form-group"><label class="tt-label">Description</label><textarea class="form-control" rows="3" placeholder="Brief description…"></textarea></div>
+          <button class="btn btn-primary btn-rounded btn-full"><i class="la la-plus"></i> Add Subject</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card"><div class="card-header"><h4 class="card-title">Active Subjects (40)</h4></div>
+        <div class="card-body" style="padding:0;">
+          <table class="table">
+            <thead><tr><th>Subject</th><th>Category</th><th>Tutors</th><th>Bookings</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Mathematics</strong></td><td>Sciences</td><td>312</td><td>1,842</td><td><span class="status-badge status-active">Active</span></td><td><button class="btn btn-sm btn-warning btn-rounded">Edit</button></td></tr>
+              <tr><td><strong>English Language</strong></td><td>Humanities</td><td>245</td><td>1,423</td><td><span class="status-badge status-active">Active</span></td><td><button class="btn btn-sm btn-warning btn-rounded">Edit</button></td></tr>
+              <tr><td><strong>Further Mathematics</strong></td><td>Sciences</td><td>178</td><td>892</td><td><span class="status-badge status-active">Active</span></td><td><button class="btn btn-sm btn-warning btn-rounded">Edit</button></td></tr>
+              <tr><td><strong>Physics</strong></td><td>Sciences</td><td>203</td><td>934</td><td><span class="status-badge status-active">Active</span></td><td><button class="btn btn-sm btn-warning btn-rounded">Edit</button></td></tr>
+              <tr><td><strong>Robotics</strong></td><td>Technology</td><td>42</td><td>186</td><td><span class="status-badge status-active">Active</span></td><td><button class="btn btn-sm btn-warning btn-rounded">Edit</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SAFEGUARDING ===== -->
+<div id="section-safeguarding" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-danger-soft);color:var(--tt-danger);"><i class="la la-shield"></i></span> Safeguarding Cases</h4>
+  <div class="tt-alert tt-alert-warning"><i class="la la-lock"></i><span><strong>Restricted access.</strong> These records are confidential. Access is logged and subject to audit. Only assigned safeguarding officers may view case notes.</span></div>
+  <div class="card"><div class="card-header"><h4 class="card-title">Active Cases</h4></div>
+    <div class="card-body">
+      <div class="incident-row">
+        <div style="flex:1;"><div style="font-weight:800;font-size:14px;color:var(--tt-text);">#SG-2026-003 — Inappropriate messaging concern</div><div style="font-size:12px;color:var(--tt-muted);margin-top:3px;">Reported by parent · Child involved: ID masked · Assigned to: Officer A. Okafor · 24 Nov 2026</div></div>
+        <span class="tt-badge severity-high" style="border-radius:var(--tt-radius-pill);">High</span>
+        <span class="status-badge status-inprogress" style="margin-left:8px;">In Progress</span>
+        <button class="btn btn-sm btn-primary btn-rounded" style="margin-left:8px;">View Case</button>
+      </div>
+      <div class="incident-row">
+        <div style="flex:1;"><div style="font-weight:800;font-size:14px;color:var(--tt-text);">#SG-2026-002 — Tutor conduct complaint</div><div style="font-size:12px;color:var(--tt-muted);margin-top:3px;">Reported by parent · No child directly at risk · Assigned to: Officer B. Eze · 20 Nov 2026</div></div>
+        <span class="tt-badge severity-medium" style="border-radius:var(--tt-radius-pill);">Medium</span>
+        <span class="status-badge status-inprogress" style="margin-left:8px;">In Progress</span>
+        <button class="btn btn-sm btn-primary btn-rounded" style="margin-left:8px;">View Case</button>
+      </div>
+      <div class="incident-row" style="border-bottom:none;">
+        <div style="flex:1;"><div style="font-weight:800;font-size:14px;color:var(--tt-text);">#SG-2026-001 — Data access concern</div><div style="font-size:12px;color:var(--tt-muted);margin-top:3px;">Internal review · No child at risk · Assigned to: Platform Admin · 15 Nov 2026</div></div>
+        <span class="tt-badge severity-low" style="border-radius:var(--tt-radius-pill);">Low</span>
+        <span class="status-badge status-scheduled" style="margin-left:8px;">Under Review</span>
+        <button class="btn btn-sm btn-primary btn-rounded" style="margin-left:8px;">View Case</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SUPPORT TICKETS ===== -->
+<div id="section-complaints" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-orange-soft);color:var(--tt-orange);"><i class="la la-ticket"></i></span> Support Tickets</h4>
+  <div class="card"><div class="card-header"><h4 class="card-title">Open Tickets (12)</h4>
+    <div style="display:flex;gap:8px;"><input type="text" class="form-control" placeholder="Search…" style="width:180px;height:36px;"><select class="form-control" style="width:140px;height:36px;"><option>All</option><option>Open</option><option>In Progress</option><option>Closed</option></select></div>
+  </div>
+    <div class="card-body" style="padding:0;">
+      <table class="table">
+        <thead><tr><th>ID</th><th>User</th><th>Subject</th><th>Status</th><th>Created</th><th>Assigned To</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><small>#TKT-441</small></td><td>Mrs. Ngozi Adeyemi<br><small>Parent</small></td><td>Tutor did not show up for session</td><td><span class="status-badge status-inprogress">In Progress</span></td><td>26 Nov</td><td>Support Agent</td><td><button class="btn btn-sm btn-primary btn-rounded">View</button></td></tr>
+          <tr><td><small>#TKT-440</small></td><td>Dr. Adebayo Okafor<br><small>Tutor</small></td><td>Payout not received for October</td><td><span class="status-badge status-pending">Open</span></td><td>25 Nov</td><td><em style="color:var(--tt-faint);">Unassigned</em></td><td><button class="btn btn-sm btn-primary btn-rounded">View</button></td></tr>
+          <tr><td><small>#TKT-439</small></td><td>Excellence Primary School<br><small>School</small></td><td>Cannot invite staff members</td><td><span class="status-badge status-pending">Open</span></td><td>25 Nov</td><td><em style="color:var(--tt-faint);">Unassigned</em></td><td><button class="btn btn-sm btn-primary btn-rounded">View</button></td></tr>
+          <tr><td><small>#TKT-438</small></td><td>Mr. Taiwo Adeyemi<br><small>Parent</small></td><td>Incorrect session recorded in system</td><td><span class="status-badge status-scheduled">Resolved</span></td><td>22 Nov</td><td>Support Agent</td><td><button class="btn btn-sm btn-default btn-rounded">View</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== AUDIT LOGS ===== -->
+<div id="section-logs" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-bg-soft);color:var(--tt-muted);"><i class="la la-history"></i></span> Audit Logs</h4>
+  <div class="card"><div class="card-header"><h4 class="card-title">System Audit Trail</h4>
+    <div style="display:flex;gap:8px;"><input type="text" class="form-control" placeholder="Filter by user or action…" style="width:220px;height:36px;"><select class="form-control" style="width:160px;height:36px;"><option>All Actions</option><option>Login</option><option>Verification</option><option>Suspension</option><option>Data Access</option></select></div>
+  </div>
+    <div class="card-body" style="padding:0;">
+      <table class="table">
+        <thead><tr><th>Timestamp</th><th>Actor</th><th>Action</th><th>Entity</th><th>Entity ID</th></tr></thead>
+        <tbody>
+          <tr><td><small>2026-11-26 14:32:11</small></td><td>Platform Admin</td><td><span class="tt-badge tt-badge-teal">Approve</span></td><td>Tutor Account</td><td><small style="color:var(--tt-faint);">usr_a4f8...</small></td></tr>
+          <tr><td><small>2026-11-26 13:15:04</small></td><td>Platform Admin</td><td><span class="tt-badge tt-badge-danger" style="background:var(--tt-danger-soft);color:var(--tt-danger);">Suspend</span></td><td>User Account</td><td><small style="color:var(--tt-faint);">usr_b9d2...</small></td></tr>
+          <tr><td><small>2026-11-26 11:44:22</small></td><td>Officer A. Okafor</td><td><span class="tt-badge tt-badge-magenta">Case Note</span></td><td>Safeguarding Case</td><td><small style="color:var(--tt-faint);">sg_2026_003</small></td></tr>
+          <tr><td><small>2026-11-26 10:03:58</small></td><td>Platform Admin</td><td><span class="tt-badge tt-badge-orange">Reject</span></td><td>Tutor Application</td><td><small style="color:var(--tt-faint);">usr_c1e7...</small></td></tr>
+          <tr><td><small>2026-11-25 17:22:09</small></td><td>Platform Admin</td><td><span class="tt-badge tt-badge-teal">Approve</span></td><td>School Application</td><td><small style="color:var(--tt-faint);">sch_0441</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer"><small style="color:var(--tt-muted);">Audit logs are append-only and cannot be modified. Showing most recent 5 of 48,923 entries.</small></div>
+  </div>
+</div>
+
+<!-- ===== PLATFORM CONFIG ===== -->
+<div id="section-config" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-bg-soft);color:var(--tt-muted);"><i class="la la-cog"></i></span> Platform Settings</h4>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card"><div class="card-header"><h4 class="card-title">General Settings</h4></div>
+        <div class="card-body">
+          <div class="form-group"><label class="tt-label">Platform Name</label><input type="text" class="form-control" value="2tors.ng"></div>
+          <div class="form-group"><label class="tt-label">Support Email</label><input type="email" class="form-control" value="hello@2tors.ng"></div>
+          <div class="form-group"><label class="tt-label">Support Phone</label><input type="tel" class="form-control" value="+234 (0) 800 2TORS NG"></div>
+          <div class="form-group"><label class="tt-label">Platform Commission (%)</label><input type="number" class="form-control" value="10" min="0" max="50"></div>
+          <div class="form-group"><label class="tt-label">Max Advance Booking (days)</label><input type="number" class="form-control" value="30"></div>
+          <div class="form-group"><label class="tt-label">Minimum Payout (₦)</label><input type="number" class="form-control" value="10000"></div>
+          <div class="form-group" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;">
+            <div><div style="font-weight:700;font-size:13px;">Require tutor verification before bookings</div><div style="font-size:11px;color:var(--tt-muted);">Unverified tutors cannot appear in search</div></div>
+            <input type="checkbox" checked style="width:18px;height:18px;accent-color:var(--tt-teal);">
+          </div>
+          <button class="btn btn-primary btn-rounded"><i class="la la-save"></i> Save Settings</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card"><div class="card-header"><h4 class="card-title">Roles &amp; Permissions</h4></div>
+        <div class="card-body" style="padding:0;">
+          <table class="table">
+            <thead><tr><th>User</th><th>Current Role(s)</th><th>Change Role</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><strong>Officer A. Okafor</strong></td><td><span class="tt-badge tt-badge-magenta">Safeguarding</span></td><td><select class="form-control" style="height:32px;font-size:12px;"><option>safeguarding_officer</option><option>platform_admin</option><option>reviewer</option></select></td><td><button class="btn btn-sm btn-primary btn-rounded">Save</button></td></tr>
+              <tr><td><strong>Miss Zara Yusuf</strong></td><td><span class="tt-badge tt-badge-teal">Reviewer</span></td><td><select class="form-control" style="height:32px;font-size:12px;"><option selected>reviewer</option><option>platform_admin</option><option>safeguarding_officer</option></select></td><td><button class="btn btn-sm btn-primary btn-rounded">Save</button></td></tr>
+              <tr><td><strong>Mr. John Obi</strong></td><td><span class="tt-badge tt-badge-orange">Support</span></td><td><select class="form-control" style="height:32px;font-size:12px;"><option>support_agent</option><option>reviewer</option></select></td><td><button class="btn btn-sm btn-primary btn-rounded">Save</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== REPORTS ===== -->
+<div id="section-reports" class="dashboard-section">
+  <h4 class="page-title"><span class="page-title-icon" style="background:var(--tt-yellow-soft);color:var(--tt-yellow-dark);"><i class="la la-bar-chart"></i></span> Reports &amp; Analytics</h4>
+  <div class="row">
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-primary"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-users"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">New Users (Nov)</p><h4 class="card-title">843</h4></div></div></div></div></div></div>
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-success"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-calendar-check-o"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Sessions (Nov)</p><h4 class="card-title">2,841</h4></div></div></div></div></div></div>
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-warning"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-money"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">GMV (Nov)</p><h4 class="card-title" style="font-size:17px;">₦14.2M</h4></div></div></div></div></div></div>
+    <div class="col-md-3 col-sm-6"><div class="card card-stats card-danger"><div class="card-body"><div class="row"><div class="col-5"><div class="icon-big text-center"><i class="la la-percent"></i></div></div><div class="col-7 d-flex align-items-center"><div class="numbers"><p class="card-category">Commission (Nov)</p><h4 class="card-title" style="font-size:17px;">₦1.42M</h4></div></div></div></div></div></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6"><div class="card"><div class="card-header"><h4 class="card-title">Top 5 Subjects by Bookings</h4></div><div class="card-body">
+      <div class="progress-card"><div class="d-flex"><span>Mathematics</span><span style="margin-left:auto;font-weight:800;">1,842</span></div><div class="progress"><div class="progress-bar" role="progressbar" style="width:100%"></div></div></div>
+      <div class="progress-card"><div class="d-flex"><span>English Language</span><span style="margin-left:auto;font-weight:800;">1,423</span></div><div class="progress"><div class="progress-bar bg-warning" role="progressbar" style="width:77%"></div></div></div>
+      <div class="progress-card"><div class="d-flex"><span>Physics</span><span style="margin-left:auto;font-weight:800;">934</span></div><div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width:51%"></div></div></div>
+      <div class="progress-card"><div class="d-flex"><span>Further Maths</span><span style="margin-left:auto;font-weight:800;">892</span></div><div class="progress"><div class="progress-bar bg-info" role="progressbar" style="width:48%"></div></div></div>
+      <div class="progress-card"><div class="d-flex"><span>Chemistry</span><span style="margin-left:auto;font-weight:800;">741</span></div><div class="progress"><div class="progress-bar" role="progressbar" style="width:40%;background:var(--tt-magenta)!important;"></div></div></div>
+    </div></div></div>
+    <div class="col-md-6"><div class="card"><div class="card-header"><h4 class="card-title">Sessions by Delivery Mode</h4></div><div class="card-body">
+      <div style="display:flex;justify-content:space-around;padding:20px 0;">
+        <div style="text-align:center;"><div style="font-size:48px;font-weight:900;color:var(--tt-teal);">61%</div><div style="font-weight:700;color:var(--tt-muted);font-size:13px;">Home Visits</div></div>
+        <div style="text-align:center;"><div style="font-size:48px;font-weight:900;color:var(--tt-magenta);">39%</div><div style="font-weight:700;color:var(--tt-muted);font-size:13px;">Online Sessions</div></div>
+      </div>
+    </div></div></div>
+  </div>
+</div>
+
+</div></div>
+<footer class="footer"><div class="container-fluid"><div class="copyright">&copy; 2026 2tors.ng — Platform Administration</div></div></footer>
+</div>
+
+</div>
+<script src="assets/js/core/jquery.3.2.1.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/ready.min.js"></script>
+<script src="assets/js/dashboard.js"></script>
+<script src="../js/learnroom.js"></script>
+<script src="assets/js/lrt-shell.js"></script>
+<script>
+function showSection(id){document.querySelectorAll('.dashboard-section').forEach(function(s){s.style.display='none';});var el=document.getElementById(id);if(el)el.style.display='block';document.querySelectorAll('.sidebar .nav > li').forEach(function(li){li.classList.remove('active');});var link=document.querySelector('.sidebar .nav a[href="#'+id+'"]');if(link)link.closest('li').classList.add('active');}
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.sidebar .nav a[href^="#section-"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();showSection(this.getAttribute('href').substring(1));});});});
+</script>
+</body>
+</html>

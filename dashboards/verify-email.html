@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <title>Verify Your Email — 2tors.ng</title>
+     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../css/font-awesome.min.css">
+     <link rel="stylesheet" href="../css/learnroom-tokens.css">
+     <style>
+          body{background:var(--tt-bg);min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:var(--tt-font-body);}
+          .verify-box{background:var(--tt-white);border-radius:var(--tt-radius-xl);box-shadow:var(--tt-shadow);padding:52px 44px;max-width:460px;width:100%;text-align:center;margin:20px;}
+          .verify-icon{width:88px;height:88px;border-radius:50%;background:var(--tt-teal-soft);color:var(--tt-teal);display:flex;align-items:center;justify-content:center;font-size:44px;margin:0 auto 24px;}
+          .verify-box h2{font-size:24px;font-weight:900;color:var(--tt-text);margin-bottom:10px;}
+          .verify-box p{color:var(--tt-muted);font-size:14px;line-height:1.7;margin-bottom:28px;}
+          .verify-email-hint{background:var(--tt-bg-soft);border-radius:var(--tt-radius);padding:14px 20px;font-size:14px;font-weight:700;color:var(--tt-text-2);margin-bottom:24px;}
+          .btn-resend{width:100%;background:var(--tt-orange);color:#fff;border:none;border-radius:var(--tt-radius-pill);padding:14px;font-size:14px;font-weight:800;font-family:var(--tt-font-body);cursor:pointer;transition:var(--tt-transition);margin-bottom:16px;}
+          .btn-resend:hover{background:var(--tt-orange-dark);transform:translateY(-2px);}
+          .verify-box a{color:var(--tt-teal);font-weight:700;text-decoration:none;font-size:14px;}
+          .verify-box a:hover{color:var(--tt-orange);}
+     </style>
+</head>
+<body>
+<div class="verify-box">
+     <a href="../index.html" style="font-family:var(--tt-font-head);font-size:22px;font-weight:900;color:var(--tt-teal);display:block;margin-bottom:28px;">2tors<span style="color:var(--tt-orange)">.</span>ng</a>
+     <div class="verify-icon"><i class="fa fa-envelope-open"></i></div>
+     <h2>Verify Your Email</h2>
+     <p>We've sent a verification link to your email address. Please click the link in the email to activate your account.</p>
+     <div class="verify-email-hint">📧 Check your inbox (and spam folder) for an email from <strong>hello@2tors.ng</strong></div>
+     <button class="btn-resend" onclick="showResent()"><i class="fa fa-refresh"></i> Resend Verification Email</button>
+     <div id="resent-msg" style="display:none;background:var(--tt-success-soft);color:var(--tt-success);border-radius:var(--tt-radius);padding:10px 16px;font-size:13px;font-weight:700;margin-bottom:16px;"><i class="fa fa-check-circle"></i> Email resent! Check your inbox.</div>
+     <p style="margin-bottom:0;"><a href="login.html"><i class="fa fa-check"></i> I've verified — take me to login</a></p>
+     <p style="margin-top:16px;font-size:12px;color:var(--tt-faint);">&copy; 2026 2tors.ng</p>
+</div>
+<script>function showResent(){document.getElementById('resent-msg').style.display='block';setTimeout(function(){document.getElementById('resent-msg').style.display='none';},4000);}</script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="UTF-8">
+	<title>Notifications - 2tors.ng</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/learnroom-tokens.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap">
+	<link rel="stylesheet" href="assets/css/ready.css">
+	<link rel="stylesheet" href="assets/css/demo.css">
+	<link rel="stylesheet" href="assets/css/dashboard-responsive.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main-header">
+			<div class="logo-header">
+				<a href="../index.html" class="logo" style="font-weight:900;color:var(--tt-teal);font-family:var(--tt-font-head);">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+			</div>
+			<nav class="navbar navbar-header navbar-expand-lg">
+				<div class="container-fluid">
+					<form class="navbar-left navbar-form nav-search mr-md-3" action="">
+						<div class="input-group">
+							<input type="text" placeholder="Search students, courses..." class="form-control">
+							<div class="input-group-append">
+								<span class="input-group-text">
+									<i class="la la-search search-icon"></i>
+								</span>
+							</div>
+						</div>
+					</form>
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+						<li class="nav-item dropdown hidden-caret">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="la la-envelope"></i>
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#section-messages">Messages</a>
+								<a class="dropdown-item" href="#section-messages">Inbox</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#section-messages">New Message</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown hidden-caret">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="la la-bell"></i>
+								<span class="notification">5</span>
+							</a>
+							<ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
+								<li>
+									<div class="dropdown-title">You have 5 new notifications</div>
+								</li>
+								<li>
+									<div class="notif-center">
+										<a href="#section-approval">
+											<div class="notif-icon notif-success"> <i class="la la-check"></i> </div>
+											<div class="notif-content">
+												<span class="block">Session approved by John D.</span>
+												<span class="time">10 minutes ago</span>
+											</div>
+										</a>
+										<a href="#section-schedule">
+											<div class="notif-icon notif-primary"> <i class="la la-calendar"></i> </div>
+											<div class="notif-content">
+												<span class="block">New session request from Sarah M.</span>
+												<span class="time">30 minutes ago</span>
+											</div>
+										</a>
+									</div>
+								</li>
+								<li>
+									<a class="see-all" href="#section-notifications"> <strong>See all notifications</strong> <i class="la la-angle-right"></i> </a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span>Dr. Mark Wilson</span> </a>
+							<ul class="dropdown-menu dropdown-user">
+								<li>
+									<div class="user-box">
+										<div class="u-img"><img src="assets/img/profile.jpg" alt="user"></div>
+										<div class="u-text">
+											<h4>Dr. Mark Wilson</h4>
+											<p class="text-muted">mark.wilson@example.com</p>
+											<a href="#section-profile" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+										</div>
+									</div>
+								</li>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#section-profile"><i class="la la-user"></i> My Profile</a>
+								<a class="dropdown-item" href="tutor-settings.html"><i class="la la-cog"></i> Account Setting</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="../index.html"><i class="la la-sign-out"></i> Logout</a>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="sidebar">
+			<div class="scrollbar-inner sidebar-wrapper">
+				<div class="user">
+					<div class="photo">
+						<img src="assets/img/profile.jpg">
+					</div>
+					<div class="info">
+						<a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+							<span>
+								Dr. Mark Wilson
+								<span class="user-level">Tutor</span>
+								<span class="caret"></span>
+							</span>
+						</a>
+						<div class="clearfix"></div>
+						<div class="collapse in" id="collapseExample" aria-expanded="true" style="">
+							<ul class="nav">
+								<li><a href="#section-profile"><span class="link-collapse">My Profile</span></a></li>
+								<li><a href="#section-profile"><span class="link-collapse">Edit Profile</span></a></li>
+								<li><a href="tutor-settings.html"><span class="link-collapse">Settings</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<ul class="nav">
+					<li class="nav-item"><a href="tutor.html"><i class="la la-dashboard"></i><p>Dashboard</p></a></li>
+					<li class="nav-item"><a href="tutor.html#section-profile"><i class="la la-user"></i><p>Profile Management</p></a></li>
+					<li class="nav-item"><a href="tutor.html#section-qualifications"><i class="la la-graduation-cap"></i><p>Qualifications</p></a></li>
+					<li class="nav-item"><a href="tutor.html#section-verification"><i class="la la-id-card"></i><p>Verification Docs</p></a></li>
+					<li class="nav-item"><a href="tutor.html#section-availability"><i class="la la-calendar"></i><p>Availability Calendar</p></a></li>
+					<li class="nav-item"><a href="tutor.html#section-courses"><i class="la la-book"></i><p>My Courses</p></a></li>
+					<li class="nav-item"><a href="tutor-create-course.html"><i class="la la-plus-circle"></i><p>Create Course</p></a></li>
+					<li class="nav-item"><a href="tutor.html#section-schedule"><i class="la la-clock-o"></i><p>Lesson Schedule</p></a></li>
+					<li class="nav-item"><a href="tutor-students.html"><i class="la la-users"></i><p>Students</p></a></li>
+					<li class="nav-item"><a href="tutor.html#section-assignments"><i class="la la-file-text"></i><p>Assignments</p></a></li>
+					<li class="nav-item"><a href="tutor.html#section-approval"><i class="la la-check-circle"></i><p>Session Approval</p></a></li>
+					<li class="nav-item"><a href="tutor-withdrawals.html"><i class="la la-dollar"></i><p>Earnings & Withdrawals</p></a></li>
+					<li class="nav-item"><a href="tutor.html#section-bookings"><i class="la la-history"></i><p>Booking History</p></a></li>
+					<li class="nav-item active"><a href="tutor-notifications.html"><i class="la la-bell"></i><p>Notifications</p></a></li>
+					<li class="nav-item"><a href="tutor.html#section-messages"><i class="la la-envelope"></i><p>Messages</p></a></li>
+					<li class="nav-item"><a href="tutor-performance.html"><i class="la la-bar-chart"></i><p>Performance</p></a></li>
+					<li class="nav-item"><a href="tutor-settings.html"><i class="la la-cog"></i><p>Account Settings</p></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="main-panel">
+			<div class="content">
+				<div class="container-fluid">
+					<h4 class="page-title">Notifications</h4>
+					<div class="card">
+						<div class="card-header">
+							<div class="d-flex justify-content-between">
+								<h4 class="card-title">All Notifications</h4>
+								<button class="btn btn-sm btn-link">Mark all as read</button>
+							</div>
+						</div>
+						<div class="card-body notif-center">
+							<a href="#">
+								<div class="d-flex justify-content-between">
+									<div><h6 style="margin:0;">Session Approved</h6><p class="text-muted" style="margin:2px 0 0;font-size:13px;">John D. approved the Algebra session on Mon, Jul 12</p></div>
+									<small style="color:#aaa;">10 minutes ago</small>
+								</div>
+							</a>
+							<a href="#">
+								<div class="d-flex justify-content-between">
+									<div><h6 style="margin:0;">New Session Request</h6><p class="text-muted" style="margin:2px 0 0;font-size:13px;">Sarah M. requested SAT Prep for Jul 14 at 4:30 PM</p></div>
+									<small style="color:#aaa;">30 minutes ago</small>
+								</div>
+							</a>
+							<a href="#">
+								<div class="d-flex justify-content-between">
+									<div><h6 style="margin:0;">New Review</h6><p class="text-muted" style="margin:2px 0 0;font-size:13px;">Mike R. left a 5-star review for Calculus</p></div>
+									<small style="color:#aaa;">1 hour ago</small>
+								</div>
+							</a>
+							<a href="#">
+								<div class="d-flex justify-content-between">
+									<div><h6 style="margin:0;">Payment Received</h6><p class="text-muted" style="margin:2px 0 0;font-size:13px;">$45.00 for Calculus session with Mike R. has been deposited</p></div>
+									<small style="color:#aaa;">3 hours ago</small>
+								</div>
+							</a>
+							<a href="#">
+								<div class="d-flex justify-content-between">
+									<div><h6 style="margin:0;">New Student Enrolled</h6><p class="text-muted" style="margin:2px 0 0;font-size:13px;">Emily R. enrolled in Algebra Fundamentals</p></div>
+									<small style="color:#aaa;">5 hours ago</small>
+								</div>
+							</a>
+							<a href="#">
+								<div class="d-flex justify-content-between">
+									<div><h6 style="margin:0;">Assignment Submitted</h6><p class="text-muted" style="margin:2px 0 0;font-size:13px;">John D. submitted Algebra Quiz 3 for review</p></div>
+									<small style="color:#aaa;">6 hours ago</small>
+								</div>
+							</a>
+							<a href="#">
+								<div class="d-flex justify-content-between">
+									<div><h6 style="margin:0;">System Update</h6><p class="text-muted" style="margin:2px 0 0;font-size:13px;">Platform maintenance scheduled for Jul 15, 2:00 - 4:00 AM EST</p></div>
+									<small style="color:#aaa;">1 day ago</small>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer">
+				<div class="container-fluid">
+					<nav class="pull-left">
+						<ul class="nav">
+							<li class="nav-item"><a class="nav-link" href="help.html">Help</a></li>
+							<li class="nav-item"><a class="nav-link" href="../privacy-policy.html">Privacy</a></li>
+							<li class="nav-item"><a class="nav-link" href="../terms-of-service.html">Terms</a></li>
+						</ul>
+					</nav>
+					<div class="copyright ml-auto">2026, made with <i class="la la-heart heart text-danger"></i> by <a href="../index.html">2tors.ng</a></div>
+				</div>
+			</footer>
+		</div>
+	</div>
+	<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<h6 class="modal-title"><i class="la la-frown-o"></i> Under Development</h6>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<div class="modal-body text-center">
+					<p>Currently the premium version of <b>2tors.ng for Tutors</b> is in progress development</p>
+					<p><b>We'll let you know when it's done</b></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<button id="back-to-top" title="Back to top"><i class="la la-arrow-up"></i></button>
+	<script src="assets/js/core/jquery.3.2.1.min.js"></script>
+	<script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="assets/js/core/popper.min.js"></script>
+	<script src="assets/js/core/bootstrap.min.js"></script>
+	<script src="assets/js/plugin/chartist/chartist.min.js"></script>
+	<script src="assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"></script>
+	<script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+	<script src="assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+	<script src="assets/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>
+	<script src="assets/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>
+	<script src="assets/js/plugin/chart-circle/circles.min.js"></script>
+	<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<script src="assets/js/ready.min.js"></script>
+	<script src="assets/js/demo.js"></script>
+	<script src="assets/js/dashboard.js"></script>
+</body>
+</html>

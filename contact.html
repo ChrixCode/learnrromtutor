@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Contact Us — 2tors.ng</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="Get in touch with the 2tors.ng team. We're based in Lagos, Nigeria.">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/learnroom-tokens.css">
+     <link rel="stylesheet" href="css/style.css">
+     <style>
+       .contact-info-card{display:flex;align-items:flex-start;gap:16px;padding:20px 24px;background:var(--tt-white);border-radius:var(--tt-radius-lg);border:1px solid var(--tt-border-soft);box-shadow:var(--tt-shadow-xs);margin-bottom:16px;}
+       .ci-icon{width:52px;height:52px;border-radius:var(--tt-radius);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+       .ci-info h4{font-size:14px;font-weight:900;color:var(--tt-text);margin:0 0 4px;}
+       .ci-info p,.ci-info a{font-size:14px;color:var(--tt-muted);margin:0;text-decoration:none;}
+       .ci-info a:hover{color:var(--tt-teal);}
+       .contact-form-box{background:var(--tt-white);border-radius:var(--tt-radius-xl);padding:40px;box-shadow:var(--tt-shadow);border:1px solid var(--tt-border-soft);}
+       .map-placeholder{background:var(--tt-bg-soft);border-radius:var(--tt-radius-xl);height:220px;display:flex;align-items:center;justify-content:center;border:2px dashed var(--tt-border);margin-top:16px;}
+       .form-label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tt-text-2);margin-bottom:6px;}
+       .form-field{width:100%;height:50px;padding:0 16px;border:2px solid var(--tt-border);border-radius:var(--tt-radius);font-family:var(--tt-font-body);font-size:14px;color:var(--tt-text);transition:var(--tt-transition);outline:none;display:block;margin-bottom:0;}
+       .form-field:focus{border-color:var(--tt-teal);box-shadow:0 0 0 3px rgba(0,191,165,.12);}
+       .form-field::placeholder{color:var(--tt-faint);}
+       textarea.form-field{height:140px;padding-top:14px;resize:vertical;}
+       select.form-field{appearance:none;background:var(--tt-white);}
+     </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+     <div class="container">
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+               </button>
+               <a href="index.html" class="navbar-brand">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+          </div>
+                    <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-nav-first">
+                    <li><a href="browse-tutors.html">Find a Tutor</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                              <li><a href="how-it-works.html"><i class="fa fa-play-circle"></i> How It Works</a></li>
+                              <li><a href="about.html"><i class="fa fa-info-circle"></i> About 2tors.ng</a></li>
+                              <li><a href="faq.html"><i class="fa fa-question-circle"></i> FAQ</a></li>
+                              <li><a href="blog.html"><i class="fa fa-rss"></i> Blog</a></li>
+                              <li><a href="contact.html"><i class="fa fa-envelope"></i> Contact</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><a href="contact.html"><i class="fa fa-calendar"></i> Request a Demo</a></li>
+                         </ul>
+                    </li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                    <li><a href="dashboards/login.html" style="display:inline-block;padding:9px 22px;border:2px solid var(--tt-border);border-radius:var(--tt-radius-pill);font-weight:700;font-size:14px;color:var(--tt-text-2)!important;line-height:1.4;margin-top:15px;transition:var(--tt-transition);"><i class="fa fa-sign-in"></i> Sign In</a></li>
+                    <li><a href="dashboards/register.html" style="display:inline-block;padding:10px 24px;background:var(--tt-teal);color:#fff!important;border-radius:var(--tt-radius-pill);font-weight:800;font-size:14px;line-height:1.4;margin-top:15px;border:2px solid var(--tt-teal);transition:var(--tt-transition);box-shadow:0 3px 12px rgba(0,191,165,.25);"><i class="fa fa-user-plus"></i> Get Started Free</a></li>
+               </ul>
+          </div>
+     </div>
+</section>
+
+<section class="page-header">
+     <div class="container"><div class="col-md-8"><h1>Contact 2tors.ng</h1><p>We'd love to hear from you. Our team is available Monday–Friday, 8 AM–6 PM (WAT)</p></div></div>
+</section>
+<section class="breadcrumb-section"><div class="container"><ol class="breadcrumb"><li><a href="index.html">Home</a></li><li class="active">Contact</li></ol></div></section>
+
+<!-- GET IN TOUCH SECTION -->
+<section style="padding:60px 0;background:var(--tt-bg);">
+     <div class="container">
+          <div class="row">
+
+               <!-- FORM -->
+               <div class="col-md-7">
+                    <div class="contact-form-box">
+                         <h3 style="font-size:24px;font-weight:900;color:var(--tt-text);margin-bottom:8px;">Get in Touch</h3>
+                         <p style="color:var(--tt-muted);margin-bottom:28px;">We'd love to hear from you. We respond to all messages within 1 business day.</p>
+
+                         <div id="success-msg" style="display:none;background:var(--tt-success-soft);border:1px solid var(--tt-success);border-radius:var(--tt-radius);padding:14px 18px;font-size:13px;font-weight:700;color:#1b5e20;margin-bottom:24px;display:none;align-items:center;gap:10px;"><i class="fa fa-check-circle"></i> Your message has been sent! We'll get back to you within 1 business day.</div>
+
+                         <form id="contact-form-main" onsubmit="submitForm(event)">
+                              <div class="row">
+                                   <div class="col-md-6"><div style="margin-bottom:20px;"><label class="form-label">Full Name *</label><input type="text" class="form-field" placeholder="Your full name" required></div></div>
+                                   <div class="col-md-6"><div style="margin-bottom:20px;"><label class="form-label">Email Address *</label><input type="email" class="form-field" placeholder="your@email.com" required></div></div>
+                              </div>
+                              <div class="row">
+                                   <div class="col-md-6"><div style="margin-bottom:20px;"><label class="form-label">Phone Number</label><input type="tel" class="form-field" placeholder="+234 …"></div></div>
+                                   <div class="col-md-6"><div style="margin-bottom:20px;"><label class="form-label">I am a…</label><select class="form-field"><option value="">Select role</option><option>Parent / Guardian</option><option>Tutor / Educator</option><option>Student</option><option>Other</option></select></div></div>
+                              </div>
+                              <div style="margin-bottom:20px;"><label class="form-label">Subject *</label><input type="text" class="form-field" placeholder="e.g. Question about tutor verification" required></div>
+                              <div style="margin-bottom:24px;"><label class="form-label">Message *</label><textarea class="form-field" placeholder="Tell us how we can help…" required></textarea></div>
+                              <button type="submit" class="tt-btn tt-btn-primary" style="width:100%;justify-content:center;padding:15px;font-size:15px;"><i class="fa fa-send"></i> Send Message</button>
+                         </form>
+                    </div>
+               </div>
+
+               <!-- CONTACT INFO -->
+               <div class="col-md-5">
+                    <div class="contact-info-card"><div class="ci-icon" style="background:var(--tt-teal-soft);color:var(--tt-teal);"><i class="fa fa-map-marker"></i></div><div class="ci-info"><h4>Location</h4><p>Lagos, Nigeria</p><p style="margin-top:4px;font-size:12px;">Currently operating Nigeria-wide with a Lagos-based team</p></div></div>
+                    <div class="contact-info-card"><div class="ci-icon" style="background:var(--tt-orange-soft);color:var(--tt-orange);"><i class="fa fa-phone"></i></div><div class="ci-info"><h4>Phone</h4><a href="tel:+2348002867364">+234 (0) 800 2TORS NG</a><p style="font-size:12px;margin-top:4px;">Mon–Fri · 8 AM – 6 PM WAT</p></div></div>
+                    <div class="contact-info-card"><div class="ci-icon" style="background:var(--tt-magenta-soft);color:var(--tt-magenta);"><i class="fa fa-envelope"></i></div><div class="ci-info"><h4>Email</h4><a href="mailto:hello@2tors.ng">hello@2tors.ng</a></div></div>
+                    <div class="contact-info-card"><div class="ci-icon" style="background:var(--tt-danger-soft);color:var(--tt-danger);"><i class="fa fa-shield"></i></div><div class="ci-info"><h4>Safeguarding</h4><a href="mailto:safeguarding@2tors.ng">safeguarding@2tors.ng</a><p style="font-size:12px;margin-top:4px;">For child safety concerns — responded within 24 hours</p></div></div>
+                    <div class="contact-info-card"><div class="ci-icon" style="background:var(--tt-teal-soft);color:var(--tt-teal);"><i class="fa fa-headphones"></i></div><div class="ci-info"><h4>Office Hours</h4><p>Monday – Friday: 8 AM – 6 PM</p><p>Saturday: 10 AM – 2 PM</p><p>Sunday: Closed</p></div></div>
+                    <div style="margin-top:16px;"><p style="font-size:13px;font-weight:800;color:var(--tt-text-2);margin-bottom:10px;">Follow us</p>
+                    <ul class="social-icon" style="margin-top:0;">
+                         <li><a href="https://facebook.com/2tors.ng" target="_blank" class="fa fa-facebook-square"></a></li>
+                         <li><a href="https://twitter.com/2tors.ng" target="_blank" class="fa fa-twitter"></a></li>
+                         <li><a href="https://instagram.com/2tors.ng" target="_blank" class="fa fa-instagram"></a></li>
+                         <li><a href="https://linkedin.com/company/2tors.ng" target="_blank" class="fa fa-linkedin"></a></li>
+                    </ul></div>
+                    <div class="map-placeholder"><div style="text-align:center;"><i class="fa fa-map-marker" style="font-size:40px;color:var(--tt-faint);display:block;margin-bottom:8px;"></i><p style="color:var(--tt-faint);font-weight:600;margin:0;">Map view — Lagos, Nigeria</p></div></div>
+               </div>
+
+          </div>
+     </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+     <div class="container">
+          <div class="row">
+               <div class="col-md-4 col-sm-6">
+                    <a href="index.html" style="font-family:var(--tt-font-head);font-size:26px;font-weight:900;color:var(--tt-teal);text-decoration:none;display:inline-block;margin-bottom:12px;">2tors<span style="color:var(--tt-orange);">.ng</span></a>
+                    <p>Nigeria's trusted private tutoring platform. Connecting families with verified tutors for home-based and online sessions.</p>
+                    <ul class="social-icon">
+                         <li><a href="https://facebook.com/2tors.ng" target="_blank" class="fa fa-facebook-square"></a></li>
+                         <li><a href="https://twitter.com/2tors.ng" target="_blank" class="fa fa-twitter"></a></li>
+                         <li><a href="https://instagram.com/2tors.ng" target="_blank" class="fa fa-instagram"></a></li>
+                         <li><a href="https://linkedin.com/company/2tors.ng" target="_blank" class="fa fa-linkedin"></a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Platform</h2>
+                    <ul>
+                         <li><a href="browse-tutors.html">Find a Tutor</a></li>
+                         <li><a href="dashboards/signup-tutor.html">Become a Tutor</a></li>
+                         <li><a href="how-it-works.html">How It Works</a></li>
+                         <li><a href="pricing-plans.html">Pricing</a></li>
+                         <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Company</h2>
+                    <ul>
+                         <li><a href="about.html">About Us</a></li>
+                         <li><a href="blog.html">Blog</a></li>
+                         <li><a href="contact.html">Contact</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                    <h2>Legal</h2>
+                    <ul>
+                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                         <li><a href="terms-of-service.html">Terms of Service</a></li>
+                         <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                         <li><a href="refund-policy.html">Refund Policy</a></li>
+                         <li><a href="code-of-conduct.html">Code of Conduct</a></li>
+                    </ul>
+               </div>
+               <div class="col-md-2 col-sm-12">
+                    <h2>Stay Updated</h2>
+                    <p style="font-size:13px;">Get tutor tips and platform news in your inbox.</p>
+                    <div class="newsletter-form">
+                         <form action="index.html" method="get">
+                              <input type="email" class="form-control" placeholder="Your email" name="email" required>
+                              <input type="submit" value="Subscribe" style="margin-top:0;">
+                         </form>
+                    </div>
+               </div>
+          </div>
+          <div class="footer-bottom">
+               <p>&copy; 2026 2tors.ng — Learnroom Technology. All rights reserved.</p>
+               <p>Made with <span style="color:var(--tt-orange);">&#9829;</span> in Nigeria</p>
+          </div>
+     </div>
+</footer>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/learnroom.js"></script>
+<script src="js/custom.js"></script>
+<script>
+function submitForm(e){
+     e.preventDefault();
+     document.getElementById('contact-form-main').style.display='none';
+     var msg = document.getElementById('success-msg');
+     msg.style.display='flex';
+}
+$(window).scroll(function(){
+     if($(this).scrollTop()>60) $('.custom-navbar').addClass('scrolled');
+     else $('.custom-navbar').removeClass('scrolled');
+});
+</script>
+</body>
+</html>
